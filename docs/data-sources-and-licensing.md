@@ -37,7 +37,8 @@ Keep concise source credits alongside figures/tables and in the repository docum
 | GT7 — global airport benchmark | DfT table containing ICAO-sourced data | C | Excluded: `outputs/golden/GT7_Global_Airport_Benchmark.csv`; source row values are not published. |
 | GT8 — UK airport connectivity | CAA `ROUTES` | B | Included with CAA attribution and no-sale condition. |
 | GT9 — operational KPI summary | Mixed: GT1/GT4/GT7/GT10 and source coverage | C | Excluded because it contains mixed-source KPI values, including GT7-derived counts and GT10 recommendation context. |
-| GT10 — decision recommendations/scenarios | GT1/GT2/GT7/GT8 | C | Excluded in full because the global scope reproduces AVI0301-derived values. UK-only rows are not split out of the canonical result. |
+| GT10 — decision recommendations/scenarios | GT1/GT2/GT7/GT8 | C | The full mixed file is excluded because the global scope reproduces AVI0301-derived values; canonical results are not split or rewritten. |
+| `docs/business-case-study.md` UK_SITE summary | UK-only GT2/GT8/CAA lineage | B | Publishes the UK_SITE baseline leader/stability as a short CAA-attributed narrative only; no GT10 row export, scores or global candidate values are included. |
 | `outputs/golden_tables.xlsx` | GT1–GT10 | C | Excluded as a mixed workbook. The canonical workbook remains unchanged locally. |
 
 `outputs/runs/` (including canonical run `20261005T163644Z_33f9f4ffa323`) remains intact locally and is ignored as a whole. It contains the canonical outputs and QA; it is not rewritten to evade the restrictions.
@@ -60,6 +61,7 @@ The code retains `EXPECTED_SOURCE_ROWS["avi0301"]` as input-version validation m
 
 | Evidence files | Source lineage/content | Class | Public-candidate treatment |
 |---|---|---|---|
+| Original CAA chart `docs/evidence/visualizations/uk-airport-market-snapshot.svg` | Independently authored graphic based only on permitted CAA GT3 output | B | Included with source/date credit and CAA no-sale condition; it is not a vendor screenshot and does not use AVI0301. |
 | Power BI `02-uk-market-demand`, `03-destination-connectivity`, `05b-scenario-sensitivity-uk`, `07b-candidate-detail-heathrow` | CAA/DfT data is B under source terms, but screenshots embed third-party data in Microsoft Power BI UI | C | Excluded: Microsoft screenshot guidance does not allow third-party content in product screenshots, even when the data source has separate reuse terms. |
 | Power BI `08-semantic-model-overview`, `09-relationships-overview` | User-created schema/relationship views; no source rows, third-party observations or identifiable person | A | Included unchanged and pixel-identical to originals with Microsoft’s required attribution; see screenshot guidance reference below. |
 | Power BI `01-executive-decision-summary`, `04-global-expansion-benchmark`, `05a-scenario-sensitivity-global`, `06-data-quality-governance`, `07a-candidate-detail (global scope)` | Global candidate metrics/recommendations plus Microsoft UI | C | Excluded for AVI0301 content and third-party screenshot-content conditions. |

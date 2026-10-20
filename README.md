@@ -4,7 +4,9 @@
 
 ## Business problem and objectives
 
-The work evaluates which observed UK airport market could support an initial site and which non-UK airport may merit later expansion review. It compares passenger demand and market position, period-on-period recovery context, destination/country connectivity, airport benchmarks, and candidate scenarios. Quality checks, source reconciliation, sensitivity to policy weights, and explicit data/model limitations support the decisions. UK and global candidate populations remain separate; scores are comparative indicators, not forecasts, causal claims, or proof of commercial viability.
+The work evaluates which observed UK airport market could support opening the first boutique and which non-UK airport may merit later expansion review. It compares passenger demand and market position, period-on-period recovery context, destination/country connectivity, airport benchmarks, and candidate scenarios. Quality checks, source reconciliation, sensitivity to policy weights, and explicit data/model limitations support the decisions. UK and global candidate populations remain separate; scores are comparative indicators, not forecasts, causal claims, or proof of commercial viability.
+
+The full methodology, KPI contracts, findings and limitations are documented in the [business case study](docs/business-case-study.md). A separate formal stakeholder matrix or original academic report was not located in this project folder.
 
 ## Current verified work
 
@@ -41,6 +43,12 @@ The architecture and scope are described in [`docs/architecture.md`](docs/archit
 ## Data and provenance
 
 The four local input datasets are identified by source IDs AVI0105, AVI0301, ROUTES and SFO. The public candidate does not bundle raw CSVs. The permitted source/artifact manifests contain only relative paths, hashes and sizes; sample schemas and data-bearing QA are local-only. See [`docs/data-sources-and-licensing.md`](docs/data-sources-and-licensing.md) for publishers, terms, attribution and file-level exclusions. AVI0301 is ICAO-sourced and its redistribution rights remain unresolved; related data-bearing outputs are excluded rather than altered.
+
+## UK_SITE evidence snapshot
+
+![Original CAA-based UK airport market snapshot](docs/evidence/visualizations/uk-airport-market-snapshot.svg)
+
+The original visualization uses permitted GT3 data from the CAA May 2022 route snapshot, not a vendor screenshot. Within the 36-airport population represented in that extract, Heathrow leads passenger scale (4.99 million; 27.77%) and has the broadest observed network in GT8 (90 destination countries and 207 destination airports). In the canonical UK_SITE baseline, Heathrow ranks first and remains the leading candidate across the three UK weighting scenarios. This supports further due diligence—not a commercial opening decision. CAA attribution and the no-sale condition are printed in the chart. The full methods, findings and caveats are in the [business case study](docs/business-case-study.md).
 
 ## Governed tables and decision model
 
