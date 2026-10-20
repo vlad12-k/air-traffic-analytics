@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "avi0105": {
+      "path": "data/raw/AVI0105.csv",
+      "sha256": "2d42c2ae234df832405ff7e0e6a2d730b7bfcccbcd8de1750b3b8651e4491c77",
+      "size_bytes": 7722
+    },
+    "avi0301": {
+      "path": "data/raw/AVI0301.csv",
+      "sha256": "257dd9eb7a56834d412347463876ac14c8571ee82b19471b600f9b3da2c8bcd4",
+      "size_bytes": 2102
+    },
+    "routes": {
+      "path": "data/raw/Table_12_1_Intl_Air_Pax_Traffic_Route_Analysis.csv",
+      "sha256": "e014f11f02dfc12557eeca26201aac763905ed9404e18837bb3f5c2433c92f1d",
+      "size_bytes": 172399
+    },
+    "sfo": {
+      "path": "data/raw/Air_Traffic_Passenger_Statistics_2005-2020.csv",
+      "sha256": "3774bfdc23aeee43b49a0d03d586401151f7f377c455449cd02d88b50139959f",
+      "size_bytes": 3795052
+    }
+  }
+}

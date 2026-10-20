@@ -1,0 +1,84 @@
+{
+  "artifacts": [
+    {
+      "path": "golden/GT10_Decision_Recommendation.csv",
+      "sha256": "6026a624b0a4313dad377dfa3dc043bea17ff115bb46c1baf2d93ed6bb493f25",
+      "size_bytes": 40121
+    },
+    {
+      "path": "golden/GT1_UK_Airport_Period_Totals.csv",
+      "sha256": "c7269984a4dfd4a28ed1c3d8671658efe9d51d379a5bc8d35b17f9aa1e619464",
+      "size_bytes": 2477
+    },
+    {
+      "path": "golden/GT2_UK_Airport_Period_Change.csv",
+      "sha256": "431730a1b6bb1b78f0d074f7bc54f258f23efae691348f3952e5e9842d70e498",
+      "size_bytes": 3246
+    },
+    {
+      "path": "golden/GT3_UK_Airport_Market_Ranking.csv",
+      "sha256": "9bea3aeac0e0e76985f82e0e93a7503cf9bb3e859c2d865bb8af89c0e97e3b95",
+      "size_bytes": 3277
+    },
+    {
+      "path": "golden/GT4_Airport_Destination_Country_Flow.csv",
+      "sha256": "44190b97917e76700949507add611497b62a0aed40563792b290929316c4a2cd",
+      "size_bytes": 53474
+    },
+    {
+      "path": "golden/GT5_Country_Traffic_Trends.csv",
+      "sha256": "54e8bc81653fb6c21e62c93f5a34857c4ef3362bc9615314739baeff7b7c7871",
+      "size_bytes": 93500
+    },
+    {
+      "path": "golden/GT6_SFO_Historical_Benchmark.csv",
+      "sha256": "e87a321575f74c36f3d188a7fa46523d6badf3d12375275815c59837e89076aa",
+      "size_bytes": 2443
+    },
+    {
+      "path": "golden/GT7_Global_Airport_Benchmark.csv",
+      "sha256": "2362d6a538fd3af4112c63863a1063bc4b4bf63129f8fda50aa1e95b40920567",
+      "size_bytes": 3930
+    },
+    {
+      "path": "golden/GT8_UK_Airport_Connectivity.csv",
+      "sha256": "d2c6eee9fadbdacd34e073f987ef1e3cfbb4f3b934430c34f836f198dd9f4eb0",
+      "size_bytes": 3702
+    },
+    {
+      "path": "golden/GT9_Operational_KPI_Summary.csv",
+      "sha256": "003233b20cb1e0829fd938704d5dfd14c3dce46252e12fcc9cd991a9dd341bcb",
+      "size_bytes": 2396
+    },
+    {
+      "path": "golden_tables.xlsx",
+      "sha256": "9ff28f1d9765a7812d3c540131a1e68baca214c48d45bc2b7ddb8f9b6b374522",
+      "size_bytes": 125487
+    },
+    {
+      "path": "qa/gt10_eligibility_report.csv",
+      "sha256": "0c3273260880892417ea15c912043c6dc96a5bc3a98056f4a64daf6ae08c6114",
+      "size_bytes": 2558
+    },
+    {
+      "path": "qa/gt10_sensitivity_summary.csv",
+      "sha256": "57c24181560b7c3ac0ef44efcecaae4bff9ecc6e51dddfdf601a4a7377222a77",
+      "size_bytes": 4624
+    },
+    {
+      "path": "qa/quality_report.csv",
+      "sha256": "97f08693cbc94ca1e0b76314d6a5385015901632f938dbc72cd74ecd741c6750",
+      "size_bytes": 4993
+    },
+    {
+      "path": "qa/source_manifest.json",
+      "sha256": "bf708627382d3383efee0e72dad00add38a7a4036523fd891cac95a36680e519",
+      "size_bytes": 779
+    },
+    {
+      "path": "run_metadata.json",
+      "sha256": "3def7e403423c0136a1c36564ff3af8d5112d354e8b69b7bb0379a8a5a87865e",
+      "size_bytes": 1261
+    }
+  ]
+}

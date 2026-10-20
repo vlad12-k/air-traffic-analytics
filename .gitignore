@@ -1,0 +1,96 @@
+# Local Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+# Legacy prototype contains unvalidated placeholder scoring; keep local, not release.
+/main.py
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local secrets and machine-specific configuration
+.env
+.env.*
+!.env.example
+*.secrets
+.config/
+
+# Source exports: retrieve from the original publishers; redistribution
+# rights and source-version details must be confirmed before release.
+data/raw/
+
+# Local evidence inbox and archive metadata
+/evidence-inbox/
+.DS_Store
+**/.DS_Store
+__MACOSX/
+**/._*
+
+# Local Azure execution output may contain account/resource identifiers
+outputs/qa/azure_validation.txt
+outputs/qa/pipeline_run.txt
+
+# Preserve canonical and prior run data locally, but do not stage run exports.
+outputs/runs/
+
+# AVI0301/ICAO-derived or mixed-data outputs: retain locally pending rights.
+outputs/golden/GT7_Global_Airport_Benchmark.csv
+outputs/golden/GT9_Operational_KPI_Summary.csv
+outputs/golden/GT10_Decision_Recommendation.csv
+outputs/golden_tables.xlsx
+outputs/qa/run_metadata.json
+outputs/qa/source_schema.txt
+outputs/qa/quality_report.csv
+outputs/qa/gt10_eligibility_report.csv
+outputs/qa/gt10_sensitivity_summary.csv
+
+# QA evidence copies containing source samples, candidate data or scoring results.
+docs/evidence/validation/run_metadata.json
+docs/evidence/validation/source_schema.txt
+docs/evidence/validation/quality_report.csv
+docs/evidence/validation/gt10_eligibility_report.csv
+docs/evidence/validation/gt10_sensitivity_summary.csv
+docs/evidence/validation/pipeline_run.txt
+docs/evidence/validation/azure_validation.txt
+
+# Power BI captures that expose AVI0301 values or derived global rankings.
+docs/evidence/power-bi-v2/powerbi-v2-01-executive-decision-summary.png
+docs/evidence/power-bi-v2/powerbi-v2-04-global-expansion-benchmark.png
+docs/evidence/power-bi-v2/powerbi-v2-05a-scenario-sensitivity-global.png
+docs/evidence/power-bi-v2/powerbi-v2-06-data-quality-governance.png
+docs/evidence/power-bi-v2/powerbi-v2-07a-candidate-detail-*.png
+
+# Microsoft screenshot guidance: exclude third-party data and altered captures.
+# Only unchanged schema-only Power BI captures remain in the public candidate.
+docs/evidence/power-bi-v2/powerbi-v2-02-uk-market-demand.png
+docs/evidence/power-bi-v2/powerbi-v2-03-destination-connectivity.png
+docs/evidence/power-bi-v2/powerbi-v2-05b-scenario-sensitivity-uk.png
+docs/evidence/power-bi-v2/powerbi-v2-07b-candidate-detail-heathrow.png
+docs/evidence/historical/azure/historical-azure-02-sql-resource-redacted.png
+
+# No product-specific screenshot publication rights documented for IBM UI captures.
+docs/evidence/historical/cognos/historical-cognos-07-semantic-model.png
+docs/evidence/historical/cognos/historical-cognos-10-demand-recovery.png
+docs/evidence/historical/cognos/historical-cognos-11-demand-filter.png
+docs/evidence/historical/watsonx/*-redacted.png
+docs/evidence/historical/process/historical-process-01-sipoc.png
+
+# Screenshots reproducing AVI0301 / ICAO tables or global rankings.
+docs/evidence/historical/azure/historical-azure-04-sql-validation-redacted.png
+docs/evidence/historical/colab/historical-colab-03-azure-etl-redacted.png
+docs/evidence/historical/cognos/historical-cognos-08-executive-summary.png
+docs/evidence/historical/cognos/historical-cognos-09-executive-filter.png
+docs/evidence/historical/cognos/historical-cognos-12-operational-monitoring.png
+docs/evidence/historical/cognos/historical-cognos-13-operational-filter.png
+docs/evidence/historical/cognos/historical-cognos-14-risk-ranking.png
+
+# Unredacted watsonx screenshots contain personal account/resource details.
+docs/evidence/historical/watsonx/historical-watsonx-05-import.png
+docs/evidence/historical/watsonx/historical-watsonx-06-autoai.png
+docs/evidence/historical/watsonx/historical-watsonx-10-autoai-experiment.png
