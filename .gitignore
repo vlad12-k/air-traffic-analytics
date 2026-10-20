@@ -36,6 +36,9 @@ __MACOSX/
 outputs/qa/azure_validation.txt
 outputs/qa/pipeline_run.txt
 
+# Local-only rights map contains filenames/status for unapproved evidence.
+/docs/evidence/screenshot-publication-map.md
+
 # Preserve canonical and prior run data locally, but do not stage run exports.
 outputs/runs/
 
