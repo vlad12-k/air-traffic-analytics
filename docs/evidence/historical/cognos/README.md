@@ -1,3 +1,5 @@
 # Historical IBM Cognos evidence
 
-The Cognos screenshots are preserved locally as historical project evidence, not as proof of a current Cognos deployment. They are excluded from the public Git candidate because this project has no documented IBM screenshot-reuse permission. Some views also contain AVI0301-derived global benchmark values; those remain rights-blocked independently. Do not infer permission from the fact the dashboards were authored for this project.
+Per the project owner's statement, the Cognos report/dashboard designs, semantic model and analysis were personally created as academic work; IBM Cognos was the authoring platform, not the report author. The captures remain local because publication of the IBM interface/marks is not yet cleared under applicable terms. This is a conditional reuse status, not a claim that all such screenshots are prohibited.
+
+Some pages also show AVI0301-derived benchmark values; those specific images remain not cleared until ICAO/DfT redistribution rights are confirmed. To publish a capture, document applicable IBM screenshot/mark permission (or use a permitted owner-authored export) and separately clear any displayed data. None of these screenshots implies a currently deployed Cognos service.

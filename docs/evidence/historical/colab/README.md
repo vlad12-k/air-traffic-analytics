@@ -1,3 +1,3 @@
 # Historical Google Colab evidence
 
-The Colab-to-Azure ETL capture remains local-only. Its upload log contains GT7/GT10-derived table counts and the image reproduces Google Colab UI; no screenshot-reuse permission is documented in this project. The separate redacted copy preserves the workflow evidence locally, but neither image is included in the public Git candidate.
+The archive shows a Colab notebook workflow used for project data preparation and upload to Azure SQL. The notebook/ETL work is project evidence; Google Colab is the platform, not the author of that transformation. The capture remains local-only because the upload log includes AVI0301/GT7-derived counts and no product-specific Google screenshot reuse permission is documented. Academic access to the linked datasets does not clear redistribution rights. The redacted local copy is not a permission-cleared alternative.

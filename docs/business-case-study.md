@@ -4,7 +4,7 @@
 
 ## 1. Executive summary
 
-AirTrafficAnalytics was built to help a boutique retail business decide where airport-based expansion deserved further investigation. The project treats the work as a sequence of two business decisions—not simply an aviation-statistics dashboard:
+AirTrafficAnalytics was developed as an academic analytics project for a boutique retail business considering airport-based expansion. The project owner states they personally designed and built the Power BI and IBM Cognos dashboards and performed the analysis; Microsoft and IBM were the software platforms, not the authors of the dashboard work. This establishes the claimed authorship of the report content, but not permission to reproduce vendor-owned interface elements or third-party data in screenshots.
 
 1. **UK_SITE:** Which UK airport market is the strongest candidate for the first boutique?
 2. **GLOBAL_EXPANSION:** Which non-UK airport markets should be considered for subsequent expansion?
@@ -64,6 +64,8 @@ The global scope has three separate weight policies. They are documented analyti
 The DfT notes identify ICAO as the underlying source for AVI0301, but the project does not contain verified redistribution permission for that exact extract or its derivatives. Accordingly, this case study gives no global airport names, rankings, benchmark values or recommendation. The method is described; the source-dependent outcomes remain local-only. See [`data-sources-and-licensing.md`](data-sources-and-licensing.md).
 
 ## 4. Data and provenance
+
+The project owner reports that the college supplied the original dataset links and learning resources for the academic work. That provenance explains access for the project, but academic access does not by itself grant public redistribution rights.
 
 | Source | Analytical role | Local coverage | Important limitation |
 |---|---|---|---|
@@ -153,11 +155,11 @@ The second-stage global screen is part of the model design, but no public global
 
 ### Stage A — IBM Cognos Analytics (historical)
 
-The local evidence archive documents an initial semantic model and executive, demand, filter, operational and risk-oriented Cognos views. Cognos screenshots remain local-only because the project has no documented IBM screenshot-reuse permission; some also contain source-derived data. They are not evidence of a currently running Cognos environment.
+According to the project owner, the Cognos dashboards, semantic model and analysis were personally created as part of the academic work; IBM Cognos was the reporting platform, not the dashboard author. The archive contains executive, demand, filter, operational and risk-oriented views. Their screenshots remain local because reuse of IBM interface elements is not cleared and some pages reproduce restricted data. This does not imply IBM created the report content or that the environment is still deployed.
 
 ### Stage B — Colab, Python and Azure SQL (historical)
 
-The archived evidence records a notebook-based ETL/upload workflow and SQL validation activity. The Colab/Azure screenshots and result grids remain local because of data lineage, privacy and unverified vendor screenshot rights. No Azure service is claimed to be active.
+The archived evidence records a notebook-based ETL/upload workflow and SQL validation activity. The project files show these as historical tools/workflows, not live services. Google Colab and Azure are the platforms; source attribution and screenshot UI reuse are separate from the user's authorship of project analysis. Their product-screen captures and data-bearing query results remain local until screenshot and source permissions are established.
 
 ### Stage C — Governed Python/SQL V2
 
@@ -165,7 +167,7 @@ The current analytical package introduced modular transformations, GT contracts,
 
 ### Stage D — Power BI V2
 
-The later report layer contains executive, UK demand, destination/connectivity, global benchmark, scenario, governance and candidate-detail pages, plus semantic-model and relationships views. Only the unchanged, schema-only model/relationship screenshots are included. Data-bearing report captures are withheld because screenshot terms and/or third-party content restrictions are not cleared. This documents sequential implementations of a similar business workflow; no direct technical migration from Cognos to Power BI is claimed.
+According to the project owner, they authored the Power BI V2 report design and analysis; Microsoft Power BI was the platform, not the report author. The local report includes executive, UK demand, destination/connectivity, global benchmark, scenario, governance and candidate-detail pages, plus model/relationship views. Only two unchanged schema-only views are public under Microsoft's screenshot guidance. The report pages are user-created, but screenshots containing third-party statistics are not cleared by dataset permission alone; global pages also have unresolved AVI0301 rights. No direct technical migration from Cognos to Power BI is claimed.
 
 ## 11. Validation, reproducibility and limitations
 

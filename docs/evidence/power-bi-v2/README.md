@@ -1,6 +1,6 @@
 # Power BI V2 evidence
 
-The public candidate contains two unchanged schema-only Microsoft Power BI screenshots:
+Per the project owner, the report/dashboard design and analysis were personally created for the academic project; Microsoft Power BI was the platform, not the report author. The public candidate contains two unchanged schema-only screenshots:
 
 - [Semantic Model Overview](powerbi-v2-08-semantic-model-overview.png)
 - [Relationships Overview](powerbi-v2-09-relationships-overview.png)

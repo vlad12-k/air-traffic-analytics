@@ -4,7 +4,7 @@
 
 ## Executive overview
 
-The business problem was to replace an informal “which airport looks promising?” discussion with an auditable comparison of passenger scale, market position, destination connectivity and scenario assumptions. The model separates the initial **UK_SITE** decision from the later **GLOBAL_EXPANSION** screen because their candidate populations and source data differ.
+The business problem was to replace an informal “which airport looks promising?” discussion with an auditable comparison of passenger scale, market position, destination connectivity and scenario assumptions. The model separates the initial **UK_SITE** decision from the later **GLOBAL_EXPANSION** screen because their candidate populations and source data differ. Per the project owner, the IBM Cognos and Power BI dashboard/report designs and analysis were personally created for the academic work; IBM and Microsoft supplied the tools, not the analytical authorship. The college supplied dataset links and learning resources, which document access but do not grant redistribution rights.
 
 The complete local project and canonical run remain preserved. This public repository is a rights-filtered subset: it includes permitted UK/SFO outputs and non-data provenance evidence, but omits raw input files, AVI0301-derived global results, detailed QA rows and uncleared vendor-UI captures.
 
@@ -29,8 +29,8 @@ AVI0105 adds country-level demand context: “Spain & Canary Islands” is the l
 
 ## Project evolution
 
-- **Historical IBM Cognos Analytics:** the local evidence documents an executive report, demand/recovery views, filters, operational monitoring, risk-oriented reporting and a semantic model. These are historical, not a current Cognos deployment; vendor UI screenshots remain local because reuse permission is not documented, and some contain restricted values.
-- **Historical Colab / Python / Azure SQL:** archived evidence shows a notebook ETL/upload workflow and SQL validation. The UI captures and result grids remain local-only; no Azure service is claimed to be active.
+- **Historical IBM Cognos Analytics:** per the owner, the executive, demand, filter, operational and risk dashboard/report content and analysis were personally created in the IBM Cognos platform. IBM supplied the software interface; interface screenshot rights are separate. Captures remain local because reuse terms are not documented and some display source-restricted values.
+- **Historical Colab / Python / Azure SQL:** archived evidence shows the project's notebook-based ETL/upload workflow and SQL validation. Google Colab and Azure were the tools; their UI captures and data-bearing results require separate rights review. No Azure service is claimed to be active.
 - **Current Python/SQL V2 analytical model:** modular ingestion, cleaning, GT1–GT10 contracts, source reconciliation, quality gates, model versioning and run provenance.
 - **Power BI V2:** later report pages cover the executive decision, UK demand, destination/connectivity, global expansion, scenarios, candidate detail, governance and model relationships. Only the two unchanged, schema-only Microsoft Power BI model/relationship screenshots are included; data-bearing report captures are excluded.
 
