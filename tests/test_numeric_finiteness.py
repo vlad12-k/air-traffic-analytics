@@ -1,9 +1,12 @@
 import numpy as np
+import pytest
 
 from airtraffic.clean import clean_sources
 from airtraffic.golden import build_gt1_to_gt8
 from airtraffic.ingest import load_sources
 from airtraffic.pipeline import build_analytical_run
+
+pytestmark = pytest.mark.requires_sources
 
 
 def test_gt5_zero_previous_year_growth_is_null():

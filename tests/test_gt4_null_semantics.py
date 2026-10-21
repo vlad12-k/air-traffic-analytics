@@ -1,6 +1,10 @@
+import pytest
+
 from airtraffic.clean import clean_sources
 from airtraffic.golden import build_gt1_to_gt8
 from airtraffic.ingest import load_sources
+
+pytestmark = pytest.mark.requires_sources
 
 
 def test_gt4_flow_share_null_only_for_zero_denominator():

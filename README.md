@@ -82,6 +82,22 @@ The canonical local run `20261005T163644Z_33f9f4ffa323` is recorded as `VALIDATE
 
 Azure SQL schema, reporting-view and validation scripts are included, but no live Azure operation was performed for this case study. The archived run and screenshot evidence are not claims of a currently deployed or refreshing Azure, Power BI, Cognos or watsonx service.
 
+## Continuous integration
+
+The GitHub Actions workflow is configured for Python 3.11 on pushes to `main`, pull requests targeting `main`, and manual dispatch. It installs the locked environment with `uv sync --locked --extra dev`, compiles `src/`, `scripts/` and `tests/`, and runs the self-contained test subset. The public CI job will report source-dependent tests as not executed, not passed. No test contacts Azure or another external service; Azure configuration tests only build a connection-string value.
+
+The repository's suite currently collects **37** tests: **3** are self-contained and run in public CI; **34** are marked `requires_sources` because they call the canonical ingestion/analytics path and need local CSV inputs. These are in `test_clean.py` (the source-backed cases), `test_ingest.py`, `test_gt4_null_semantics.py`, `test_golden_tables.py`, `test_quality.py`, `test_scoring.py`, `test_pipeline.py` and `test_numeric_finiteness.py`. The synthetic AVI0301-cleaning unit test remains self-contained; it uses example values, not aviation rows.
+
+For a clean checkout, install from the lock and run the same public-safe checks:
+
+```bash
+uv sync --locked --extra dev
+uv run python -m compileall -q src scripts tests
+uv run pytest -q -m "not requires_sources"
+```
+
+With all four source files named in `src/airtraffic/config.py` lawfully available under `data/raw/`, run the complete local suite with `uv run pytest -q`. They are not bundled in the public repository; AVI0301/ICAO rights remain unresolved, so clean-clone reproduction of the full pipeline is intentionally unavailable. No CI status badge is shown until the workflow has completed successfully on GitHub.
+
 ## Reproducibility, licensing and limitations
 
 The Python package requires four CSV inputs under `data/raw/`; none are bundled. Full pipeline/tests therefore require lawfully obtained local source files. AVI0301/ICAO rights are unresolved, so a clean clone cannot reproduce the global benchmark or complete run until those rights and a lawful input path are settled. The local test suite passed **37 tests** with the local source environment; coverage is not configured.

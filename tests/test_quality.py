@@ -12,6 +12,8 @@ from airtraffic.scoring import (
     build_gt10_decision_recommendation,
 )
 
+pytestmark = pytest.mark.requires_sources
+
 
 @pytest.fixture(scope="module")
 def artifacts():

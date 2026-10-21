@@ -8,6 +8,8 @@ from airtraffic.scoring import (
     build_gt10_sensitivity_summary,
 )
 
+pytestmark = pytest.mark.requires_sources
+
 
 @pytest.fixture(scope="module")
 def gt10():

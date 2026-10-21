@@ -1,4 +1,8 @@
+import pytest
+
 from airtraffic.ingest import load_sources, source_summary
+
+pytestmark = pytest.mark.requires_sources
 
 
 def test_all_four_sources_load():

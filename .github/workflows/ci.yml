@@ -1,0 +1,129 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Python 3.11 checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+
+      - name: Install unixODBC libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends unixodbc unixodbc-dev
+
+      - name: Set up locked uv version
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: "0.13.4"
+          enable-cache: true
+
+      - name: Guard against private source and canonical-run files
+        run: |
+          python - <<'PY'
+          import subprocess
+          import sys
+
+          tracked = subprocess.check_output(
+              ["git", "ls-files"], text=True
+          ).splitlines()
+          prohibited = [
+              path for path in tracked
+              if path.startswith("data/raw/")
+              or path.startswith("outputs/runs/")
+              or path.startswith("outputs/qa/")
+              or path.startswith("evidence-inbox/")
+              or path.endswith("/AVI0301.csv")
+              or path.endswith("/GT7_Global_Airport_Benchmark.csv")
+              or path.endswith("/GT9_Operational_KPI_Summary.csv")
+              or path.endswith("/GT10_Decision_Recommendation.csv")
+          ]
+          if prohibited:
+              print("Private/source-dependent files found in checkout:")
+              print("\n".join(prohibited))
+              sys.exit(1)
+          print("No raw source CSVs, restricted global outputs, or canonical run files are tracked.")
+          PY
+
+      - name: Install project and locked development dependencies
+        run: uv sync --locked --extra dev --python 3.11
+
+      - name: Compile project, scripts, and tests
+        run: uv run --locked python -m compileall -q src scripts tests
+
+      - name: Inventory source-dependent tests not run in public CI
+        run: |
+          uv run --locked pytest --collect-only -q > "$RUNNER_TEMP/all-tests.txt"
+          uv run --locked pytest --collect-only -q -m requires_sources > "$RUNNER_TEMP/source-tests.txt"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import sys
+
+          def nodeids(path):
+              return {
+                  line.strip()
+                  for line in Path(path).read_text().splitlines()
+                  if line.startswith("tests/") and "::" in line
+              }
+
+          all_tests = nodeids(Path(os.environ["RUNNER_TEMP"]) / "all-tests.txt")
+          source_tests = nodeids(Path(os.environ["RUNNER_TEMP"]) / "source-tests.txt")
+          if not all_tests or not source_tests or not source_tests <= all_tests:
+              sys.exit("Could not classify the collected pytest suite.")
+
+          source_files = sorted({test.split("::", 1)[0] for test in source_tests})
+          self_contained = len(all_tests) - len(source_tests)
+          print(
+              f"Collected {len(all_tests)} tests: {self_contained} self-contained; "
+              f"{len(source_tests)} require local source files and will not run here."
+          )
+          print("Source-dependent test modules:")
+          for path in source_files:
+              print(f"  - {path}")
+
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+              summary.write("## Test scope\n\n")
+              summary.write(f"- Collected: **{len(all_tests)}** tests.\n")
+              summary.write(f"- Public CI will execute: **{self_contained}** self-contained tests.\n")
+              summary.write(
+                  f"- Not executed in public CI: **{len(source_tests)}** tests marked `requires_sources`; "
+                  "they need locally obtained raw aviation CSVs, including the rights-restricted AVI0301 input.\n"
+              )
+              summary.write(
+                  "- No test contacts Azure or another external service; Azure configuration tests "
+                  "only build a connection-string value.\n\n"
+              )
+              summary.write("Source-dependent test modules:\n")
+              for path in source_files:
+                  summary.write(f"- `{path}`\n")
+          PY
+
+      - name: Run self-contained unit tests
+        run: uv run --locked pytest -q -m "not requires_sources"
