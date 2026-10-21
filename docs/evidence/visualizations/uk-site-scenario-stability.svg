@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 610" role="img" aria-labelledby="title desc">
+  <title id="title">UK_SITE scenario stability — Heathrow remains the leading candidate</title>
+  <desc id="desc">An independently authored summary of the canonical UK_SITE sensitivity analysis. Heathrow is the leading candidate in the baseline, connectivity-heavy and volume-heavy scenarios. Scores are intentionally not shown; this is a sensitivity result, not a probability or commercial forecast.</desc>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#172b4d}.title{font-size:34px;font-weight:700}.sub{font-size:17px;fill:#52647a}.cardtitle{font-size:18px;font-weight:700}.winner{font-size:27px;font-weight:700}.kicker{font-size:13px;font-weight:700;letter-spacing:1.2px;fill:#2878c8}.body{font-size:15px;fill:#52647a}.footer{font-size:13px;fill:#36485f}
+  </style>
+  <rect width="1440" height="610" fill="#f5f7fb"/>
+  <text x="64" y="65" class="title">Does the UK_SITE leader change when policy weights shift?</text>
+  <text x="64" y="98" class="sub">Canonical UK sensitivity result · winner shown, score values omitted</text>
+  <line x1="64" y1="124" x2="1376" y2="124" stroke="#d5dce6"/>
+
+  <g>
+    <rect x="64" y="166" width="400" height="300" rx="16" fill="#ffffff" stroke="#cbd7e6" stroke-width="2"/>
+    <rect x="64" y="166" width="400" height="9" rx="4" fill="#2878c8"/>
+    <text x="96" y="222" class="kicker">REFERENCE CASE</text>
+    <text x="96" y="264" class="cardtitle">Baseline</text>
+    <text x="96" y="335" class="winner">Heathrow</text>
+    <text x="96" y="369" class="body">Top-ranked UK_SITE candidate</text>
+    <text x="96" y="419" class="body">Passenger scale + destination breadth</text>
+
+    <rect x="520" y="166" width="400" height="300" rx="16" fill="#ffffff" stroke="#cbd7e6" stroke-width="2"/>
+    <rect x="520" y="166" width="400" height="9" rx="4" fill="#00a68a"/>
+    <text x="552" y="222" class="kicker" style="fill:#00836d">ALTERNATIVE POLICY</text>
+    <text x="552" y="264" class="cardtitle">Connectivity-heavy</text>
+    <text x="552" y="335" class="winner">Heathrow</text>
+    <text x="552" y="369" class="body">Top-ranked UK_SITE candidate</text>
+    <text x="552" y="419" class="body">Higher emphasis on network breadth</text>
+
+    <rect x="976" y="166" width="400" height="300" rx="16" fill="#ffffff" stroke="#cbd7e6" stroke-width="2"/>
+    <rect x="976" y="166" width="400" height="9" rx="4" fill="#e5a22b"/>
+    <text x="1008" y="222" class="kicker" style="fill:#a66b00">ALTERNATIVE POLICY</text>
+    <text x="1008" y="264" class="cardtitle">Volume-heavy</text>
+    <text x="1008" y="335" class="winner">Heathrow</text>
+    <text x="1008" y="369" class="body">Top-ranked UK_SITE candidate</text>
+    <text x="1008" y="419" class="body">Higher emphasis on passenger scale</text>
+  </g>
+
+  <rect x="64" y="495" width="1312" height="1" fill="#d5dce6"/>
+  <text x="64" y="532" class="footer">Interpretation: the leading candidate is stable across the three tested UK policy settings; other airport ranks can still move.</text>
+  <text x="64" y="555" class="footer">This is an original, vendor-neutral rendering of a canonical UK-only model finding—not a Power BI screenshot, confidence interval, or profitability claim.</text>
+  <text x="64" y="578" class="footer">Source lineage: permitted CAA UK route-analysis inputs and the project’s documented UK_SITE scoring method; see data-source and licensing notes.</text>
+</svg>

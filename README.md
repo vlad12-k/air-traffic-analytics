@@ -23,7 +23,15 @@ The canonical UK analysis uses the CAA May 2022 route snapshot and its supplied 
 
 The CAA source requires attribution and prohibits resale; those conditions are recorded in the [data-source and licensing inventory](docs/data-sources-and-licensing.md). The SVG is an independently authored chart from permitted GT3 output, not a Power BI or Cognos screenshot.
 
+![Heathrow demand and destination-connectivity snapshot using CAA data](docs/evidence/visualizations/uk-site-demand-connectivity.svg)
+
+*An original, vendor-neutral view of Heathrow's CAA route passenger comparison and top destination-country flows. It addresses whether market scale is accompanied by route breadth; it is not retail footfall or a Power BI export. CAA attribution and no-resale conditions are embedded in the figure.*
+
 AVI0105 adds country-level demand context: “Spain & Canary Islands” is the largest reported 2023 grouping, followed by the United States. This is not an airport-level recovery measure. The historical SFO series shows a large 2019–2020 disruption, but it is context only and ends in 2020.
+
+![UK_SITE leader remains Heathrow across three tested policy scenarios](docs/evidence/visualizations/uk-site-scenario-stability.svg)
+
+*Original rendering of the canonical UK-only sensitivity result. It shows the leading candidate, not scenario scores; the analysis tests policy-weight sensitivity, not probability or profitability.*
 
 **Global expansion findings are not published.** AVI0301 is ICAO-sourced and its redistribution rights are unresolved; no global candidate names, scores, ranks or recommendations are reproduced here.
 
@@ -34,7 +42,11 @@ AVI0105 adds country-level demand context: “Spain & Canary Islands” is the l
 - **Current Python/SQL V2 analytical model:** modular ingestion, cleaning, GT1–GT10 contracts, source reconciliation, quality gates, model versioning and run provenance.
 - **Power BI V2:** later report pages cover the executive decision, UK demand, destination/connectivity, global expansion, scenarios, candidate detail, governance and model relationships. Only the two unchanged, schema-only Microsoft Power BI model/relationship screenshots are included; data-bearing report captures are excluded.
 
-The project shows sequential implementations of a similar decision workflow; it does not claim a direct technical migration from Cognos to Power BI. For the detailed timeline and methods, see the [business case study](docs/business-case-study.md).
+The project shows sequential implementations of a similar business workflow; it does not claim a direct technical migration from Cognos to Power BI. For the detailed timeline and methods, see the [business case study](docs/business-case-study.md).
+
+![Project evolution from historical Cognos reporting through Colab, Azure SQL and governed Python/SQL V2 to Power BI V2](docs/evidence/visualizations/project-evolution-timeline.svg)
+
+*Original project timeline synthesized from project documentation and historical evidence—not a vendor screenshot. It separates historical tools from the current governed model and report layer.*
 
 ## BI dashboard and model gallery
 
@@ -44,7 +56,7 @@ The two included schema-only screenshots contain no third-party data rows or ide
 |---|---|
 | ![Microsoft Power BI semantic model overview](docs/evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview.png) | ![Microsoft Power BI relationships overview](docs/evidence/power-bi-v2/powerbi-v2-09-relationships-overview.png) |
 
-The other report-page captures remain local-only under the source and screenshot terms documented in the [evidence index](docs/evidence/power-bi-v2/README.md). The Microsoft screenshot guidance is referenced in the [licensing inventory](docs/data-sources-and-licensing.md).
+The nine other Power BI page captures remain local-only or not cleared under the source and screenshot conditions documented in the [public and local-only evidence index](docs/evidence/README.md) and [Power BI evidence notes](docs/evidence/power-bi-v2/README.md). Microsoft's screenshot conditions are summarized in the [licensing inventory](docs/data-sources-and-licensing.md).
 
 ## Architecture and methodology
 

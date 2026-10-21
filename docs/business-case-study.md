@@ -135,7 +135,15 @@ In the represented 36-airport CAA population, the current comparison-period tota
 
 GT8 shows Heathrow with **90** destination countries and **207** distinct destination airports in this source snapshot. In GT4, the largest Heathrow destination-country flow is the United States. These measures describe scale and reach; they do not show the proportion of travelers who would visit a boutique.
 
+![Heathrow demand and destination-connectivity view from CAA outputs](evidence/visualizations/uk-site-demand-connectivity.svg)
+
+*Original, vendor-neutral figure prepared for this portfolio from the permitted GT1, GT4 and GT8 outputs. It directly supports the UK_SITE question: what is Heathrow's observed passenger scale, and how broad is its recorded international route footprint? The prior/current values are source-defined comparison periods, not annual airport totals. The figure includes CAA attribution and the no-resale condition; it is not a Power BI/Cognos screenshot.*
+
 The canonical UK_SITE baseline ranks Heathrow first, and the leading UK candidate remains stable across the three documented UK policy scenarios. This UK-only conclusion is based on GT2/GT8 CAA inputs; the mixed GT10 result file remains excluded from Git. The conclusion justifies further site diligence, not an unconditional store-opening recommendation.
+
+![UK_SITE scenario sensitivity summary: Heathrow leads in all three tested scenarios](evidence/visualizations/uk-site-scenario-stability.svg)
+
+*This independently authored figure presents only the already documented UK-only winner result; it deliberately omits the scores and does not reproduce global AVI0301-derived rankings. Scenario stability is robustness to stated policy weights, not statistical confidence or a forecast.*
 
 GT2 also illustrates why growth percentages need context: six airports have a zero prior baseline, and other low-baseline cases can generate unusually large ratios. The model flags zero baselines and does not allow growth alone to dominate the UK baseline score.
 
@@ -153,6 +161,12 @@ The second-stage global screen is part of the model design, but no public global
 
 ## 10. Project evolution
 
+The original sequence is summarized below. This is an original project timeline based on the project documentation and local evidence, not a screenshot or a claim that one platform was technically migrated into another.
+
+![Historical and current AirTrafficAnalytics project stages](evidence/visualizations/project-evolution-timeline.svg)
+
+*The historical Cognos, Colab and Azure captures remain separate local evidence; this timeline does not replace them or imply vendor endorsement.*
+
 ### Stage A — IBM Cognos Analytics (historical)
 
 According to the project owner, the Cognos dashboards, semantic model and analysis were personally created as part of the academic work; IBM Cognos was the reporting platform, not the dashboard author. The archive contains executive, demand, filter, operational and risk-oriented views. Their screenshots remain local because reuse of IBM interface elements is not cleared and some pages reproduce restricted data. This does not imply IBM created the report content or that the environment is still deployed.
@@ -168,6 +182,14 @@ The current analytical package introduced modular transformations, GT contracts,
 ### Stage D — Power BI V2
 
 According to the project owner, they authored the Power BI V2 report design and analysis; Microsoft Power BI was the platform, not the report author. The local report includes executive, UK demand, destination/connectivity, global benchmark, scenario, governance and candidate-detail pages, plus model/relationship views. Only two unchanged schema-only views are public under Microsoft's screenshot guidance. The report pages are user-created, but screenshots containing third-party statistics are not cleared by dataset permission alone; global pages also have unresolved AVI0301 rights. No direct technical migration from Cognos to Power BI is claimed.
+
+The two public schema captures below show the V2 semantic structure without data rows. They are included unchanged with the required Microsoft attribution; they document model design, not airport performance.
+
+| Semantic model | Relationships |
+|---|---|
+| ![Microsoft Power BI semantic model overview](evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview.png) | ![Microsoft Power BI relationships overview](evidence/power-bi-v2/powerbi-v2-09-relationships-overview.png) |
+
+**Used with permission from Microsoft.** The data-bearing dashboard captures remain local-only; the independently authored CAA visuals in §8 communicate the cleared UK analysis without reproducing product UI.
 
 ## 11. Validation, reproducibility and limitations
 
