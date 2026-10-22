@@ -1,5 +1,7 @@
 # AirTrafficAnalytics
 
+[![Python CI](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml/badge.svg?branch=docs/final-bi-case-study)](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml)
+
 **Evidence-driven airport expansion decision intelligence for a boutique retail business.** The project evaluates UK airport markets for a first boutique and separately frames international airports for possible later expansion. It is decision support—not a live airport service, sales forecast, commercial feasibility study, or investment recommendation.
 
 ## Executive overview
