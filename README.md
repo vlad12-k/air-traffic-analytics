@@ -1,6 +1,6 @@
 # AirTrafficAnalytics
 
-[![Python CI](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml/badge.svg?branch=docs/final-bi-case-study)](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml)
+[![Python CI](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml)
 
 **Evidence-driven airport expansion decision intelligence for a boutique retail business.** The project evaluates UK airport markets for a first boutique and separately frames international airports for possible later expansion. It is decision support—not a live airport service, sales forecast, commercial feasibility study, or investment recommendation.
 
@@ -59,6 +59,8 @@ The two previously published, unchanged schema screenshots show the author's mod
 *The owner-created report uses a UK airport filter to examine passenger demand. Source: UK CAA Table 12.1, May 2022; CAA attribution/no-resale conditions apply. IBM Cognos UI is visible; no IBM permission or endorsement is claimed.*
 
 The two Cognos screenshots above are included at the project owner's direction; they reproduce IBM Cognos UI and do not claim IBM permission or endorsement. Six other Cognos captures remain local. The recovery page `10-cognos-demand-recovery.png` is excluded because its global airport/city comparison has no source lineage visible on the capture. The executive/global captures remain excluded under the existing AVI0301/ICAO restriction; operational/risk pages also remain local pending source and UI review. See the [evidence index](docs/evidence/README.md) for exact files and conditions.
+
+## Business questions
 
 1. **UK_SITE:** Which UK airport market is strongest for further investigation as the first boutique location?
 2. **GLOBAL_EXPANSION:** Which non-UK airport markets merit consideration after the first-site decision?
@@ -126,7 +128,7 @@ Azure SQL schema, reporting-view and validation scripts are included, but no liv
 
 The GitHub Actions workflow is configured for Python 3.11 on pushes to `main`, pull requests targeting `main`, and manual dispatch. It installs the locked environment with `uv sync --locked --extra dev`, compiles `src/`, `scripts/` and `tests/`, and runs the self-contained test subset. The public CI job will report source-dependent tests as not executed, not passed. No test contacts Azure or another external service; Azure configuration tests only build a connection-string value.
 
-The repository's suite currently collects **37** tests: **3** are self-contained and run in public CI; **34** are marked `requires_sources` because they call the canonical ingestion/analytics path and need local CSV inputs. These are in `test_clean.py` (the source-backed cases), `test_ingest.py`, `test_gt4_null_semantics.py`, `test_golden_tables.py`, `test_quality.py`, `test_scoring.py`, `test_pipeline.py` and `test_numeric_finiteness.py`. The synthetic AVI0301-cleaning unit test remains self-contained; it uses example values, not aviation rows.
+The repository's suite currently collects **45** tests: **11** are self-contained and run in public CI; **34** are marked `requires_sources` because they call the canonical ingestion/analytics path and need local CSV inputs. The public subset consists of pure configuration/ODBC normalization tests in `test_azure_config.py` and the synthetic AVI0301-cleaning unit test in `test_clean.py`; its AVI0301 example values are artificial, not aviation rows. The source-dependent cases are in `test_clean.py`, `test_ingest.py`, `test_gt4_null_semantics.py`, `test_golden_tables.py`, `test_quality.py`, `test_scoring.py`, `test_pipeline.py` and `test_numeric_finiteness.py`.
 
 For a clean checkout, install from the lock and run the same public-safe checks:
 
@@ -140,7 +142,7 @@ With all four source files named in `src/airtraffic/config.py` lawfully availabl
 
 ## Reproducibility, licensing and limitations
 
-The Python package requires four CSV inputs under `data/raw/`; none are bundled. Full pipeline/tests therefore require lawfully obtained local source files. AVI0301/ICAO rights are unresolved, so a clean clone cannot reproduce the global benchmark or complete run until those rights and a lawful input path are settled. The local test suite passed **37 tests** with the local source environment; coverage is not configured.
+The Python package requires four CSV inputs under `data/raw/`; none are bundled. Full pipeline/tests therefore require lawfully obtained local source files. AVI0301/ICAO rights are unresolved, so a clean clone cannot reproduce the global benchmark or complete run until those rights and a lawful input path are settled. The local test suite passed **45 tests** with the local source environment; coverage is not configured.
 
 CAA Table 12.1 must be attributed and may not be resold; DfT AVI0105 carries OGL/source-note conditions; DataSF identifies the SFO dataset as PDDL 1.0. The MIT `LICENSE` covers original code only—not datasets, derived third-party statistics, screenshots or other publisher materials. See [`docs/data-sources-and-licensing.md`](docs/data-sources-and-licensing.md) and [`docs/reproducibility.md`](docs/reproducibility.md).
 
