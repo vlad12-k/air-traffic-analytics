@@ -8,7 +8,7 @@
 
 The business problem was to replace an informal “which airport looks promising?” discussion with an auditable comparison of passenger scale, market position, destination connectivity and scenario assumptions. The model separates the initial **UK_SITE** decision from the later **GLOBAL_EXPANSION** screen because their candidate populations and source data differ. Per the project owner, the IBM Cognos and Power BI dashboard/report designs and analysis were personally created for the academic work; IBM and Microsoft supplied the tools, not the analytical authorship. The college supplied dataset links and learning resources, which document access but do not grant redistribution rights.
 
-The complete local project and canonical run remain preserved. This public repository is a rights-filtered subset: it omits raw inputs, AVI0301/ICAO-derived global results and detailed QA outputs. It includes five original captures of the project owner's BI work at the owner's direction; captions preserve CAA conditions and explicitly do not claim Microsoft/IBM permission or endorsement. Other uncleared screenshots remain local.
+The complete local project and canonical run remain preserved. This public repository is a rights-filtered subset: it omits raw inputs, AVI0301/ICAO-derived global results and detailed QA outputs. It adds five original captures of the project owner's BI work to the two previously published Power BI schema screenshots; captions preserve CAA conditions and explicitly do not claim Microsoft/IBM permission or endorsement. Other uncleared screenshots remain local.
 
 ## Authentic BI platform screenshots
 

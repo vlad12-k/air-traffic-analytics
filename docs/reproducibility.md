@@ -6,21 +6,28 @@ The pipeline expects four CSVs in `data/raw/`, with exact paths in `src/airtraff
 
 ## Environment and commands
 
-Python >=3.11 is declared in `pyproject.toml`; dependency constraints and lock information are in `pyproject.toml` and `uv.lock`. Create an isolated environment and install the project plus its `dev` extra using your chosen package manager. Dependencies were not installed as part of the release-preparation work.
-
-Run the automated tests:
+Python >=3.11 is declared in `pyproject.toml`; dependency constraints and exact resolution are in `pyproject.toml` and `uv.lock`. Install from the committed lock with:
 
 ```bash
-python -m pytest -q
+uv sync --locked --extra dev --python 3.11
 ```
 
-Run a new local analytical pipeline build after the editable package is installed:
+Run the public source-independent checks:
 
 ```bash
-python -m airtraffic.pipeline
+uv run --locked python -m compileall -q src scripts tests
+uv run --locked pytest -q -m "not requires_sources"
 ```
 
-Alternatively, set `PYTHONPATH=src` for the command. Pipeline execution reads the four local CSVs and writes a new run directory under `outputs/runs/`; it does not write to Azure. It may also refresh the latest convenience exports in `outputs/`, so preserve or back up any local outputs before a run.
+The complete local suite is `uv run --locked pytest -q` and requires all four locally obtained source CSVs under `data/raw/`. Public CI collects the suite but executes only the self-contained tests; source-dependent tests are reported as not run rather than passed or silently skipped. The CI policy and counts are documented in the [README](../README.md#continuous-integration).
+
+With the locked package installed and all four lawful local inputs available, run a new local pipeline build with:
+
+```bash
+uv run --locked python -m airtraffic.pipeline
+```
+
+The pipeline reads the four local CSVs and writes a new run directory under `outputs/runs/`; it does not write to Azure. It may also refresh the latest convenience exports in `outputs/`, so preserve or back up local outputs before running it.
 
 ## Canonical archived run
 

@@ -179,7 +179,7 @@ The prioritized originals are `07-cognos-semantic-model.png`, `10-cognos-demand-
 
 ![Original IBM Cognos UK demand-filter screenshot](evidence/historical/cognos/historical-cognos-11-demand-filter.png)
 
-*Authentic archive capture of the project owner's UK demand filter. Source: UK CAA Table 12.1, May 2022; attribution and no-resale conditions apply. IBM Cognos UI is visible; no IBM permission or endorsement is claimed. This local draft does not publish the image to Git.*
+*Authentic archive capture of the project owner's UK demand filter. Source: UK CAA Table 12.1, May 2022; attribution and no-resale conditions apply. IBM Cognos UI is visible; no IBM permission or endorsement is claimed.*
 
 ### Stage B — Colab, Python and Azure SQL (historical)
 
