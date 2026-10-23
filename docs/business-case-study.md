@@ -9,9 +9,9 @@ AirTrafficAnalytics was developed as an academic analytics project for a boutiqu
 1. **UK_SITE:** Which UK airport market is the strongest candidate for the first boutique?
 2. **GLOBAL_EXPANSION:** Which non-UK airport markets should be considered for subsequent expansion?
 
-The system turns public aviation source extracts into governed GT1–GT10 tables, quality/reconciliation checks, a versioned and explainable candidate-scoring model, SQL publication structures and a later Power BI V2 report layer. Historical evidence documents earlier IBM Cognos and Colab/Azure SQL work.
+The system turns public aviation source extracts into governed GT1–GT10 tables, quality/reconciliation checks, a versioned and explainable candidate-scoring model, SQL publication structures and a later Power BI V2 report layer. Historical evidence documents earlier IBM Cognos and Colab/Azure SQL work. For the implementation-to-evidence sequence, see the [end-to-end project walkthrough](end-to-end-project-walkthrough.md).
 
-The public repository is a deliberately reduced evidence package. It includes the CAA/DfT/SFO outputs whose terms are documented, manifests containing hashes and file sizes only, two schema-only Power BI screenshots, and an independently authored CAA-based market chart. Raw sources and AVI0301-dependent results remain local because the underlying ICAO redistribution rights are unresolved.
+The public repository is a deliberately reduced evidence package. It includes the five owner-authorized original Power BI/Cognos captures (with vendor UI permission not claimed), the two previously published schema-only Power BI screenshots, source-safe outputs, metadata-only manifests, and supplemental CAA-based analytics visuals. Raw sources and AVI0301-dependent global results remain local because the underlying ICAO redistribution basis is unresolved.
 
 ## 2. Business concept and problem
 

@@ -138,7 +138,7 @@ uv run python -m compileall -q src scripts tests
 uv run pytest -q -m "not requires_sources"
 ```
 
-With all four source files named in `src/airtraffic/config.py` lawfully available under `data/raw/`, run the complete local suite with `uv run pytest -q`. They are not bundled in the public repository; AVI0301/ICAO rights remain unresolved, so clean-clone reproduction of the full pipeline is intentionally unavailable. No CI status badge is shown until the workflow has completed successfully on GitHub.
+With all four source files named in `src/airtraffic/config.py` lawfully available under `data/raw/`, run the complete local suite with `uv run pytest -q`. They are not bundled in the public repository; AVI0301/ICAO rights remain unresolved, so clean-clone reproduction of the full pipeline is intentionally unavailable. The CI badge at the top is scoped to `main`; the current PR check and test scope are reported by GitHub Actions.
 
 ## Reproducibility, licensing and limitations
 
@@ -151,6 +151,7 @@ Other limitations: sources are historical snapshots; CAA route data is one compa
 ## Documentation
 
 - [Business case study](docs/business-case-study.md)
+- [End-to-end project walkthrough](docs/end-to-end-project-walkthrough.md)
 - [Architecture](docs/architecture.md)
 - [Analytical lineage](docs/lineage.md)
 - [GT1–GT10 contracts](docs/gt-contracts.md)
