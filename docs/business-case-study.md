@@ -161,15 +161,25 @@ The second-stage global screen is part of the model design, but no public global
 
 ## 10. Project evolution
 
-The original sequence is summarized below. This is an original project timeline based on the project documentation and local evidence, not a screenshot or a claim that one platform was technically migrated into another.
+The diagram below is a supplemental summary of the documented sequence. It is not an original Cognos/Power BI screenshot, report export, or proof of hands-on use of any specific platform. The separate original capture archive is inventoried in the [evidence index](evidence/README.md).
 
-![Historical and current AirTrafficAnalytics project stages](evidence/visualizations/project-evolution-timeline.svg)
+![Supplementary project chronology diagram, not platform-usage evidence](evidence/visualizations/project-evolution-timeline.svg)
 
-*The historical Cognos, Colab and Azure captures remain separate local evidence; this timeline does not replace them or imply vendor endorsement.*
+*This explanatory graphic does not replace the local Cognos, Colab or Azure captures and is not vendor-produced.*
 
 ### Stage A — IBM Cognos Analytics (historical)
 
-According to the project owner, the Cognos dashboards, semantic model and analysis were personally created as part of the academic work; IBM Cognos was the reporting platform, not the dashboard author. The archive contains executive, demand, filter, operational and risk-oriented views. Their screenshots remain local because reuse of IBM interface elements is not cleared and some pages reproduce restricted data. This does not imply IBM created the report content or that the environment is still deployed.
+According to the project owner, they personally created the Cognos dashboards, semantic model and analysis as academic work; IBM Cognos was the reporting platform, not the dashboard author. The historical reports covered executive summary, demand/recovery, filtering, operations and risk-oriented views. They document an earlier implementation of the airport-retail decision problem, not a current Cognos deployment.
+
+The prioritized originals are `07-cognos-semantic-model.png`, `10-cognos-demand-recovery.png` and `11-cognos-demand-filter.png`. The model capture is schema metadata; the filter capture shows UK demand measures; the recovery capture includes a global airport/city comparison whose exact source lineage is not identified on the image. The executive captures `08-cognos-executive-summary.png` and `09-cognos-executive-filter.png` contain global airport comparisons covered by the existing AVI0301/ICAO restriction. The owner-authorized original 07/11 images are embedded below at their original pixels; the ZIP remains unchanged. No Cognos report package or PDF export is available. No IBM permission or endorsement is claimed for the UI captures. To reconsider 10, obtain the original report/source mapping and establish data rights; all other Cognos captures remain local under the existing data/UI conditions.
+
+![Original IBM Cognos semantic-model screenshot](evidence/historical/cognos/historical-cognos-07-semantic-model.png)
+
+*Authentic archive capture of the project owner's Cognos semantic-model work. IBM Cognos UI is visible; no IBM permission or endorsement is claimed.*
+
+![Original IBM Cognos UK demand-filter screenshot](evidence/historical/cognos/historical-cognos-11-demand-filter.png)
+
+*Authentic archive capture of the project owner's UK demand filter. Source: UK CAA Table 12.1, May 2022; attribution and no-resale conditions apply. IBM Cognos UI is visible; no IBM permission or endorsement is claimed. This local draft does not publish the image to Git.*
 
 ### Stage B — Colab, Python and Azure SQL (historical)
 
@@ -181,15 +191,37 @@ The current analytical package introduced modular transformations, GT contracts,
 
 ### Stage D — Power BI V2
 
-According to the project owner, they authored the Power BI V2 report design and analysis; Microsoft Power BI was the platform, not the report author. The local report includes executive, UK demand, destination/connectivity, global benchmark, scenario, governance and candidate-detail pages, plus model/relationship views. Only two unchanged schema-only views are public under Microsoft's screenshot guidance. The report pages are user-created, but screenshots containing third-party statistics are not cleared by dataset permission alone; global pages also have unresolved AVI0301 rights. No direct technical migration from Cognos to Power BI is claimed.
+According to the project owner, they authored the Power BI V2 report design and analysis; Microsoft Power BI was the platform, not the report author. The local report contains executive, UK demand, destination/connectivity, global benchmark, scenario, governance and candidate-detail pages, plus model/relationship views. The two unchanged schema-only screenshots are public; they document semantic-model structure, not dashboard outcomes. No direct technical migration from Cognos to Power BI is claimed.
 
-The two public schema captures below show the V2 semantic structure without data rows. They are included unchanged with the required Microsoft attribution; they document model design, not airport performance.
+The three original dashboard captures below are exact PNGs from the archive, not reconstructions. The project owner authorizes displaying their own report work; that authorization is not Microsoft permission or endorsement. All three contain CAA-derived measures, with source attribution and the CAA no-sale condition stated in the captions.
+
+#### UK market demand
+
+![Original Power BI V2 UK market-demand page](evidence/power-bi-v2/powerbi-v2-02-uk-market-demand.png)
+
+*Business question: how do represented UK airport markets compare in current and prior-period route passenger demand? Source: UK CAA Table 12.1, May 2022; CAA source reference and no-resale conditions apply. The image preserves the original report page and Power BI UI; no Microsoft permission or endorsement is claimed.*
+
+#### UK_SITE scenario sensitivity
+
+![Original Power BI V2 UK_SITE scenario page](evidence/power-bi-v2/powerbi-v2-05b-scenario-sensitivity-uk.png)
+
+*Business question: does the UK_SITE leading candidate change under volume-heavy or connectivity-heavy weights? This is the original user-created scenario page; ranking is sensitivity to assumptions, not a profitability forecast. Source: UK CAA Table 12.1, May 2022; source reference and no-resale conditions apply. No Microsoft permission or endorsement is claimed.*
+
+#### Heathrow candidate detail
+
+![Original Power BI V2 Heathrow candidate-detail page](evidence/power-bi-v2/powerbi-v2-07b-candidate-detail-heathrow.png)
+
+*Business question: which demand and connectivity evidence supports the Heathrow UK_SITE screen? The original authored report page displays CAA-derived measures. Source: UK CAA Table 12.1, May 2022; source reference and no-resale conditions apply. No Microsoft permission or endorsement is claimed.*
+
+The requested `03-destination-connectivity.png` is not included in this five-image draft because it was not in the authorized set. The executive/global captures remain local under the existing AVI0301/ICAO restriction. The project contains no `.pbix`, `.pbit` or PDF export from which a UI-free original report could be prepared.
+
+The two public schema captures below show the V2 semantic structure without data rows. They document model design, not airport performance.
 
 | Semantic model | Relationships |
 |---|---|
 | ![Microsoft Power BI semantic model overview](evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview.png) | ![Microsoft Power BI relationships overview](evidence/power-bi-v2/powerbi-v2-09-relationships-overview.png) |
 
-**Used with permission from Microsoft.** The data-bearing dashboard captures remain local-only; the independently authored CAA visuals in §8 communicate the cleared UK analysis without reproducing product UI.
+**Attribution for the two existing schema-only captures:** “Used with permission from Microsoft,” as required by Microsoft's standard screenshot guidance for those data-free images; this is not an endorsement or a bespoke permission letter. The three original dashboard captures above are a separate uncommitted local draft and are not claimed to be covered by the schema-only screenshot conditions.
 
 ## 11. Validation, reproducibility and limitations
 
