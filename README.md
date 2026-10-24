@@ -8,7 +8,7 @@
 
 The business problem was to replace an informal “which airport looks promising?” discussion with an auditable comparison of passenger scale, market position, destination connectivity and scenario assumptions. The model separates the initial **UK_SITE** decision from the later **GLOBAL_EXPANSION** screen because their candidate populations and source data differ. Per the project owner, the IBM Cognos and Power BI dashboard/report designs and analysis were personally created for the academic work; IBM and Microsoft supplied the tools, not the analytical authorship. The college supplied dataset links and learning resources, which document access but do not grant redistribution rights.
 
-The complete local project and canonical run remain preserved. This public repository is a rights-filtered subset: it omits raw inputs, AVI0301/ICAO-derived global results and detailed QA outputs. It adds five original captures of the project owner's BI work to the two previously published Power BI schema screenshots; captions preserve CAA conditions and explicitly do not claim Microsoft/IBM permission or endorsement. Other uncleared screenshots remain local.
+The complete local project and canonical run remain preserved. This public repository is a rights-filtered subset: it omits raw inputs, AVI0301/ICAO-derived global results and detailed QA outputs. It includes five original captures of the project owner's BI work plus the two previously published Power BI schema screenshots; captions preserve CAA conditions and distinguish owner-created work from vendor endorsement. Other uncleared screenshots remain local.
 
 ## Authentic BI platform screenshots
 
@@ -58,7 +58,9 @@ The two previously published, unchanged schema screenshots show the author's mod
 
 *The owner-created report uses a UK airport filter to examine passenger demand. Source: UK CAA Table 12.1, May 2022; CAA attribution/no-resale conditions apply. IBM Cognos UI is visible; no IBM permission or endorsement is claimed.*
 
-The two Cognos screenshots above are included at the project owner's direction; they reproduce IBM Cognos UI and do not claim IBM permission or endorsement. Six other Cognos captures remain local. The recovery page `10-cognos-demand-recovery.png` is excluded because its global airport/city comparison has no source lineage visible on the capture. The executive/global captures remain excluded under the existing AVI0301/ICAO restriction; operational/risk pages also remain local pending source and UI review. See the [evidence index](docs/evidence/README.md) for exact files and conditions.
+The two Cognos screenshots above are included at the project owner's direction; they reproduce IBM Cognos UI and do not claim IBM permission or endorsement. Six other Cognos captures remain local. `10-cognos-demand-recovery.png` shows UK airports across 2020 and 2022, but the archive does not identify the historical source lineage. `14-cognos-risk-ranking.png` contains populated airport rows and passenger, route, recovery and composite-score fields; its source lineage and redistribution rights are unresolved. The executive/global and populated operational pages remain local under the documented AVI0301/ICAO restrictions. See the [evidence index](docs/evidence/README.md) for each file and blocker.
+
+The historical Colab, Azure SQL, watsonx and SIPOC screenshots are individually accounted for in the [historical engineering evidence gallery](docs/evidence/historical/README.md); the page distinguishes what the captures show from what is not reproducible or cleared for publication.
 
 ## Business questions
 
@@ -90,7 +92,7 @@ AVI0105 adds country-level demand context: “Spain & Canary Islands” is the l
 ## Project evolution
 
 - **Historical IBM Cognos Analytics:** the project owner personally created the semantic model and reports. Original captures of the model and UK demand filter are included at the owner's direction with no IBM permission or endorsement claimed; the recovery page has unresolved global data lineage, and the executive/operational/risk captures remain local under existing data restrictions.
-- **Historical Colab / Python / Azure SQL:** archived evidence shows the project's notebook-based ETL/upload workflow and SQL validation. Google Colab and Azure were the tools; their UI captures and data-bearing results remain local due to source, privacy or UI-rights issues. No Azure service is claimed to be active.
+- **Historical Colab / Python / Azure SQL:** the archive shows a notebook-based CSV-to-SQL upload and an Azure SQL result screen. One authentic Colab screenshot derivative is published with the entire upload-output block masked; the unredacted original and data-bearing Azure result remain local. Google Colab and Azure are historical tools, not claimed live services.
 - **Current Python/SQL V2 analytical model:** modular ingestion, cleaning, GT1–GT10 contracts, source reconciliation, quality gates, model versioning and run provenance.
 - **Power BI V2:** the owner's report pages cover executive decision, UK demand, connectivity, scenarios, candidate detail, governance and model relationships. Three original CAA-based report captures and the two previously published schema screenshots are shown; no Microsoft permission or endorsement is claimed for the three data-bearing captures. Remaining global and other report captures stay local.
 

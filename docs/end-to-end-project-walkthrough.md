@@ -39,7 +39,7 @@ The project owner reports that the college provided source links and learning re
 - SFO empty `Unnamed:` columns are removed, dates parsed, and passenger counts typed.
 - CAA ROUTES fields are renamed and normalized; the source period is parsed, current and prior passenger components retained, and growth is left null for a zero prior denominator. The snapshot is not represented as an annual airport history.
 
-`tests/test_clean.py` contains both source-dependent checks and a synthetic AVI0301 unit example. The original Colab screenshot `03-colab-azure-etl.png` is local-only because its upload log includes AVI0301-linked counts and Google UI/account context. No original `.ipynb` notebook is in the project tree. The V2 Python functions below are the current implementation; they are not claimed to be the historical Colab notebook code.
+`tests/test_clean.py` contains source-dependent checks and a synthetic AVI0301 unit example. The unredacted historical Colab screenshot remains local because its upload log contains AVI0301/GT7-linked counts; the [gallery derivative](evidence/historical/colab/colab-etl-upload-redacted.png) masks the entire result block. No original `.ipynb` notebook is in the project tree. The V2 Python functions below are the current implementation; they are not claimed to be the historical Colab notebook code.
 
 ## 4. Governed measures, scoring and quality gates
 
@@ -68,12 +68,15 @@ The project owner states that they created the Cognos reports and semantic model
 
 - [Semantic model](evidence/historical/cognos/historical-cognos-07-semantic-model.png) — schema/model metadata, not result rows.
 - [UK demand filter](evidence/historical/cognos/historical-cognos-11-demand-filter.png) — a filtered UK airport demand report using CAA-derived measures.
-
-The captures show IBM Cognos UI; no IBM permission or endorsement is claimed. CAA source reference and no-resale conditions apply to the demand page. The other Cognos images remain local: the recovery page's global comparison has no source lineage visible in the screenshot; executive/global and operations/risk pages retain the existing AVI0301/ICAO restriction. No Cognos package, query definitions, or runnable source data are part of this public repository. Exact filenames and local-only reasons are in [evidence/README.md](evidence/README.md). The [Cognos gallery notes](evidence/historical/cognos/technical-notes.md) describe the visible model objects, report filters, displayed periods, supported interpretation, validation boundary, and lineage gaps for each published capture.
+The captures show IBM Cognos UI; no IBM permission or endorsement is claimed. CAA source reference and no-resale conditions apply to the demand page. Six other Cognos images remain local: `10-cognos-demand-recovery.png` is a UK airport 2020-vs-2022 comparison with unidentified historical source lineage; `14-cognos-risk-ranking.png` contains populated airport rows and passenger, route, recovery and composite-score fields with unresolved source rights; executive/global and operational pages retain the AVI0301/ICAO restriction. No Cognos package, query definitions, or runnable source data are part of this public repository. Exact filenames and local-only reasons are in [evidence/README.md](evidence/README.md). The [Cognos gallery notes](evidence/historical/cognos/technical-notes.md) provide the visible technical details and limitations for the published captures.
 
 ## 6. Historical Google Colab ETL
 
-The archived `03-colab-azure-etl.png` documents a notebook-based upload workflow that connected data preparation to Azure SQL. It is not public: the original screen contains AVI0301-linked output counts and Google account/UI context, and there is no notebook file to inspect or replay. The evidence shows a historical workflow, not a current scheduled pipeline. The V2 ingestion/cleaning links above are the current code path, not a reconstruction of the Colab notebook.
+The [historical engineering evidence gallery](evidence/historical/README.md) accounts for all seven originals; one authentic Colab derivative is published with its entire data-bearing upload-result block masked. The other six historical originals remain local under the per-image restrictions recorded there.
+
+![Historical Colab notebook with upload outputs redacted](evidence/historical/colab/colab-etl-upload-redacted.png)
+
+The screenshot evidences a historical notebook-based CSV-to-Azure-SQL handoff. The visible code uses a SQLAlchemy/ODBC connection, reads CSVs from `out/golden` and calls `DataFrame.to_sql(..., if_exists='replace')`; a connection-success message is visible. The output rows were removed because the original displayed AVI0301/GT7 and mixed-source table counts. The screenshot does not show a data-quality gate, source-target reconciliation, transaction-safe swap, notebook artifact or business finding. `if_exists='replace'` also means a rerun replaces destination tables; this is historical evidence, not a recommended current loading pattern or a current scheduled pipeline. The V2 ingestion/cleaning links above are the current code path, not a reconstruction of the notebook.
 
 ## 7. Historical Azure SQL storage and validation
 

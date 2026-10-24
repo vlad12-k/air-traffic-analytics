@@ -67,7 +67,7 @@ No source rows are shown. The screenshot alone does not establish every key, car
 The six remaining original report PNGs stay local for these individual reasons, recorded in the [complete 26-image inventory](../README.md):
 
 - `01-executive-decision-summary.png` — global recommendation values depend on AVI0301/ICAO data with unresolved redistribution rights.
-- `03-destination-connectivity.png` — CAA values plus an unattributed map layer; map-source terms remain unresolved.
+- `03-destination-connectivity.png` — CAA flow metrics and map tiles credited to OpenStreetMap, Microsoft, Esri Community Maps, and Esri. Attribution is visible, but basemap redistribution terms are not established; Microsoft's standard screenshot guidance also excludes third-party content and alteration beyond resizing.
 - `04-global-expansion-benchmark.png` — AVI0301/ICAO benchmark results are not cleared for redistribution.
 - `05a-scenario-global-expansion.png` — global scenario results depend on the same uncleared source.
 - `06-data-quality-governance.png` — includes AVI0301/global-source counts.

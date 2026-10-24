@@ -1,6 +1,6 @@
 # Historical IBM Cognos — technical walkthrough of published original screenshots
 
-These two original PNGs are the currently published Cognos captures. The project owner states they authored the report and model; IBM Cognos was the reporting platform. No IBM permission, endorsement, current deployment, refresh, or export package is claimed. The second screenshot contains CAA-derived data and retains attribution/no-resale conditions stated in the project source record.
+These two original PNGs are the currently published Cognos captures. The project owner states they authored the report and model; IBM Cognos was the reporting platform. No IBM permission, endorsement, current deployment, refresh, or export package is claimed. The UK demand filter contains CAA-derived data and retains the attribution/no-resale conditions stated in the project source record.
 
 The sequence follows the historical workflow: inspect the semantic model → use a UK airport selection to review reported demand.
 
@@ -34,10 +34,11 @@ The sequence follows the historical workflow: inspect the semantic model → use
 
 ## Other original Cognos archive pages not published
 
-The six other Cognos PNGs remain local for the specific reasons recorded in the [complete evidence inventory](../../README.md):
+Six other Cognos PNGs remain local for the specific reasons recorded in the [complete evidence inventory](../../README.md):
 
 - `08-cognos-executive-summary.png` and `09-cognos-executive-filter.png` — global comparisons use AVI0301/ICAO values with unresolved redistribution rights.
-- `10-cognos-demand-recovery.png` — global airport/city comparison has no identified source lineage in the screenshot.
-- `12-cognos-operational-monitoring.png`, `13-cognos-operational-filter.png`, and `14-cognos-risk-ranking.png` — UK-labelled displays contain AVI0301-matching benchmark values; source restrictions remain, and labels do not change lineage.
+- `10-cognos-demand-recovery.png` — the screenshot is a UK airport 2020-vs-2022 recovery view, but its underlying source lineage is not identified; the public CAA ROUTES contract is a comparison snapshot and does not substantiate this historical series.
+- `12-cognos-operational-monitoring.png` and `13-cognos-operational-filter.png` — populated operational views include airport metrics associated in the local evidence map with AVI0301-matching benchmark values; data rights remain unresolved.
+- `14-cognos-risk-ranking.png` — the original contains populated UK airport rows and passenger, route, recovery, and composite-score fields. Its historical source lineage is not established in the archive; do not publish those values until the source and redistribution rights are mapped.
 
-No report was recreated or redacted. The owner's authorship authorization does not resolve third-party data rights or interface terms.
+No report was recreated or redacted. The owner's authorship authorization does not clear third-party data rights. The preserved original `14-cognos-risk-ranking.png` remains local and is not included in the public gallery.
