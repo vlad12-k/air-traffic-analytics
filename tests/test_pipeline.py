@@ -1,6 +1,10 @@
+import pytest
+
 from airtraffic.pipeline import (
     build_analytical_run,
 )
+
+pytestmark = pytest.mark.requires_sources
 
 
 def test_analytical_run_produces_ten_governed_tables():

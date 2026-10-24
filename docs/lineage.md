@@ -41,7 +41,7 @@ The refactored implementation adds:
 - run metadata and manifests
 - SQL validation query definitions
 
-These are local engineering artifacts. No automated remote CI workflow was found during this preparation, and cloud operations are not invoked by the local test suite.
+These are local engineering artifacts. The repository also has a GitHub Actions workflow in [`.github/workflows/ci.yml`](../.github/workflows/ci.yml): it compiles Python 3.11 sources and runs the self-contained tests on pushes to `main`, pull requests targeting `main`, and manual dispatch. Source-dependent tests are collected and reported as not executed in public CI; no cloud operations are invoked.
 
 ---
 

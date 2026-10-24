@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 780" role="img" aria-labelledby="title desc">
+  <title id="title">AirTrafficAnalytics project evolution — from historical BI reporting to governed Power BI V2</title>
+  <desc id="desc">A project-specific timeline of five stages: historical IBM Cognos reporting; historical Google Colab data preparation; historical Azure SQL storage and validation; current Python/SQL V2 governed analytical model; and Power BI V2 decision reporting. The timeline describes project chronology, not a direct technical migration. It is not a product screenshot.</desc>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#172b4d}.title{font-size:34px;font-weight:700}.sub{font-size:17px;fill:#52647a}.stage{font-size:18px;font-weight:700}.tag{font-size:12px;font-weight:700;letter-spacing:1px}.body{font-size:15px;fill:#52647a}.small{font-size:13px;fill:#52647a}.footer{font-size:13px;fill:#36485f}
+  </style>
+  <rect width="1600" height="780" fill="#f5f7fb"/>
+  <text x="64" y="66" class="title">One business problem, evolving analytical delivery</text>
+  <text x="64" y="99" class="sub">Historical work and current implementation are distinguished; product screenshots are not substituted for this timeline.</text>
+  <line x1="120" y1="190" x2="1480" y2="190" stroke="#aeb9c8" stroke-width="4"/>
+  <g fill="#2878c8" stroke="#ffffff" stroke-width="5">
+    <circle cx="170" cy="190" r="13"/><circle cx="480" cy="190" r="13"/><circle cx="790" cy="190" r="13"/><circle cx="1100" cy="190" r="13"/><circle cx="1410" cy="190" r="13"/>
+  </g>
+  <g>
+    <rect x="64" y="225" width="270" height="320" rx="14" fill="#ffffff" stroke="#dbe2ec"/>
+    <text x="88" y="262" class="tag" fill="#52647a">HISTORICAL · REPORTING</text>
+    <text x="88" y="302" class="stage">IBM Cognos</text>
+    <text x="88" y="342" class="body"><tspan x="88" dy="0">Owner-authored dashboards,</tspan><tspan x="88" dy="24">semantic model and analysis.</tspan><tspan x="88" dy="34">Original captures remain</tspan><tspan x="88" dy="24">local pending IBM UI terms</tspan><tspan x="88" dy="24">and data clearance.</tspan></text>
+
+    <rect x="374" y="225" width="270" height="320" rx="14" fill="#ffffff" stroke="#dbe2ec"/>
+    <text x="398" y="262" class="tag" fill="#52647a">HISTORICAL · PREPARATION</text>
+    <text x="398" y="302" class="stage">Colab + Python</text>
+    <text x="398" y="342" class="body"><tspan x="398" dy="0">Notebook workflow for</tspan><tspan x="398" dy="24">data preparation and ETL.</tspan><tspan x="398" dy="34">Original capture remains</tspan><tspan x="398" dy="24">local pending source-value</tspan><tspan x="398" dy="24">and UI clearance.</tspan></text>
+
+    <rect x="684" y="225" width="270" height="320" rx="14" fill="#ffffff" stroke="#dbe2ec"/>
+    <text x="708" y="262" class="tag" fill="#52647a">HISTORICAL · DATA PLATFORM</text>
+    <text x="708" y="302" class="stage">Azure SQL</text>
+    <text x="708" y="342" class="body"><tspan x="708" dy="0">Analytical storage and</tspan><tspan x="708" dy="24">SQL validation workflow.</tspan><tspan x="708" dy="34">No active Azure service is</tspan><tspan x="708" dy="24">claimed; private resource</tspan><tspan x="708" dy="24">details stay local.</tspan></text>
+
+    <rect x="994" y="225" width="270" height="320" rx="14" fill="#ffffff" stroke="#b7d7c7" stroke-width="2"/>
+    <text x="1018" y="262" class="tag" fill="#16805d">CURRENT · GOVERNED MODEL</text>
+    <text x="1018" y="302" class="stage">Python / SQL V2</text>
+    <text x="1018" y="342" class="body"><tspan x="1018" dy="0">GT1–GT10 contracts,</tspan><tspan x="1018" dy="24">quality gates, reconciliation</tspan><tspan x="1018" dy="24">and run provenance.</tspan><tspan x="1018" dy="34">Public source restrictions</tspan><tspan x="1018" dy="24">remain explicit.</tspan></text>
+
+    <rect x="1304" y="225" width="270" height="320" rx="14" fill="#ffffff" stroke="#b7d7c7" stroke-width="2"/>
+    <text x="1328" y="262" class="tag" fill="#16805d">CURRENT · DECISION REPORTING</text>
+    <text x="1328" y="302" class="stage">Power BI V2</text>
+    <text x="1328" y="342" class="body"><tspan x="1328" dy="0">Executive, UK demand,</tspan><tspan x="1328" dy="24">connectivity, scenario,</tspan><tspan x="1328" dy="24">candidate and governance</tspan><tspan x="1328" dy="24">report pages.</tspan><tspan x="1328" dy="34">Only cleared schema views</tspan><tspan x="1328" dy="24">are public captures.</tspan></text>
+  </g>
+  <rect x="64" y="596" width="1510" height="1" fill="#d5dce6"/>
+  <text x="64" y="638" class="footer">Chronological project evolution, not a claim of direct technical migration from Cognos to Power BI.</text>
+  <text x="64" y="662" class="footer">Stage descriptions are synthesized from the project’s documentation and local evidence; this original diagram contains no vendor UI, restricted table rows, or private identifiers.</text>
+  <text x="64" y="710" class="small">Historical screenshots are separately retained locally. See each historical evidence README and the data-source/licensing inventory for publication conditions.</text>
+</svg>
