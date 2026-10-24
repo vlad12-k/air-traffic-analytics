@@ -1,132 +1,106 @@
-# AirTrafficAnalytics — end-to-end project walkthrough
+# AirTrafficAnalytics — engineering walkthrough
 
-This walkthrough maps the original boutique-retail airport expansion question to the historical BI work and the current Python/SQL V2 package. It distinguishes screenshot evidence from executable code and from cloud resources. Historical tools are not presented as current deployments, and no direct technical migration from Cognos to Power BI is claimed.
+This walkthrough follows the project’s documented evolution from the business question and process design to historical tool work, the governed Python/SQL V2 implementation and Power BI reporting. It distinguishes original screenshot evidence from executable code and from current cloud resources. It does **not** claim an automated Cognos-to-Power-BI migration or a live deployment.
 
-**Short flow:** business decisions → locally obtained aviation extracts → source profiling and cleaning → governed GT1–GT10 model and reconciliation → historical Cognos reporting → historical Colab ETL and Azure SQL validation → historical watsonx/AutoAI exploration → current Python/SQL V2 → Power BI V2 → sensitivity-based UK_SITE decision support.
+**Quick links:** [business case study](business-case-study.md) · [architecture](architecture.md) · [GT1–GT10 contracts](gt-contracts.md) · [decision model](decision-model.md) · [lineage](lineage.md) · [reproducibility](reproducibility.md) · [all screenshot evidence](evidence/README.md)
 
-## 1. Business problem and decisions
+## Project lifecycle
 
-The business concept is a boutique retailer considering airport markets for a first UK store and later international expansion. The two decisions are kept separate:
+**Business requirements and SIPOC → local data acquisition/profiling → historical Colab ETL and Azure SQL work → historical Cognos reporting and watsonx/AutoAI exploration → governed Python/SQL V2 → GT1–GT10 contracts → quality, reconciliation and versioned scenario scoring → Power BI V2 decision reporting.** These are successive implementations and evidence stages; the current V2 code does not retroactively validate earlier screenshots.
 
-- **UK_SITE:** Which represented UK airport should receive further site diligence for the first boutique?
-- **GLOBAL_EXPANSION:** Which non-UK airports warrant later investigation?
+## 1. Business question and process design
 
-The model supports screening, not a lease decision, sales forecast, profitability claim, or investment recommendation. Retail footfall, available premises, rent, category competition, conversion, basket size, operating costs, and unit economics are not in this analysis. The intended decision owner is inferred from the business question; the repository has no formal stakeholder matrix or original requirements deck.
+The individual academic and portfolio project frames two decisions:
 
-**Evidence and method:** [business case study](business-case-study.md), [decision model](decision-model.md), [GT contracts](gt-contracts.md).
+- **UK_SITE:** Which airport in the represented UK population merits further investigation for a first boutique?
+- **GLOBAL_EXPANSION:** Which non-UK airport markets could be screened separately for possible later expansion?
 
-## 2. Data acquisition and source boundary
+The [Business Case Study](business-case-study.md) explains why passenger volume alone is insufficient: airport traffic does not measure retail footfall, premises, rent, conversion or unit economics. The intended decision owner is inferred from the documented problem; the repository has no formal stakeholder matrix or original requirements deck.
 
-The project owner reports that the college provided source links and learning resources. The current package reads four local CSVs configured in [`src/airtraffic/config.py`](../src/airtraffic/config.py):
+The original [SIPOC screenshot](evidence/historical/process/01-business-process-sipoc.png) documents intended inputs, stages and outputs, including GT1–GT10 and decision-pack review. It is process-design evidence, not proof that every depicted step ran. See the [SIPOC notes](evidence/historical/process/README.md).
 
-| Source ID | Source file (local input path) | Purpose in this project | Public boundary |
-|---|---|---|---|
-| AVI0105 | `data/raw/AVI0105.csv` | Country-level UK international passenger context | Not bundled; source/table conditions apply. |
-| AVI0301 | `data/raw/AVI0301.csv` | Global airport benchmark and GLOBAL_EXPANSION features | DfT notes identify ICAO lineage; raw source rows are not bundled. Original owner-authorized screenshots may show historical derived results; they are not reproduced as current analytical findings in prose. |
-| ROUTES | `data/raw/Table_12_1_Intl_Air_Pax_Traffic_Route_Analysis.csv` | CAA UK airport demand, destination flow and connectivity snapshot | Not bundled; cite CAA Table 12.1, May 2022, and observe its no-sale condition. |
-| SFO | `data/raw/Air_Traffic_Passenger_Statistics_2005-2020.csv` | External historical disruption benchmark | Not bundled; source provenance/terms are documented. |
+## 2. Data acquisition and profiling
 
-[`ingest.py`](../src/airtraffic/ingest.py) reads those local inputs; it does not download them. [`scripts/inspect_sources.py`](../scripts/inspect_sources.py) profiles row/column counts, types, nulls, duplicates, and sample rows. That command can print restricted source rows and is for lawful local use only. Source URLs and terms are summarized in [data sources and licensing](data-sources-and-licensing.md).
+The current package reads four local CSV inputs configured in [`src/airtraffic/config.py`](../src/airtraffic/config.py). It does not download them, and the public repository does not bundle raw rows.
 
-**Inputs → outputs:** local source CSVs → in-memory source frames; the run context later records source-manifest metadata. No raw dataset is committed. The original screenshot archive and per-image status are listed in the [evidence index](evidence/README.md).
-
-## 3. Inspection, cleaning and ETL
-
-[`clean.py`](../src/airtraffic/clean.py) implements source-specific transformations rather than treating unlike sources as one table:
-
-- AVI0105's country/year-wide layout is reshaped to long country/year rows; passenger-thousands are converted to passenger counts.
-- AVI0301's airport benchmark labels and thousands units are normalized in code. Raw source rows are not bundled; selected historical derived values remain visible in the original owner-authorized screenshots and are not independently revalidated here.
-- SFO empty `Unnamed:` columns are removed, dates parsed, and passenger counts typed.
-- CAA ROUTES fields are renamed and normalized; the source period is parsed, current and prior passenger components retained, and growth is left null for a zero prior denominator. The snapshot is not represented as an annual airport history.
-
-`tests/test_clean.py` contains source-dependent checks and a synthetic AVI0301 unit example. The exact original Colab screenshot and a separately labeled redacted derivative are both included in the [historical gallery](evidence/historical/README.md); the derivative masks the entire upload-result block but does not replace the original. No original `.ipynb` notebook is in the project tree. The V2 Python functions below are the current implementation; they are not claimed to be the historical Colab notebook code.
-
-## 4. Governed measures, scoring and quality gates
-
-[`golden.py`](../src/airtraffic/golden.py) constructs GT1–GT8; [`scoring.py`](../src/airtraffic/scoring.py) builds eligibility and GT10 decision records; [`quality.py`](../src/airtraffic/quality.py) evaluates reconciliations and gates publication.
-
-| Contract | Actual responsibility | Primary lineage |
+| Source | Role | Public boundary |
 |---|---|---|
-| GT1 | Current/prior passenger totals per UK airport | CAA ROUTES |
-| GT2 | UK period change with zero-baseline context | GT1 / CAA ROUTES |
-| GT3 | Ranking the full represented UK airport population | GT1 |
-| GT4 | UK airport × destination-country passenger flow | CAA ROUTES |
-| GT5 | Country-level passenger trend context | AVI0105 |
-| GT6 | SFO historical benchmark | SFO/DataSF |
-| GT7 | Global airport benchmark | AVI0301; historical report screenshots show earlier results; raw rows are not bundled |
-| GT8 | UK destination breadth and scheduled/charter composition | CAA ROUTES |
-| GT9 | Run-level operational, coverage and data-quality KPIs | Quality report and governed tables |
-| GT10 | Candidate recommendations by scope, scenario and model version | Separate UK_SITE and GLOBAL_EXPANSION inputs/populations |
+| AVI0105 | Country-level UK international passenger context | Local input only; DfT source/table terms apply. |
+| AVI0301 | Global airport benchmark and GLOBAL_EXPANSION features | DfT notes identify ICAO lineage; exact originating edition/terms are unresolved. Raw rows and global output tables remain excluded. |
+| CAA ROUTES / Table 12.1 | UK passenger comparison, airport–destination flows and connectivity | May 2022 source snapshot; attribution and the CAA no-resale condition apply. |
+| SFO/DataSF | Separate historical airport-traffic benchmark | Ends in 2020; not a direct UK-market proxy. |
 
-UK_SITE scores passenger scale, destination-country breadth, and destination-airport breadth using within-scope percentiles. GT2 growth is contextual because low or zero prior denominators can inflate ratios. GLOBAL_EXPANSION uses its own candidate population and features; scores are not compared across scopes. Historical global screenshot values are shown as archive evidence only; raw source rows are not published and no current global recommendation is claimed. Scenario weights are explicit policy parameters, not probabilities. See [`decision-model.md`](decision-model.md), [`gt-contracts.md`](gt-contracts.md), and [`lineage.md`](lineage.md).
+[`scripts/inspect_sources.py`](../scripts/inspect_sources.py) profiles row/column counts, types, nulls, duplicates and sample rows; it can print restricted source rows and is intended only for lawful local use. [`ingest.py`](../src/airtraffic/ingest.py) reads the configured files. Source periods, lineage and terms are summarised in [data sources and licensing](data-sources-and-licensing.md).
 
-Validation and reconciliation occur before local export. [`pipeline.py`](../src/airtraffic/pipeline.py) calls `assert_publishable()` before creating the operational layer and export artifacts. [`provenance.py`](../src/airtraffic/provenance.py) and [`export.py`](../src/airtraffic/export.py) attach run IDs and manifests.
+## 3. Historical Colab ETL and Azure SQL work
 
-## 5. Historical IBM Cognos Analytics
+The [historical engineering gallery](evidence/historical/README.md) displays both original Colab/Azure SQL screenshots inline. The Colab capture shows a notebook-based CSV handoff using pandas, SQLAlchemy/ODBC and `DataFrame.to_sql(..., if_exists='replace')`; this replaces target tables on rerun. The screenshot does not show transaction-safe publication, a quality gate or complete source-target reconciliation. The notebook itself is not in the repository.
 
-The project owner states that they created the Cognos reports and semantic model. Three authentic screenshots are included at the owner's direction:
+The Azure SQL captures show a historical database/resource context and a result grid. They do not establish that a service is currently running or that the displayed results were independently reconciled. The present repository contains a separate SQL publication design:
 
-- [Semantic model](evidence/historical/cognos/historical-cognos-07-semantic-model.png) — schema/model metadata, not result rows.
-- [UK demand filter](evidence/historical/cognos/historical-cognos-11-demand-filter.png) — a filtered UK airport demand report using CAA-derived measures.
-- [UK demand recovery](evidence/historical/cognos/historical-cognos-10-demand-recovery-original.png) — original two-period UK airport comparison; all ten displayed passenger pairs match the preserved GT1 output derived from CAA Table 12.1 (period 202205).
+- [`sql/schema.sql`](../sql/schema.sql) defines run-aware `meta`, `bi` and `reporting` structures.
+- [`sql/views.sql`](../sql/views.sql) defines views over the latest `PUBLISHED` run.
+- [`sql/validation_queries.sql`](../sql/validation_queries.sql) provides post-publication reconciliation queries.
+- [`scripts/apply_schema.py`](../scripts/apply_schema.py), [`scripts/apply_views.py`](../scripts/apply_views.py) and [`scripts/validate_published_run.py`](../scripts/validate_published_run.py) operate on an Azure SQL connection; [`scripts/publish_validated_run.py`](../scripts/publish_validated_run.py) can publish a validated local run.
 
-The complete set of eight original Cognos screenshots appears in the [Cognos technical gallery](evidence/historical/cognos/technical-notes.md). CAA source reference/no-resale conditions are retained on applicable UK pages; historical global/operational score lineage and the original Cognos queries, joins and refresh history are not fully reconstructable. Matching passenger totals do not validate other Cognos calculations. No Cognos package, query definitions or runnable source data are part of this repository. Image-level limitations and the owner's publication authorization are recorded in the [evidence index](evidence/README.md).
+These scripts can access or change external resources and require credentials. No Azure operation was performed for this portfolio; the SQL is a deployable design, not evidence of a live database.
 
-## 6. Historical Google Colab ETL
+## 4. Historical Cognos and watsonx/AutoAI exploration
 
-The [historical engineering evidence gallery](evidence/historical/README.md) displays all seven exact original archive PNGs; one authentic Colab derivative is shown separately with its entire data-bearing upload-result block masked.
+The project owner reports personally creating the Cognos reports and semantic model. The [complete Cognos gallery](evidence/historical/cognos/technical-notes.md) shows all eight original captures in report sequence: semantic model, UK demand/recovery, executive views, operational monitoring/filtering and risk ranking. A local comparison found that all ten current/prior passenger pairs in the two UK demand views match the preserved GT1 output derived from CAA Table 12.1; this does not recover the original Cognos queries, joins, scoring or refresh path.
 
-![Historical Colab notebook with upload outputs redacted](evidence/historical/colab/colab-etl-upload-redacted.png)
+The [historical watsonx screenshots](evidence/historical/README.md) record asset selection and AutoAI pipeline-comparison views. They do not include an exported experiment, reproducible training data, an independent holdout evaluation or a deployed model. No forecasting accuracy or business outcome is inferred from the screenshot metrics.
 
-The original screenshot evidences a historical notebook-based CSV-to-Azure-SQL handoff. The visible code uses a SQLAlchemy/ODBC connection, reads CSVs from `out/golden` and calls `DataFrame.to_sql(..., if_exists='replace')`; a connection-success message is visible. The image displays its historic upload output; a separate redacted derivative masks that area. The screenshot does not show a data-quality gate, source-target reconciliation, transaction-safe swap, notebook artifact or business finding. `if_exists='replace'` also means a rerun replaces destination tables; this is historical evidence, not a recommended current loading pattern or a current scheduled pipeline. The V2 ingestion/cleaning links above are the current code path, not a reconstruction of the notebook.
+These are historical project stages. Current V2 code is not described as a direct or automated migration from Cognos.
 
-## 7. Historical Azure SQL storage and validation
+## 5. Governed Python/SQL V2 implementation
 
-The historical Azure screenshots show a resource/database view and a SQL validation result screen. Both exact originals appear in the [historical gallery](evidence/historical/README.md) under the owner's explicit authorization. They are historical evidence only; the grid is not independent validation and no live Azure resource was accessed or changed.
-
-The current repository's Azure SQL layer is a deployable design, not an active service:
-
-- [`sql/schema.sql`](../sql/schema.sql) defines run-aware `meta`, `bi`, and `reporting` schemas and audit structures.
-- [`sql/views.sql`](../sql/views.sql) defines reporting views over the latest `PUBLISHED` run.
-- [`sql/validation_queries.sql`](../sql/validation_queries.sql) contains independent post-publication reconciliation queries.
-- [`scripts/apply_schema.py`](../scripts/apply_schema.py) and [`scripts/apply_views.py`](../scripts/apply_views.py) deploy schema/views; [`scripts/validate_published_run.py`](../scripts/validate_published_run.py) reads SQL results; [`scripts/publish_validated_run.py`](../scripts/publish_validated_run.py) can write a validated local run to the database.
-
-Those database scripts require credentials or can affect external resources; no Azure operation was executed for this portfolio. The CI workflow does not connect to Azure. Its Azure-related unit tests validate connection-string construction only.
-
-## 8. Historical IBM watsonx / AutoAI
-
-The archive includes all three watsonx import/experiment screenshots (`05-watsonx-import.png`, `06-watsonx-autoai.png`, `10. Auto Ai experiment.png`); the exact originals appear in the [historical gallery](evidence/historical/README.md). The repository contains no AutoAI model or experiment export to replay; the available evidence is screenshot-based, not an independently rerun experiment. See the [evidence index](evidence/README.md).
-
-## 9. Current Python/SQL V2 pipeline
-
-The implemented local execution path in [`pipeline.py`](../src/airtraffic/pipeline.py) is:
+The current local execution path in [`pipeline.py`](../src/airtraffic/pipeline.py) is:
 
 1. Load the four configured local sources.
-2. Clean and standardize each source.
-3. Build GT1–GT8 and the GT10 recommendation model.
-4. Reconcile counts/components and evaluate quality checks.
-5. Stop if the publication gate detects an error-level failure.
-6. Build GT9, add run IDs, sensitivity and eligibility summaries.
-7. Export a run-specific local directory containing golden tables, QA reports, and metadata/manifests.
+2. Apply source-specific transformations in [`clean.py`](../src/airtraffic/clean.py).
+3. Construct UK and global analytical tables in [`golden.py`](../src/airtraffic/golden.py).
+4. Build eligibility, scope-specific features and GT10 scenarios in [`scoring.py`](../src/airtraffic/scoring.py).
+5. Run reconciliation and publication-quality checks in [`quality.py`](../src/airtraffic/quality.py); stop on error-level gate failures.
+6. Record run metadata/manifests in [`provenance.py`](../src/airtraffic/provenance.py) and write run-specific exports through [`export.py`](../src/airtraffic/export.py).
 
-The canonical run recorded in the repository is `20261005T163644Z_33f9f4ffa323`, status `VALIDATED_LOCAL`, with 30 quality checks, zero failures and zero warnings. This is a recorded local run, not a run regenerated during this walkthrough. See the [release validation summary](evidence/validation/release-validation-summary.md), [`publish_validated_run.py`](../scripts/publish_validated_run.py), and [reproducibility notes](reproducibility.md). The public manifest copies contain path/size/hash metadata only; data-bearing canonical outputs remain local.
+The [architecture](architecture.md) and [lineage](lineage.md) documents map these stages to SQL and BI consumers. The root-level legacy `main.py` prototype is not the canonical implementation; [`src/airtraffic/`](../src/airtraffic/) is.
 
-## 10. Current Microsoft Power BI V2 reporting
+## 6. GT contracts, decision scopes and scenario weights
 
-The report pages were personally authored by the project owner. Three original CAA-based captures are in the public gallery:
+The GT contracts are the governed interface between Python transformations, SQL and BI consumers:
 
-- [UK demand](evidence/power-bi-v2/powerbi-v2-02-uk-market-demand.png) — compares current/prior route passenger demand for UK_SITE screening.
-- [UK_SITE sensitivity](evidence/power-bi-v2/powerbi-v2-05b-scenario-sensitivity-uk.png) — compares baseline, volume-heavy and connectivity-heavy policy scenarios.
-- [Heathrow candidate detail](evidence/power-bi-v2/powerbi-v2-07b-candidate-detail-heathrow.png) — shows the candidate measures behind further site diligence.
+| Contract | Responsibility | Main source |
+|---|---|---|
+| GT1 | UK airport current/prior passenger totals | CAA ROUTES |
+| GT2 | UK period change and zero-baseline context | GT1 / CAA ROUTES |
+| GT3 | Full represented UK population, market share and rank | GT1 |
+| GT4 | Airport × destination-country flow | CAA ROUTES |
+| GT5 | Country × year passenger trend context | AVI0105 |
+| GT6 | Historical SFO benchmark | SFO/DataSF |
+| GT7 | Global airport passenger/movement benchmark | AVI0301; raw rows excluded |
+| GT8 | UK connectivity and scheduled/charter mix | CAA ROUTES |
+| GT9 | Per-run operational, coverage and quality KPIs | Quality report and governed tables |
+| GT10 | Candidate × scope × scenario × model version | Scope-specific model inputs |
 
-The [Power BI technical gallery](evidence/power-bi-v2/technical-notes.md) contains all 11 exact original archive screenshots. SHA-256 verification confirms each included original matches its archive entry byte-for-byte. CAA attribution/no-resale conditions are preserved where relevant. No `.pbix`, `.pbit`, PDF export, live service, or refresh source is present/claimed. The gallery explains each page's visible measures, documented GT lineage, decision use, and validation/limitations boundary.
+UK_SITE uses within-scope percentile components for passenger scale and destination breadth. Its BASELINE / VOLUME_HEAVY / CONNECTIVITY_HEAVY weights are **0.50/0.30/0.20**, **0.65/0.20/0.15** and **0.35/0.35/0.30**. Period growth is contextual because small/zero denominators can create extreme ratios.
 
-## 11. Business conclusion and limitations
+GLOBAL_EXPANSION is a separate candidate population with a deterministic eligibility check to exclude UK airports, its own normalisation and policies for passenger scale, growth, movement scale and passengers per movement. These two scopes are not compared on a shared score scale. Full feature definitions, policy weights and caveats are in the [decision model](decision-model.md); table grain and semantics are in the [GT contracts](gt-contracts.md).
 
-The locally validated UK_SITE baseline identifies Heathrow as the lead within the represented CAA population and remains stable across the three documented UK policy scenarios. This is a priority for further site diligence, not proof of retail footfall or profitability. The project omits commercial decision inputs such as rent, retail conversion, available premises, category competition and operating margin. GLOBAL_EXPANSION is implemented as a distinct scope; historical global dashboard values appear in the owner-authorized original screenshots, but are not presented as current or independently revalidated findings.
+## 7. Quality gates, reconciliation and provenance
 
-## 12. Test and reproduction boundary
+The pipeline checks counts/components and source coverage before publication. `assert_publishable()` is called before export; run identity and metadata are attached by the provenance/export modules. The SQL validation queries are an independent post-publication check design, not evidence that a database was queried for this release.
 
-The complete local suite contains 45 tests. CI runs 11 self-contained tests; 34 `requires_sources` tests are collected but not run publicly because they need four local CSV inputs, including AVI0301. The CI job compiles code and checks locked dependencies; it makes no Azure connection and produces no data artifacts. For exact commands and scope see the [README CI section](../README.md#continuous-integration).
+The archived canonical run `20261005T163644Z_33f9f4ffa323` is recorded as `VALIDATED_LOCAL`, with **30 checks, zero failures and zero warnings**. This is historical local-run evidence, not a run regenerated while preparing these documents. Public manifests contain path/size/hash metadata only; data-bearing canonical outputs and raw source files remain local. See the [release validation summary](evidence/validation/release-validation-summary.md).
 
-A clean clone cannot reproduce the source-backed full pipeline without the four locally obtained CSV inputs. The [evidence index](evidence/README.md) accounts for all 26 exact original PNGs (11 Power BI, eight Cognos, seven historical engineering/process images), plus one separate redacted Colab derivative. The four SVG visuals are supplementary and are not counted as platform screenshots.
+## 8. Power BI V2 decision reporting
+
+The owner reports personally authoring the Power BI V2 report design and analysis. The [public Power BI gallery](evidence/power-bi-v2/technical-notes.md) embeds **10 of the 11** original archive screenshots and maps each displayed page to its visible purpose, current GT contracts/code where supported, and evidence limits. The Dubai 07a original remains local-only because it shows AVI0301/ICAO-derived candidate metrics and its source-rights/screenshot conditions are unresolved. The published pages cover UK demand, connectivity, scenarios, Heathrow candidate detail, quality/governance, global-scope overviews and model structure.
+
+The report screenshots do not constitute a machine-readable semantic model, prove every relationship/measure, or show a current refresh. No `.pbix`, `.pbit`, report export or live Power BI service is included or claimed. The visual evidence documents successive work, not a Cognos migration.
+
+## 9. Tests and reproduction boundary
+
+The collected suite contains **45 tests**. Public CI runs **11 self-contained tests**; **34 tests** marked `requires_sources` need the four locally obtained CSVs and are not run in public CI. Representative test modules include [`test_clean.py`](../tests/test_clean.py), [`test_golden_tables.py`](../tests/test_golden_tables.py), [`test_scoring.py`](../tests/test_scoring.py), [`test_quality.py`](../tests/test_quality.py), [`test_pipeline.py`](../tests/test_pipeline.py) and [`test_numeric_finiteness.py`](../tests/test_numeric_finiteness.py). The GitHub Actions workflow [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) compiles the code and runs the source-independent subset; it does not connect to Azure. See the [reproducibility guide](reproducibility.md) for exact commands and dependency setup.
+
+A clean clone cannot reproduce the complete source-backed run without all four inputs and lawful access to them. AVI0301/ICAO source rights remain unresolved. No live Azure, Cognos, watsonx or Power BI service, scheduled refresh, current global ranking, retail profitability or causal/forecast result is claimed.

@@ -1,6 +1,6 @@
-# Power BI V2 — technical walkthrough of all 11 original archive screenshots
+# Power BI V2 — technical walkthrough of the 11 original archive screenshots
 
-The complete gallery contains all 11 original Power BI PNGs: nine report pages and two schema-only pages. The owner authorizes publication of the dashboard work and represents that it is cleared for this portfolio; this is not a Microsoft endorsement or a claim of bespoke Microsoft permission. CAA attribution/no-resale conditions are retained where applicable. No live Power BI service, refresh, PBIX, or deployment is claimed.
+The supplied archive contains 11 Power BI PNGs: nine report pages and two schema-only pages. The public gallery embeds **10 of 11**; the Dubai candidate-detail original remains local-only because it exposes AVI0301/ICAO-derived candidate metrics and its source-rights and screenshot conditions remain unresolved. The owner authorizes their report work, but that does not independently clear third-party data or platform conditions. The other published images are genuine archive captures, not reconstructions. CAA attribution/no-resale conditions are retained where applicable. No live Power BI service, refresh, PBIX, or deployment is claimed.
 
 The sequence follows the decision workflow: inspect the UK market → test policy sensitivity → inspect the leading candidate → review model structure → compare global scope and governance.
 
@@ -62,9 +62,9 @@ This unchanged, schema-only screenshot records the model relationship view. Rela
 
 No source rows are shown. The exact image bytes were extracted from the supplied archive and verified with SHA-256. The screenshot alone does not establish every key, cardinality, filter direction, ambiguity, or runtime behavior. The actual model artifact is not included here, so those details are not independently reviewable from this gallery.
 
-## 6–11. Additional original Power BI pages — complete archive gallery
+## 6–10. Additional five published Power BI pages
 
-The six additional archive originals are included below under the owner's explicit authorization. Their technical notes distinguish displayed historical evidence from current V2 code and reproducible results. Raw CSVs are not included.
+The five additional public captures are included below under the owner's authorization. The sixth archive image, Dubai candidate detail, remains local-only as described after this gallery. Notes distinguish displayed historical evidence from current V2 code and reproducible results. Raw CSVs are not included.
 
 ### 6. Executive decision summary — two decision scopes
 
@@ -106,14 +106,12 @@ The page combines quality-check categories, source-coverage controls, publicatio
 
 The current V2 equivalents are `quality.py`, the pipeline’s `assert_publishable()` gate, the GT9/run metadata contract, and the public-safe validation summary. Reconciliation and validation SQL are in [`sql/validation_queries.sql`](../../../sql/validation_queries.sql); current tests are in `tests/test_quality.py` and `tests/test_pipeline.py`. These current artifacts do not retroactively validate the Power BI screenshot or prove its displayed report refreshed from that run. The original is included per the owner's explicit authorization; no raw source CSV or independent Microsoft endorsement is claimed.
 
-### 11. Dubai candidate detail — global model output
+### 11. Dubai candidate detail — archive original held locally
 
-![Original Power BI Dubai candidate-detail report](powerbi-v2-07a-candidate-detail-dubai-original.png)
+The archive contains an original Dubai candidate-detail screenshot, but it is **not included in the public gallery**. The capture displays AVI0301/ICAO-associated global-candidate measures and an airport ranking. The project's existing publication map and ignore rule mark this image `NOT CLEARED` pending source-rights and Power BI screenshot-condition resolution. The owner's permission covers their authored report image; it does not itself clear third-party data or platform conditions. A targeted OCR review found no apparent credential or personal-identifier strings, but that does not resolve the publication restriction. The exact original remains in the local source archive; no replacement or reconstructed screenshot is used.
 
-The page drills into one global candidate with scope, baseline rank/tier, data-quality status, scenario sensitivity, component profile and underlying evidence. Its purpose is explainability: expose why the candidate ranks where it does and which model dimensions contribute, rather than presenting a recommendation as a black-box KPI.
-
-The current decision-model vocabulary includes scale, growth, movement, traffic intensity and connectivity features; [`scoring.py`](../../../src/airtraffic/scoring.py), [`gt-contracts.md`](../../gt-contracts.md), and [`tests/test_scoring.py`](../../../tests/test_scoring.py) describe the current implementation/test boundary, not the exact historic report calculations. The owner authorizes the original screenshot's publication; this page is not a claim that its historic score has been re-run or independently validated.
+The public evidence therefore covers **10 of 11** Power BI originals. If the source rights and screenshot conditions are later cleared, the exact archive image can be added and this entry replaced with the inline image and per-page notes. Until then, no Dubai candidate values are repeated as current findings.
 
 ## Shared evidence and validation boundary
 
-All 11 Power BI images are genuine original archive captures; no dashboard was reconstructed. The repository does not include the Power BI project/model file or the historical report query definitions, so DAX measures, relationship cardinality/filter direction, refresh mode, and visual-to-source lineage cannot be independently asserted from the PNGs. The source-dependent local test suite covers the current Python implementation, while the 11-test CI subset is source-free; neither validates these historical screenshots. CAA attribution/no-resale terms are retained where relevant. Publication of the owner's work follows the owner's latest explicit authorization; no Microsoft endorsement or bespoke vendor permission is claimed.
+Ten of the 11 Power BI archive originals are included in the public gallery byte-for-byte; the Dubai 07a image remains local-only pending source-rights and screenshot-condition clearance. No dashboard is reconstructed. The repository does not include the Power BI project/model file or the historical report query definitions, so DAX measures, relationship cardinality/filter direction, refresh mode, and visual-to-source lineage cannot be independently asserted from the PNGs. The source-dependent local test suite covers the current Python implementation, while the 11-test CI subset is source-free; neither validates these historical screenshots. CAA attribution/no-resale terms are retained where relevant. Publication of the owner's work follows the owner's latest explicit authorization; no Microsoft endorsement or bespoke vendor permission is claimed.

@@ -1,41 +1,75 @@
-# Historical engineering evidence gallery — seven archive PNGs
+# Historical engineering evidence — seven original screenshots
 
-This page accounts for all seven historical PNGs from `evidence-inbox/Data GitHub Project.zip`, in project order. **All seven exact original PNGs are included in this release package under the owner's explicit authorization; none are omitted.** One authentic, redacted Colab derivative is also included as a separate asset, not as a replacement for its original.
+These seven screenshots are shown in the archive’s project sequence. The owner states they created the screenshots and authorizes their publication. This is evidence of historical work, not proof of a current service, a reproducible run, vendor endorsement or independent validation. Visible product interfaces and any source-data conditions remain separate from the owner’s authorship statement.
 
-The archive sequence depicts the airport-selection process design, a historical Azure SQL resource, a Colab ETL/upload notebook, Azure SQL query output, a watsonx import, and two AutoAI experiment views. This is historical context, not a substitute for replayable source code, query text, exported Cognos/AutoAI models, or a deployment record.
+The gallery contains **seven originals**: one SIPOC, two Azure SQL, one Colab and three watsonx/AutoAI images. The redacted Colab derivative below is a separate eighth asset; it does not replace or count as an original. Exact archive-byte verification is recorded in the evidence inventory.
 
-## Original included in release candidate — SIPOC process design
+## 1. SIPOC — process design
 
 ![Original SIPOC diagram for airport site selection and prioritisation](process/01-business-process-sipoc.png)
 
-The owner confirmed authorship and authorized publication. The diagram identifies CSV/ODS and API exports as inputs, six high-level stages from profiling through decision-pack review, GT1–GT10 and KPI/ranking outputs, and executive/operations/delivery audiences. It documents intended process design, not proof that each stage ran. See the [SIPOC technical notes](process/README.md) and [full historical technical notes](technical-notes.md), which map it to current Python/SQL code and clearly separate the historical drawing from the executable V2 pipeline.
+**Question illustrated:** what inputs, stages and outputs were intended for an airport-market decision process?
 
-## Per-image review
+The owner-authored diagram connects source intake and profiling, cleaning, feature engineering, GT1–GT10 outputs, reporting/AutoAI exploration and decision-pack review. It documents process design and intended outputs; it does not prove every stage ran or that the pictured process is the later V2 implementation. The current crosswalk is in [SIPOC technical notes](process/README.md).
 
-| Original archive PNG | Stage and work evidenced | Analytical / engineering detail visible | Publication status / specific boundary |
-|---|---|---|---|
-| `01-business-process-sipoc.png` | SIPOC for airport site selection and prioritisation | Original diagram defines CSV/ODS/API/schema inputs; ingest/profile, clean/harmonise, engineer features, publish GT1–GT10, compose dashboard/AutoAI insights, and review a decision pack; outputs include curated tables, KPIs, ranked lists, data dictionary, and change log. | **Original included in the release candidate** (`process/01-business-process-sipoc.png`): owner confirmed authorship and authorized publication. It is a design artifact, not proof every depicted stage ran. Detailed mapping is in [process technical notes](process/README.md). |
-| `02-azure-sql-database.png` | Historical Azure SQL resource/database view | Shows the `golden_airports_db` target, Azure resource configuration and storage/monitoring context. It documents a historical environment, not a current service. | Exact original included as `azure/historical-azure-sql-database-original.png` at the owner's direction. Resource/account identifiers remain visible; no password or access token is transcribed separately. No Microsoft endorsement is claimed. |
-| `03-colab-azure-etl.png` | Historical Colab upload notebook | Shows a SQLAlchemy/ODBC connection pattern, reading CSVs from `out/golden`, and writing generated tables to Azure SQL. The original result block includes historical counts; the separate redacted derivative masks it for comparison. The notebook source is absent, so this is not a replayable pipeline. | Exact original included as `colab/colab-etl-upload-original.png`; derivative `colab-etl-upload-redacted.png` is separately counted. No raw CSV is included; owner authorizes the screenshot. |
-| `04-azure-sql-validation.png` | Historical Azure SQL query/result screen | Shows the GT1–GT10 object set and a populated GT10 recommendation grid with airport, passenger, route, recovery and score fields. It evidences a displayed query result, not independent validation: query text, source snapshot, run identity and reconciliation output are absent. | Exact original included as `azure/historical-azure-sql-validation-original.png` per owner direction. The screenshot is historical UI evidence; no current result or independent validation is claimed. |
-| `05-watsonx-import.png` | Historical watsonx import workflow | Shows selection of ten Azure SQL/GT assets into the project. This is import-configuration evidence, not model training, scoring or validation. | Exact original included as `watsonx/historical-watsonx-import-original.png` per owner direction. Account/source labels and IBM UI are visible; no IBM endorsement is claimed. |
-| `06-watsonx-autoai.png` | Historical AutoAI experiment overview | Shows a passenger-traffic prediction target, generated pipeline comparisons, and RMSE/MSE/R² metrics. Exact scores are not repeated here. | Exact original included as `watsonx/historical-watsonx-autoai-original.png`. No exported experiment, training code or independent holdout/validation artifact is present; displayed fit metrics do not establish generalisation or a business-ready forecast. |
-| `10. Auto Ai experiment.png` | Historical AutoAI pipeline comparison | Shows a second/detailed pipeline-comparison view for the same project, including model ranking, error metrics and a passenger-traffic target. It records experimentation, not deployment or a business decision. | Exact original included as `watsonx/historical-watsonx-10-autoai-experiment-original.png` per owner direction. Experiment artifacts and reproducible evaluation are absent. |
+## 2. Azure SQL — historical database/resource view
 
-### Historical Colab table-upload step
+![Original historical Azure SQL database and resource view](azure/historical-azure-sql-database-original.png)
 
-![Historical Colab ETL notebook screenshot; uploaded-table output region redacted](colab/colab-etl-upload-redacted.png)
+**Question illustrated:** what historical database environment was used as the target for the notebook-based data handoff?
 
-The visible code builds a SQLAlchemy connection using ODBC Driver 18 with encryption enabled and certificate trust disabled; credentials and server are variables/placeholders, not displayed values. It scans `out/golden`, reads each CSV with `pandas.read_csv`, and writes each table through `DataFrame.to_sql(..., if_exists='replace', index=False)`. The screenshot visibly confirms a successful connection, but the upload-result block is deliberately covered because it contained AVI0301-linked and mixed-source table counts.
+The screen shows a historical Azure SQL resource/database context, including the `golden_airports_db` target and visible resource/account labels. No password or access token is transcribed in this note. It is not evidence that the resource still exists or is currently secured, available or running. The later repository SQL design is separately reviewable in [`sql/schema.sql`](../../../sql/schema.sql), [`sql/views.sql`](../../../sql/views.sql) and the [Azure SQL notes](azure/README.md); no live Azure operation is claimed.
 
-Engineering interpretation: this is evidence of a local CSV-to-Azure-SQL handoff for downstream analytical tools. `if_exists='replace'` means a rerun replaces destination tables; the screenshot does not show transaction boundaries, staging/swap safety, schema contracts, row-level reconciliation, rollback or a retained run manifest. No filters, DAX measures, Cognos relationships, model scores or business finding are evidenced on this capture. The screen is not proof of a currently running Azure service or of the current V2 pipeline.
+## 3. Google Colab — CSV-to-SQL ETL handoff
 
-The redaction is an authentic derivative, not a reconstruction. Mechanically verified dimensions are `3278 × 1810`; all pixels outside the output-redaction rectangle match the archive original, the mask is opaque, and OCR on the derivative no longer recognizes upload-output lines. The source original and ZIP are preserved unchanged locally; the exact original PNG is also included in the gallery. Google brand use is shown only as historical project context and does not imply endorsement.
+![Original Colab notebook screenshot showing the historical Azure SQL upload workflow](colab/colab-etl-upload-original.png)
 
-## Connection to the current project
+**Question illustrated:** how were prepared table files handed from a notebook workflow to Azure SQL?
 
-The current Python/SQL V2 implementation is separately reviewable in [`src/airtraffic/`](../../../src/airtraffic/) and [`sql/`](../../../sql/). Its documented source contracts, deterministic transformations, candidate-grain definitions, reconciliation and quality gates belong to the current V2 system; they do **not** retroactively validate the historical Colab, Azure SQL or AutoAI screenshots. The current canonical test run and `sql/validation_queries.sql` are not claims that the historical result grid or AutoAI experiment was re-executed.
+The original capture shows a SQLAlchemy/ODBC connection pattern, iteration over CSV files from `out/golden`, `pandas.read_csv` and `DataFrame.to_sql(..., if_exists='replace')`. The displayed upload-result block contains historical output counts. This is screenshot evidence: the notebook source and original SQL queries are not in the repository, and the image does not show a quality gate, transaction-safe swap, full reconciliation or retained run manifest. `if_exists='replace'` replaces destination tables on rerun; it is not presented as the current recommended loading pattern. Current V2 ingestion and cleaning are in [`ingest.py`](../../../src/airtraffic/ingest.py) and [`clean.py`](../../../src/airtraffic/clean.py), not a reconstruction of the historical notebook.
 
-No live Azure SQL, Colab, Cognos or watsonx service was accessed or modified while preparing this gallery. No historical source dataset, notebook, SQL query export or AutoAI model package is included here. The actual portfolio decision supported by the reproducible current analysis is limited to prioritising a UK candidate for further commercial diligence; no historical screenshot establishes retail profitability, a deployed forecast or a production decision.
+### Separate redacted Colab derivative
 
-For the full 26-image accounting and the Power BI/Cognos galleries, see the [evidence index](../README.md). The [complete historical technical notes](technical-notes.md) cover all seven originals. Stage-specific documentation: [SIPOC](process/README.md), [Colab](colab/README.md), [Azure SQL](azure/README.md), and [watsonx](watsonx/README.md).
+![Redacted derivative of the original Colab upload screenshot; output block masked](colab/colab-etl-upload-redacted.png)
+
+This is a distinct derivative, not an original screenshot and not a substitute for the source above. Its output block is masked; the original remains unchanged and is shown immediately above. See the [Colab technical notes](colab/README.md) for the mechanical redaction check.
+
+## 4. Azure SQL — historical validation/result screen
+
+![Original historical Azure SQL validation result screen](azure/historical-azure-sql-validation-original.png)
+
+**Question illustrated:** what analytical objects and result grid were visible after the historical upload?
+
+The screenshot displays a GT-named object set and a populated recommendation-style result grid. It records a query/result screen, but the query text, source snapshot, run identity and independent reconciliation are absent. It therefore does not establish that the results were correct or that the current V2 pipeline produced them. The current post-publication validation design is in [`sql/validation_queries.sql`](../../../sql/validation_queries.sql) and the [Azure SQL notes](azure/README.md); those files do not retroactively validate this historical image.
+
+## 5. watsonx — data import workflow
+
+![Original IBM watsonx import-workflow screenshot](watsonx/historical-watsonx-import-original.png)
+
+**Question illustrated:** which prepared analytical assets were selected for the historical watsonx project?
+
+The visible screen records selection/import configuration for GT-named assets. Import configuration is not evidence of model training, a validated prediction, or a deployed workflow. The screenshot includes IBM interface and project/source labels; no credentials are separately published here. No IBM endorsement is claimed. See the [watsonx notes](watsonx/README.md).
+
+## 6. watsonx AutoAI — experiment overview
+
+![Original IBM watsonx AutoAI experiment overview](watsonx/historical-watsonx-autoai-original.png)
+
+**Question illustrated:** what prediction experiment and generated pipeline comparisons were explored historically?
+
+The screenshot shows a passenger-traffic target and AutoAI-generated pipeline evaluation fields. It establishes that an experiment view was captured; it does not provide the exported experiment, training dataset, split strategy, independent holdout evaluation or a reproducible model. Displayed fit metrics are not evidence of generalisation, business value or forecast reliability.
+
+## 7. watsonx AutoAI — pipeline comparison
+
+![Original IBM watsonx AutoAI pipeline-comparison screenshot](watsonx/historical-watsonx-10-autoai-experiment-original.png)
+
+**Question illustrated:** how were candidate AutoAI pipelines compared within the historical experiment?
+
+The image records a second comparison view with pipeline ranking and evaluation fields. It supports describing historical experimentation, not selecting a production model or claiming deployment. No model package or runnable experiment definition is present in the repository.
+
+## Relationship to the current implementation
+
+The documented project evolution is **SIPOC → local data acquisition/profiling → Colab/Python ETL → historical Azure SQL work → Cognos reporting and watsonx/AutoAI exploration → governed Python/SQL V2 → Power BI V2**. These are successive approaches to the business question; this is not an automated Cognos-to-Power-BI migration.
+
+The current implementation is inspectable in [`src/airtraffic/`](../../../src/airtraffic/) and [`sql/`](../../../sql/). It has separate GT1–GT10 contracts, quality/reconciliation gates, scenario scoring and run provenance. It does not retroactively validate the historical notebook, Azure query grid or AutoAI experiment. No raw source CSV, credential, private cloud configuration, live service or AutoAI model export is included.
+
+For the complete 26-item archive accounting—25 published originals and the local-only Dubai 07a item—see the [evidence index](../README.md), [Power BI gallery](../power-bi-v2/technical-notes.md) and [Cognos gallery](cognos/technical-notes.md). The seven-source archive’s detailed historical lineage notes remain in [technical notes](technical-notes.md).

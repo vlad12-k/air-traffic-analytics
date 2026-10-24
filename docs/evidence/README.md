@@ -1,12 +1,12 @@
-# Complete original screenshot gallery and technical evidence boundary
+# Screenshot galleries and archive accounting
 
-This evidence index links all 26 authentic original archive screenshots: 11 Power BI, eight Cognos, and seven historical process/engineering images. The owner explicitly authorizes publication of all 26 and represents that no publication restrictions apply. One redacted Colab derivative is counted separately; four SVGs are supplementary data/chronology figures, not screenshots or proof of platform use.
+The source archive contains 26 original screenshot entries: 11 Power BI, eight Cognos and seven historical process/engineering images. The public galleries include **25 exact originals**—10 Power BI, eight Cognos and seven historical. The Dubai 07a candidate-detail image remains local-only because it displays AVI0301/ICAO-derived metrics and its source-rights and Power BI screenshot conditions are unresolved. The owner authorizes their authored screenshots, but that does not independently clear third-party data or platform conditions. One redacted Colab derivative is counted separately; four SVGs are supplementary figures, not screenshots or proof of platform use.
 
 ## Public visual evidence
 
 - [Power BI V2 original-image gallery and technical walkthrough](power-bi-v2/technical-notes.md)
 - [Historical Cognos original-image gallery and technical walkthrough](historical/cognos/technical-notes.md)
-- [Historical engineering evidence gallery — all seven archive positions and the included SIPOC original](historical/README.md)
+- [Historical engineering evidence gallery — all seven original screenshots embedded inline](historical/README.md)
 - [Historical technical notes — SIPOC, Azure SQL, Colab, watsonx and AutoAI](historical/technical-notes.md)
 
 
@@ -24,7 +24,7 @@ This evidence index links all 26 authentic original archive screenshots: 11 Powe
 | [Power BI global benchmark](power-bi-v2/powerbi-v2-04-global-expansion-benchmark-original.png) | GLOBAL_EXPANSION: screen candidate scale | Global benchmark, scale/growth comparison and ranking | Original archive screenshot; AVI0301/ICAO-derived historical values appear in the image; no raw CSV is included. |
 | [Power BI global scenario sensitivity](power-bi-v2/powerbi-v2-05a-scenario-global-expansion-original.png) | GLOBAL_EXPANSION: compare scenario weights | Candidate-score sensitivity and ranking-stability views | Original archive screenshot; historical scenario output is not independently rerun. |
 | [Power BI data quality and governance](power-bi-v2/powerbi-v2-06-data-quality-governance-original.png) | Quality and publication gate | Coverage, quality categories, publication and run context | Original archive screenshot; image values are historical display evidence, not current test output. |
-| [Power BI Dubai candidate detail](power-bi-v2/powerbi-v2-07a-candidate-detail-dubai-original.png) | GLOBAL_EXPANSION: candidate explainability | Candidate status, rank/tier, scenario sensitivity and component evidence | Original archive screenshot; historical global output not independently validated. |
+| Power BI Dubai candidate detail (archive-only; not published) | GLOBAL_EXPANSION: candidate explainability | Historical candidate status, rank/tier, scenario sensitivity and component measures appear in the original image | Retained in the local source ZIP. Not cleared for publication because AVI0301/ICAO source rights and screenshot conditions remain unresolved; see the [Power BI evidence notes](power-bi-v2/technical-notes.md). |
 | [IBM Cognos semantic model](historical/cognos/historical-cognos-07-semantic-model.png) | Historical model design | Original schema/semantic-model screenshot; no source rows displayed | User-authorized original; IBM interface is visible; no IBM permission or endorsement is claimed. |
 | [IBM Cognos UK demand filter](historical/cognos/historical-cognos-11-demand-filter.png) | Historical UK demand and filtering | Original owner-created filtered report page | User-authorized original; CAA attribution/no-resale applies. IBM interface is visible; no IBM permission or endorsement is claimed. |
 | [IBM Cognos demand recovery](historical/cognos/historical-cognos-10-demand-recovery-original.png) | Historical two-period UK demand comparison | Original page with ten-airport ranking, selected-airport filter, passenger-period comparison, recovery and monthly context | All ten current/prior airport pairs match the preserved GT1 CAA-derived output; CAA attribution/no-resale applies. Owner-authorized original; IBM UI/endorsement boundary disclosed. |
@@ -49,7 +49,7 @@ The data-bearing CAA visualizations are free-to-view portfolio documentation; CA
 
 ## Original archive accounting (26 PNGs)
 
-The source ZIP is preserved unchanged. All **26 of 26 exact original PNGs** are included in this release package; none are omitted. The Colab derivative is a separately counted 27th image asset and does not replace its source original.
+The source ZIP is preserved unchanged. **25 of the 26 exact archive originals are included in the public release package; the Dubai 07a screenshot remains local-only.** The Colab derivative is a separate additional asset; it does not replace or count as an original.
 
 | Original archive entry | Status and specific remaining issue |
 |---|---|
@@ -58,7 +58,7 @@ The source ZIP is preserved unchanged. All **26 of 26 exact original PNGs** are 
 | `Power BI, Semantik Models/04-global-expansion-benchmark.png` | Included as `power-bi-v2/powerbi-v2-04-global-expansion-benchmark-original.png`; exact original, owner-authorized; historical AVI0301-associated values are not a current result. |
 | `Power BI, Semantik Models/05a-scenario-global-expansion.png` | Included as `power-bi-v2/powerbi-v2-05a-scenario-global-expansion-original.png`; exact original; scenario outputs are historical and not independently rerun. |
 | `Power BI, Semantik Models/06-data-quality-governance.png` | Included as `power-bi-v2/powerbi-v2-06-data-quality-governance-original.png`; exact original; displayed counts are not current test output. |
-| `Power BI, Semantik Models/07a-candidate-detail-dubai.png` | Included as `power-bi-v2/powerbi-v2-07a-candidate-detail-dubai-original.png`; exact original; historical ranking is not independently validated. |
+| `Power BI, Semantik Models/07a-candidate-detail-dubai.png` | Exact original verified in the unchanged local ZIP; not included publicly because the image displays AVI0301/ICAO-derived candidate measures and the source-rights and Power BI screenshot conditions remain unresolved. No replacement is created. |
 | `Cognos, Colab, Azure/08-cognos-executive-summary.png` | Included as `historical/cognos/historical-cognos-08-executive-summary-original.png`; exact original; AVI0301-associated values remain historical screenshot content. |
 | `Cognos, Colab, Azure/09-cognos-executive-filter.png` | Included as `historical/cognos/historical-cognos-09-executive-filter-original.png`; exact original; global filter state is not a test of runtime behavior. |
 | `Cognos, Colab, Azure/10-cognos-demand-recovery.png` | Published as `historical/cognos/historical-cognos-10-demand-recovery-original.png`, byte-identical to this archive entry. All ten displayed current/prior airport passenger pairs match the preserved GT1 output derived from CAA Table 12.1; the original Cognos query/refresh path remains unavailable. CAA attribution/no-resale conditions apply; IBM UI/endorsement boundary is disclosed. |
@@ -73,4 +73,4 @@ The source ZIP is preserved unchanged. All **26 of 26 exact original PNGs** are 
 | `Cognos, Colab, Azure/06-watsonx-autoai.png` | Included as `historical/watsonx/historical-watsonx-autoai-original.png`; exact original; model metrics are not verified generalisation evidence. |
 | `Cognos, Colab, Azure/10. Auto Ai experiment.png` | Included as `historical/watsonx/historical-watsonx-10-autoai-experiment-original.png`; exact original; no deployment or validated business outcome is claimed. |
 
-Release-package counts: Power BI **11/11**, IBM Cognos **8/8**, historical engineering/process **7/7** — **26/26 exact archive originals**. The Colab redacted derivative is a separately counted 27th screenshot asset, not a substitute. Four SVG figures are supplementary, not screenshots. Exact archive matching was verified with SHA-256; the supplied ZIP was not modified. GitHub availability is reported from the post-push verification, separately from this local count.
+Public-release counts: Power BI **10/11**, IBM Cognos **8/8**, historical engineering/process **7/7** — **25/26 exact archive originals**. The Dubai 07a original remains local-only pending source-rights and Power BI screenshot-condition clearance. The redacted Colab derivative is a separate asset (not an original); duplicate semantic-model/relationship PNG copies are not counted as new originals. Four SVG figures are supplementary, not screenshots. Each published original was checked against the ZIP by SHA-256; the Dubai archive entry was also verified locally but not published. The ZIP remains unchanged.
