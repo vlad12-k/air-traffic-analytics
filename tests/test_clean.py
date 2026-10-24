@@ -10,6 +10,7 @@ def cleaned():
     return clean_sources(load_sources())
 
 
+@pytest.mark.requires_sources
 def test_expected_clean_row_counts(cleaned):
     assert len(cleaned["avi0105"]) == 77 * 11
     assert not cleaned["avi0301"].empty
@@ -17,6 +18,7 @@ def test_expected_clean_row_counts(cleaned):
     assert len(cleaned["routes"]) == 1752
 
 
+@pytest.mark.requires_sources
 def test_avi0105_is_long_format(cleaned):
     df = cleaned["avi0105"]
 
@@ -49,6 +51,7 @@ def test_avi0301_thousands_are_converted_to_counts():
     assert row["aircraft_movements_2022"] == 500
 
 
+@pytest.mark.requires_sources
 def test_sfo_removes_empty_unnamed_columns(cleaned):
     df = cleaned["sfo"]
 
@@ -57,6 +60,7 @@ def test_sfo_removes_empty_unnamed_columns(cleaned):
     assert df["passenger_count"].notna().all()
 
 
+@pytest.mark.requires_sources
 def test_routes_preserve_current_and_prior_periods(cleaned):
     df = cleaned["routes"]
 
@@ -68,6 +72,7 @@ def test_routes_preserve_current_and_prior_periods(cleaned):
     assert (df["passengers_prior"] >= 0).all()
 
 
+@pytest.mark.requires_sources
 def test_routes_do_not_fabricate_2019_history(cleaned):
     df = cleaned["routes"]
 

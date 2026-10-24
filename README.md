@@ -1,95 +1,84 @@
-# AirTrafficAnalytics
+# AirTrafficAnalytics — Airport Expansion Decision Intelligence
 
-**Evidence-driven airport expansion decision intelligence** for two distinct decisions: UK airport site selection and later global airport expansion. The project uses public aviation sources, governed GT1–GT10 tables, reconciliation and explicit sensitivity scenarios. It is a historical-snapshot decision-support portfolio—not a live airline or airport system, commercial feasibility study, forecast, or investment recommendation.
+[![Python CI — main](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml?query=branch%3Amain)
 
-## Business problem and objectives
+**An evidence-led data and BI case study for screening airport markets for a boutique retailer.** I designed a Python/SQL analytical workflow and decision model, then presented the work through Power BI. Earlier Cognos, Colab, Azure SQL and watsonx/AutoAI work is documented as historical project evidence—not as a live commercial service or invented employment experience.
 
-The work evaluates which observed UK airport market could support an initial site and which non-UK airport may merit later expansion review. It compares passenger demand and market position, period-on-period recovery context, destination/country connectivity, airport benchmarks, and candidate scenarios. Quality checks, source reconciliation, sensitivity to policy weights, and explicit data/model limitations support the decisions. UK and global candidate populations remain separate; scores are comparative indicators, not forecasts, causal claims, or proof of commercial viability.
+## The business question
 
-## Current verified work
+Which UK airport market merits further investigation for a first boutique, and which non-UK markets could be screened separately for possible later expansion? Passenger volume alone is not a site decision: route breadth, source periods, candidate eligibility and explicit policy assumptions also matter. The model keeps **UK_SITE** and **GLOBAL_EXPANSION** as separate populations and decisions.
 
-- Python V2 ingestion, cleaning, transformations, GT1–GT10 generation, quality checks, reconciliation, run metadata, and local validated-run export.
-- SQL Server schema and reporting-view definitions for run-scoped analytical tables and validation queries.
-- A canonical local run (`20261005T163644Z_33f9f4ffa323`) and its manifests/QA results, preserved locally. Only non-data provenance manifests and a source-free validation summary are in the public candidate; ICAO-derived tables and detailed QA remain local-only.
-- Two unchanged, schema-only Microsoft Power BI screenshots (model/relationships) are included under published screenshot guidance; data-bearing report pages remain local-only.
+## What I built
 
-The canonical run is an archived local validation result, not a claim that the pipeline was freshly run during release preparation. Detailed Azure validation logs and SQL result grids are retained locally because they include data-bearing recommendations; the public validation summary does not imply a currently running Azure service.
+| Area | Work evidenced in this repository |
+|---|---|
+| Data engineering | Python source ingestion, source-specific cleaning, governed GT1–GT10 outputs, metadata manifests and run provenance |
+| Analytics engineering | Explicit table grains, lineage, quality gates, reconciliation and versioned scenario weights |
+| Decision modelling | Separate UK/global candidate eligibility and within-scope score normalisation; UK sensitivity across three policy profiles |
+| BI | Personally authored Power BI V2 and historical IBM Cognos report/model designs, with evidence boundaries documented per screenshot |
+| Historical exploration | Colab ETL, Azure SQL workflow and watsonx/AutoAI screens, clearly distinguished from the current Python/SQL implementation |
 
-## Project and release scope
+**Tools by purpose:** Python and pandas for transformation; SQL/T-SQL for analytical storage and reporting design; Power BI and Cognos for BI; Colab, Azure SQL and watsonx/AutoAI in historical project stages. The repository does not claim a currently deployed cloud service.
 
-The complete original working project, source files and canonical run remain preserved locally. The Git candidate is a deliberately reduced, rights-filtered snapshot: raw datasets and AVI0301-derived outputs/screenshots are omitted, not reconstructed or substituted. Historical Cognos/Colab/Azure/watsonx materials stay labeled as historical; the current analytical implementation is the Python V2 package and the current report layer is Power BI V2 evidence.
+## Selected original dashboard evidence
 
-## Architecture
+### Power BI — executive decision view
+
+![Original Power BI V2 executive decision summary](docs/evidence/power-bi-v2/powerbi-v2-01-executive-decision-summary-original.png)
+
+*The report separates the UK first-site screen from the historical global-expansion view. The screenshot records a past report state; global values are not presented here as current or independently revalidated results.*
+
+### Power BI — UK airport demand
+
+![Original Power BI V2 UK market demand report](docs/evidence/power-bi-v2/powerbi-v2-02-uk-market-demand.png)
+
+*The CAA-based page compares the represented UK airport population and selected-market demand. It supports market screening, not retail footfall or a lease decision.*
+
+### Power BI — scenario sensitivity
+
+![Original Power BI V2 UK_SITE scenario sensitivity page](docs/evidence/power-bi-v2/powerbi-v2-05b-scenario-sensitivity-uk.png)
+
+*The UK leader remains the same across baseline, volume-heavy and connectivity-heavy policies. This is sensitivity to chosen weights, not a probability or profitability estimate.*
+
+### IBM Cognos — historical executive view
+
+![Original IBM Cognos executive summary](docs/evidence/historical/cognos/historical-cognos-08-executive-summary-original.png)
+
+*An original historical report design combining UK/global views and recovery context. Its original query definitions are not available, so the image is not evidence of a current refresh or a fully reproducible calculation.*
+
+The source archive contains **26 originals**: 11 Power BI, eight Cognos and seven historical engineering/process images. The public inline galleries publish **25** (10 Power BI, eight Cognos and seven historical). The genuine Dubai 07a Power BI original remains local-only: it displays AVI0301/ICAO-derived candidate metrics, and its source-rights and screenshot conditions are unresolved. The [evidence index](docs/evidence/README.md) distinguishes published originals, the local-only archive item, the redacted Colab derivative and duplicate model-view copies.
+
+## Evidence-backed UK finding
+
+The UK_SITE screen represents **36 airports** in UK CAA Table 12.1 (May 2022; source period `202205`, with the extract's supplied 2022-versus-2020 comparison—not a continuous annual series). The current-period represented total is **17,984,754** passengers; the supplied prior-period total is **1,178,740**. Heathrow records **4,993,568** current-period passengers, or **27.77% of the 17,984,754 represented current-period total**, and remains the leading UK candidate in all three documented scenarios.
+
+This supports taking Heathrow forward for **further commercial due diligence**. It does not establish airport retail footfall, available premises, rent, customer conversion, profitability or investment return. Historical international dashboard values remain screenshot evidence; no current global candidate ranking is asserted in prose.
+
+## How it works
 
 ```text
-Public aviation source extracts
-          ↓
-Python ingestion, cleaning, transformation
-          ↓
-GT1–GT8 analytical contracts + GT10 decision model
-          ↓
-Quality gates, reconciliation, GT9 operational KPIs,
-run metadata and validated local exports
-          ↓
-Azure SQL publication design (meta / bi / reporting)
-          ↓
-Power BI V2 reporting
+Source extracts (locally obtained)
+  → Python ingestion, cleaning and profiling
+  → governed GT1–GT8 measures and GT10 scope/scenario decisions
+  → quality checks, reconciliation, GT9 and run provenance
+  → SQL publication design
+  → Power BI V2 decision reporting
 ```
 
-The architecture and scope are described in [`docs/architecture.md`](docs/architecture.md); table definitions and model assumptions are documented in [`docs/gt-contracts.md`](docs/gt-contracts.md), [`docs/lineage.md`](docs/lineage.md), and [`docs/decision-model.md`](docs/decision-model.md).
+The full implementation sequence—including SIPOC, historical Colab/Azure SQL, Cognos and watsonx/AutoAI stages—is in the [engineering walkthrough](docs/end-to-end-project-walkthrough.md). Current V2 code is a later, separately documented implementation; it is **not** described as an automated Cognos-to-Power-BI migration.
 
-## Data and provenance
+## Validation and limits
 
-The four local input datasets are identified by source IDs AVI0105, AVI0301, ROUTES and SFO. The public candidate does not bundle raw CSVs. The permitted source/artifact manifests contain only relative paths, hashes and sizes; sample schemas and data-bearing QA are local-only. See [`docs/data-sources-and-licensing.md`](docs/data-sources-and-licensing.md) for publishers, terms, attribution and file-level exclusions. AVI0301 is ICAO-sourced and its redistribution rights remain unresolved; related data-bearing outputs are excluded rather than altered.
+The archived canonical local run is recorded as `VALIDATED_LOCAL`, with **30 checks, zero failures and zero warnings**; that run was not regenerated for this release. Public CI is configured to run **11 source-independent tests**. A further **34 tests** require four local CSV inputs and are not run by public CI. The repository contains no raw source CSVs, credentials or live cloud connection; a clean clone therefore cannot reproduce the full source-backed pipeline.
 
-## Governed tables and decision model
+CAA Table 12.1 attribution and no-resale conditions apply. DfT and DataSF sources retain their own terms; AVI0301/ICAO rights remain unresolved and raw/global output tables stay excluded. The MIT licence covers original code only. See [sources and licensing](docs/data-sources-and-licensing.md) and [reproducibility](docs/reproducibility.md).
 
-GT1–GT8 provide market, demand, connectivity, destination, and benchmark measures; GT9 records operational and data-quality KPIs; GT10 stores recommendations at candidate × decision scope × scenario × model version grain. Global expansion and UK-site rankings are computed independently. The project includes baseline and alternative policy-weight scenarios; sensitivity results test ranking stability rather than statistical confidence.
+## Explore the project
 
-## Power BI V2 report
-
-The public candidate includes two unchanged schema-only **Microsoft Power BI** screenshots. They contain no third-party data rows or identifiable person; attribution: **“Used with permission from Microsoft.”** Report-page screenshots containing aviation data are not included because screenshot permission for third-party content is not established. The local evidence inventory is documented in the [Power BI index](docs/evidence/power-bi-v2/README.md).
-
-| Power BI semantic model | Power BI relationships |
-|---|---|
-| ![Microsoft Power BI semantic model overview](docs/evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview.png) | ![Microsoft Power BI relationships overview](docs/evidence/power-bi-v2/powerbi-v2-09-relationships-overview.png) |
-
-Used with permission from Microsoft. These schema-only screenshots are unchanged, contain no third-party data rows and are included under Microsoft's published screenshot guidance.
-
-## Historical evidence
-
-IBM Cognos, Colab-to-Azure, Azure SQL and watsonx captures are retained locally as historical evidence, not represented as current deployments. Vendor UI screenshots are excluded because product screenshot reuse permission is not documented; CAA/AVI0301 data-bearing images have the additional source-rights conditions described in the licensing file. The SIPOC original is also local-only pending authorship confirmation. Browse the indexes: [Cognos](docs/evidence/historical/cognos/README.md), [Colab](docs/evidence/historical/colab/README.md), [Azure](docs/evidence/historical/azure/README.md), [watsonx](docs/evidence/historical/watsonx/README.md), and [process](docs/evidence/historical/process/README.md).
-
-## Validation and data quality
-
-A public, source-free summary of the archived local validation is in [`docs/evidence/validation/README.md`](docs/evidence/validation/README.md). It reports the local run status and QA-check outcome but omits candidate rankings, source row counts, sample rows and data-bearing SQL results. Full QA, detailed run outputs and the Azure transcript remain local-only. The existing SQL validation query is documented code; it was not executed against Azure during this release preparation.
-
-## Reproduce locally
-
-1. Use Python 3.11 or newer and create an isolated environment.
-2. Install the project and development test dependency from `pyproject.toml`/`uv.lock` (for example, `python -m pip install -e '.[dev]'`).
-3. To use Azure-only scripts, copy `.env.example` to a private local file or export `AZURE_SQL_SERVER`, `AZURE_SQL_DATABASE`, and `AZURE_SQL_USERNAME` in the shell. The scripts ask for the password using masked input; `.env.example` is a template and is not loaded automatically. Never commit a real `.env` file.
-4. Full end-to-end tests and pipeline run require all four locally obtained source CSVs at the paths in `src/airtraffic/config.py`. They are not bundled. Use only copies whose publisher terms permit your use; AVI0301 is ICAO-sourced and rights remain unresolved, so a clean-clone full run must wait for permission. The manifest in `docs/evidence/validation/` is a checksum inventory, not a copy of the data.
-5. Run the tests: `python -m pytest -q`.
-6. To build a new local run, use `python -m airtraffic.pipeline` with `src/` on `PYTHONPATH` (or install the project editable first). This writes a new run under `outputs/runs/`; it does not update Azure.
-
-The test suite was rerun after the release-safety configuration change: **37 passed**. Re-running the pipeline creates a new timestamped run and is not expected to reproduce the canonical run ID; compare source hashes, output hashes, and the documented pipeline/model versions instead. Coverage is not configured.
-
-## Limitations
-
-- Inputs are historical snapshots, not a live feed. The UK route comparison covers the source-supplied period; it should not be described as a multi-year UK airport time series.
-- The global airport benchmark is limited to the airports and years present in AVI0301; it does not establish profitability, route availability, or commercial feasibility.
-- Scenario outputs are decision-support rankings based on explicit policy weights, not causal estimates, forecasts, or probabilities.
-- The legacy root `main.py` contains unvalidated placeholder scoring assumptions and is retained locally but excluded from the public candidate; the V2 package under `src/airtraffic` is the canonical execution path.
-- AVI0301-derived outputs and data-bearing screenshots remain excluded pending confirmation of ICAO/DfT redistribution rights.
-- IBM Cognos/watsonx and Google Colab UI screenshots remain local-only because no screenshot-reuse permission was documented; the altered Azure capture is also withheld. Only unaltered, schema-only Microsoft Power BI screenshots are included under Microsoft’s published screenshot guidance.
-- The MIT license covers only original project code; third-party datasets, screenshots and materials remain under their own terms.
-- No live Azure SQL, Power BI, Cognos or watsonx deployment is claimed; screenshots are historical evidence.
-
-## License
-
-[`LICENSE`](LICENSE) applies the MIT License to original project code authored by Vladyslav Kononov. The owner approved this license. It does not apply to aviation datasets, derived source data, screenshots or other third-party materials; see [`docs/data-sources-and-licensing.md`](docs/data-sources-and-licensing.md).
-
-## Technology
-
-Python, pandas, NumPy, SciPy, pytest, CSV/XLSX, SQL Server/T-SQL, Azure SQL (historical evidence/publication target), and Power BI (V2 report evidence). IBM Cognos, Google Colab, and IBM watsonx/AutoAI are historical components.
+- **Business story:** [Business case study](docs/business-case-study.md)
+- **How it works:** [Engineering walkthrough](docs/end-to-end-project-walkthrough.md) · [Architecture](docs/architecture.md) · [Decision model](docs/decision-model.md) · [GT1–GT10 contracts](docs/gt-contracts.md) · [Lineage](docs/lineage.md)
+- **See the dashboards:** [Power BI gallery](docs/evidence/power-bi-v2/technical-notes.md) · [Cognos gallery](docs/evidence/historical/cognos/technical-notes.md)
+- **Historical engineering work:** [Colab, Azure SQL, watsonx and SIPOC gallery](docs/evidence/historical/README.md) · [technical notes](docs/evidence/historical/technical-notes.md)
+- **Inspect the implementation:** [Python package](src/airtraffic/) · [SQL](sql/) · [tests](tests/) · [GitHub Actions workflow](.github/workflows/ci.yml)
+- **Reproduce public checks:** [reproducibility guide](docs/reproducibility.md) · run history and scope in [Actions](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml?query=branch%3Adocs%2Ffinal-bi-case-study)
+- **Complete evidence inventory:** [26-original screenshot index](docs/evidence/README.md)

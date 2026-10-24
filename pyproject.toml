@@ -20,6 +20,10 @@ dev = [
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+addopts = "--strict-markers"
+markers = [
+    "requires_sources: uses locally supplied aviation CSV inputs and is excluded from public CI",
+]
 
 [build-system]
 requires = ["setuptools>=69"]
