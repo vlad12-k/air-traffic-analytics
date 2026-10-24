@@ -1,6 +1,6 @@
 # Historical engineering screenshots — full technical notes
 
-This document covers all seven historical originals in archive order. The gallery displays the owner-confirmed SIPOC original and, in the local release candidate, a separately counted redacted derivative of the Colab capture. The other six archive originals—including the untouched Colab original—remain local-only. No current source-dependent code or test run is presented as historical validation.
+This document covers all seven historical originals in archive order. All seven original PNGs appear in the gallery under the owner's latest explicit authorization. The Colab page also retains a separately counted redacted derivative for comparison; no raw CSVs are included. Current source-dependent code and tests are described as related implementation, not as historical validation.
 
 ## 1. SIPOC — process design
 
@@ -16,15 +16,19 @@ This document covers all seven historical originals in archive order. The galler
 
 ## 2. Azure SQL — historical resource view
 
+![Original Azure SQL resource/database screenshot](azure/historical-azure-sql-database-original.png)
+
 **Business purpose.** Record the earlier relational-storage target used for the golden-table hand-off, with resource status, capacity/storage and operational-navigation context.
 
-**What is visible.** OCR of the original identifies a database/resource view and reveals subscription, resource-group, server, account and connection-context identifiers. These are intentionally not copied into the public page. No raw aviation rows are visible, but the original contains private infrastructure/account metadata and Microsoft Azure UI.
+**What is visible.** OCR of the original identifies a database/resource view and reveals subscription, resource-group, server, account and connection-context identifiers. These remain visible in the original screenshot and are not separately transcribed into the prose. No raw aviation rows are visible; the owner has expressly authorized publication of this screenshot despite the resource metadata. No password or access token is intentionally published.
 
 **Implementation and model connection.** The current, separate SQL publication design lives in [`sql/schema.sql`](../../../sql/schema.sql), [`sql/views.sql`](../../../sql/views.sql), and [`sql/validation_queries.sql`](../../../sql/validation_queries.sql); deployment helpers are in [`scripts/apply_schema.py`](../../../scripts/apply_schema.py), [`scripts/apply_views.py`](../../../scripts/apply_views.py), and [`scripts/publish_validated_run.py`](../../../scripts/publish_validated_run.py). The screenshot does not prove that the current schema was deployed to the historical resource or that the resource still exists. No Azure account/resource was accessed during this task.
 
-**Publication boundary.** Do not publish the original because it exposes account/resource identifiers and the Microsoft screenshot terms do not permit altered screenshots under the standard website permission. The redacted image in the ignored local review folder is not an original and is not part of this public candidate.
+**Publication boundary.** The original is included under the owner's latest explicit authorization. It visibly contains Azure account/resource identifiers; no separate password or token is transcribed into the repository. Microsoft UI is visible, with no endorsement or bespoke permission claimed.
 
 ## 3. Google Colab — CSV-to-Azure SQL hand-off
+
+![Original Google Colab ETL screenshot from the archive](colab/colab-etl-upload-original.png)
 
 ![Authentic Colab screenshot with the data-bearing upload-output block masked](colab/colab-etl-upload-redacted.png)
 
@@ -32,9 +36,11 @@ This document covers all seven historical originals in archive order. The galler
 
 **Implementation visible in the original.** The screenshot shows a SQLAlchemy/ODBC connection string assembled from variables, ODBC Driver 18 with encryption enabled and certificate trust disabled, iteration over `out/golden`, `pandas.read_csv`, and `DataFrame.to_sql(..., if_exists='replace', index=False)`. The displayed success message indicates a connection was established in that captured session. `replace` semantics overwrite destination tables on rerun; the screenshot does not show a transactional staging/swap, rollback, schema-contract check, reconciliation or run manifest. The notebook source and execution metadata are not in the repository.
 
-**Data and publication boundary.** The original output block names tables and includes AVI0301/GT7-derived and mixed-source counts, so the source PNG remains local. The derivative masks the complete output region, preserves the original pixels elsewhere, and is counted separately from the original. It is not a substitute implementation or proof that any current V2 transformation ran in Colab. The related current code is [`ingest.py`](../../../src/airtraffic/ingest.py) and [`pipeline.py`](../../../src/airtraffic/pipeline.py); that code is not claimed to reproduce the historic notebook line-for-line.
+**Data and publication boundary.** The original output block names tables and includes AVI0301/GT7-derived and mixed-source counts. The owner authorizes publication of the original screenshot; raw CSVs remain excluded. The derivative masks the complete output region, preserves the original pixels elsewhere, and is counted separately. It is not a substitute implementation or proof that any current V2 transformation ran in Colab. The related current code is [`ingest.py`](../../../src/airtraffic/ingest.py) and [`pipeline.py`](../../../src/airtraffic/pipeline.py); that code is not claimed to reproduce the historic notebook line-for-line.
 
 ## 4. Azure SQL — historical validation result grid
+
+![Original Azure SQL validation query/results screenshot](azure/historical-azure-sql-validation-original.png)
 
 **Business purpose.** Show a historical query-editor state and a populated recommendation-result grid after the earlier table upload.
 
@@ -42,39 +48,45 @@ This document covers all seven historical originals in archive order. The galler
 
 **Model and SQL boundary.** The current SQL equivalent is separately documented in [`sql/schema.sql`](../../../sql/schema.sql), [`sql/views.sql`](../../../sql/views.sql) and [`sql/validation_queries.sql`](../../../sql/validation_queries.sql). Current QA/reconciliation is implemented in [`quality.py`](../../../src/airtraffic/quality.py) and tested in [`test_quality.py`](../../../tests/test_quality.py). These files are not asserted to be the historical query shown in the screenshot. The screen alone proves neither successful source-to-target reconciliation nor a trustworthy recommendation; there is no retained query export, source snapshot, run identity or comparison report linked to it.
 
-**Publication boundary.** The original remains local because the result grid contains values with unresolved AVI0301/ICAO lineage and personal/account context. A redacted derivative would still reproduce altered Microsoft UI and would not clear the data rights.
+**Publication boundary.** The original is included under the owner's explicit direction. It shows source-dependent recommendation values and account context; the image is historical evidence, not independently validated output or a current Microsoft/Azure deployment.
 
 ## 5. IBM watsonx — asset import
+
+![Original IBM watsonx import/assets screenshot](watsonx/historical-watsonx-import-original.png)
 
 **Business purpose.** Bring the earlier golden-table assets from the Azure SQL connection into the named watsonx project for subsequent experiment exploration.
 
 **What is visible.** The capture shows the connected-data/asset-picker flow and a selection containing ten GT-named assets. This evidences an import-selection workflow only. It does not prove that every asset loaded successfully, that the imported schema matched current GT contracts, or that any model trained or passed validation.
 
-**Model connection and limits.** GT1–GT10 names are also documented in the current model contracts, but the archive contains no watsonx import manifest, project export, SQL snapshot, training notebook or model artifact that links the import to the current V2 pipeline. The screen shows an account label and source context; these are not published. No actual watsonx service or project was accessed or changed.
+**Model connection and limits.** GT1–GT10 names are also documented in the current model contracts, but the archive contains no watsonx import manifest, project export, SQL snapshot, training notebook or model artifact that links the import to the current V2 pipeline. The screenshot shows an account label and source context; these are not separately transcribed in the prose. No actual watsonx service or project was accessed or changed.
 
-**Publication boundary.** Original remains local: personal account/source labels are visible and applicable IBM product UI/mark publication terms have not been established for this capture. Redaction alone would not clear IBM UI rights.
+**Publication boundary.** The original is included under the owner's explicit authorization. Account/source labels and IBM UI are visible; no IBM endorsement or bespoke IBM permission is claimed.
 
 ## 6. IBM watsonx AutoAI — experiment overview
+
+![Original IBM watsonx AutoAI experiment overview](watsonx/historical-watsonx-autoai-original.png)
 
 **Business question.** Explore whether the historical passenger-traffic target could be modelled from the available route-analysis features and compare generated pipelines.
 
 **What the screenshot evidences.** The AutoAI experiment screen displays a truncated passenger-traffic target, a generated pipeline leaderboard with Ridge and Linear Regression entries, and evaluation fields for cross-validation/holdout error and R². Several displayed fit metrics are near-perfect. This is a prompt for validation, not a defensible accuracy claim: a near-perfect score can arise from leakage, target-derived features, small/duplicate splits or evaluation setup. The screenshot alone cannot determine which explanation applies.
 
-**Required validation not evidenced.** The experiment export, feature list, train/test row identities, leakage audit, time-aware holdout, baseline, residual analysis, reproducible training code and independent test results are absent. No forecasting result or production model is claimed. The CAA source attribution/no-sale condition remains relevant to source-derived metrics; the capture also contains an account identity and IBM UI, so the image is not included.
+**Required validation not evidenced.** The experiment export, feature list, train/test row identities, leakage audit, time-aware holdout, baseline, residual analysis, reproducible training code and independent test results are absent. No forecasting result or production model is claimed. The CAA source attribution/no-sale condition remains relevant to source-derived metrics. The original is included at the owner's direction; the screenshot does not establish model validity or IBM endorsement.
 
 **Current-code separation.** The current airport-site decision model is deterministic scoring in [`scoring.py`](../../../src/airtraffic/scoring.py), not this historical AutoAI training experiment. Current GT tables and tests do not validate AutoAI performance.
 
 ## 7. IBM watsonx AutoAI — pipeline comparison detail
 
+![Original IBM watsonx AutoAI pipeline comparison](watsonx/historical-watsonx-10-autoai-experiment-original.png)
+
 **Purpose.** Provide a second view of generated pipeline candidates and their comparative evaluation, including leaderboard, metrics, feature-engineering/optimisation indicators and build-time context.
 
 **Interpretation.** The image documents that an AutoAI comparison was displayed in the captured session. It does not provide the exported model, exact target/source table snapshot, feature definitions, split design or code needed to rerun and explain the leaderboard. The displayed fit statistics are not presented as business outcomes or generalisation evidence. No independent model comparison, deployment or business decision is evidenced.
 
-**Publication and lineage boundary.** The original contains IBM UI, account context and CAA-derived experiment metrics. It remains local pending an established publication basis for those elements. The current repository's tests and the recorded local quality run cover Python/SQL V2, not this AutoAI experiment.
+**Publication and lineage boundary.** The original contains IBM UI, account context and CAA-derived experiment metrics; it is included at the owner's explicit direction, without a claim of IBM endorsement. The current repository's tests and the recorded local quality run cover Python/SQL V2, not this AutoAI experiment.
 
 ## Cross-project evidence boundaries
 
-- **Source rights:** DfT notes identify AVI0301 as ICAO-supplied, and the applicable terms restrict redistribution. DfT's general OGL notice excludes third-party material. CAA Table 12.1 outputs require attribution and may not be sold/resold. See [data-source terms](../../data-sources-and-licensing.md).
+- **Source rights:** the owner explicitly represents that the screenshot publication is cleared. DfT notes identify AVI0301 as ICAO-supplied; CAA Table 12.1 attribution and no-sale/no-resale conditions remain documented. Raw CSVs and canonical source outputs are not included. See [data-source terms](../../data-sources-and-licensing.md).
 - **Current code/SQL:** the code links above are real current project files, not reconstructed historical files. Run-aware SQL tables, views and validation queries do not prove the historic Azure resource or Colab load used them.
 - **Tests:** the project records 45 local tests; 34 require local source data, while the public-safe 11-test subset runs in CI. No historical screenshot is validated by those test counts.
 - **Claims:** these images document stages and screens, not a current Azure service, scheduled pipeline, deployed Cognos report, deployed AutoAI model, live Power BI service, forecast quality or commercial result.

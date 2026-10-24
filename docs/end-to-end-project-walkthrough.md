@@ -22,7 +22,7 @@ The project owner reports that the college provided source links and learning re
 | Source ID | Source file (local input path) | Purpose in this project | Public boundary |
 |---|---|---|---|
 | AVI0105 | `data/raw/AVI0105.csv` | Country-level UK international passenger context | Not bundled; source/table conditions apply. |
-| AVI0301 | `data/raw/AVI0301.csv` | Global airport benchmark and GLOBAL_EXPANSION features | DfT notes identify ICAO lineage; redistribution basis remains unresolved, so source rows and dependent global results stay local. |
+| AVI0301 | `data/raw/AVI0301.csv` | Global airport benchmark and GLOBAL_EXPANSION features | DfT notes identify ICAO lineage; raw source rows are not bundled. Original owner-authorized screenshots may show historical derived results; they are not reproduced as current analytical findings in prose. |
 | ROUTES | `data/raw/Table_12_1_Intl_Air_Pax_Traffic_Route_Analysis.csv` | CAA UK airport demand, destination flow and connectivity snapshot | Not bundled; cite CAA Table 12.1, May 2022, and observe its no-sale condition. |
 | SFO | `data/raw/Air_Traffic_Passenger_Statistics_2005-2020.csv` | External historical disruption benchmark | Not bundled; source provenance/terms are documented. |
 
@@ -35,11 +35,11 @@ The project owner reports that the college provided source links and learning re
 [`clean.py`](../src/airtraffic/clean.py) implements source-specific transformations rather than treating unlike sources as one table:
 
 - AVI0105's country/year-wide layout is reshaped to long country/year rows; passenger-thousands are converted to passenger counts.
-- AVI0301's airport benchmark labels and thousands units are normalized in code, but AVI0301-derived outputs remain local under the existing rights restriction.
+- AVI0301's airport benchmark labels and thousands units are normalized in code. Raw source rows are not bundled; selected historical derived values remain visible in the original owner-authorized screenshots and are not independently revalidated here.
 - SFO empty `Unnamed:` columns are removed, dates parsed, and passenger counts typed.
 - CAA ROUTES fields are renamed and normalized; the source period is parsed, current and prior passenger components retained, and growth is left null for a zero prior denominator. The snapshot is not represented as an annual airport history.
 
-`tests/test_clean.py` contains source-dependent checks and a synthetic AVI0301 unit example. The unredacted historical Colab screenshot remains local because its upload log contains AVI0301/GT7-linked counts; the [gallery derivative](evidence/historical/colab/colab-etl-upload-redacted.png) masks the entire result block. No original `.ipynb` notebook is in the project tree. The V2 Python functions below are the current implementation; they are not claimed to be the historical Colab notebook code.
+`tests/test_clean.py` contains source-dependent checks and a synthetic AVI0301 unit example. The exact original Colab screenshot and a separately labeled redacted derivative are both included in the [historical gallery](evidence/historical/README.md); the derivative masks the entire upload-result block but does not replace the original. No original `.ipynb` notebook is in the project tree. The V2 Python functions below are the current implementation; they are not claimed to be the historical Colab notebook code.
 
 ## 4. Governed measures, scoring and quality gates
 
@@ -53,12 +53,12 @@ The project owner reports that the college provided source links and learning re
 | GT4 | UK airport × destination-country passenger flow | CAA ROUTES |
 | GT5 | Country-level passenger trend context | AVI0105 |
 | GT6 | SFO historical benchmark | SFO/DataSF |
-| GT7 | Global airport benchmark | AVI0301; the results are not public |
+| GT7 | Global airport benchmark | AVI0301; historical report screenshots show earlier results; raw rows are not bundled |
 | GT8 | UK destination breadth and scheduled/charter composition | CAA ROUTES |
 | GT9 | Run-level operational, coverage and data-quality KPIs | Quality report and governed tables |
-| GT10 | Candidate recommendations by scope, scenario and model version | Separate UK_SITE and restricted GLOBAL_EXPANSION inputs |
+| GT10 | Candidate recommendations by scope, scenario and model version | Separate UK_SITE and GLOBAL_EXPANSION inputs/populations |
 
-UK_SITE scores passenger scale, destination-country breadth, and destination-airport breadth using within-scope percentiles. GT2 growth is contextual because low or zero prior denominators can inflate ratios. GLOBAL_EXPANSION uses its own candidate population and features; scores are not compared across scopes and global candidate outputs remain withheld. Scenario weights are explicit policy parameters, not probabilities. See [`decision-model.md`](decision-model.md), [`gt-contracts.md`](gt-contracts.md), and [`lineage.md`](lineage.md).
+UK_SITE scores passenger scale, destination-country breadth, and destination-airport breadth using within-scope percentiles. GT2 growth is contextual because low or zero prior denominators can inflate ratios. GLOBAL_EXPANSION uses its own candidate population and features; scores are not compared across scopes. Historical global screenshot values are shown as archive evidence only; raw source rows are not published and no current global recommendation is claimed. Scenario weights are explicit policy parameters, not probabilities. See [`decision-model.md`](decision-model.md), [`gt-contracts.md`](gt-contracts.md), and [`lineage.md`](lineage.md).
 
 Validation and reconciliation occur before local export. [`pipeline.py`](../src/airtraffic/pipeline.py) calls `assert_publishable()` before creating the operational layer and export artifacts. [`provenance.py`](../src/airtraffic/provenance.py) and [`export.py`](../src/airtraffic/export.py) attach run IDs and manifests.
 
@@ -70,19 +70,19 @@ The project owner states that they created the Cognos reports and semantic model
 - [UK demand filter](evidence/historical/cognos/historical-cognos-11-demand-filter.png) — a filtered UK airport demand report using CAA-derived measures.
 - [UK demand recovery](evidence/historical/cognos/historical-cognos-10-demand-recovery-original.png) — original two-period UK airport comparison; all ten displayed passenger pairs match the preserved GT1 output derived from CAA Table 12.1 (period 202205).
 
-The captures show IBM Cognos UI; no IBM permission or endorsement is claimed. CAA source reference and no-resale conditions apply to the two demand pages. The original Cognos queries, joins and refresh history are not available; matching passenger totals do not validate other Cognos calculations. Five other Cognos images remain local: `08`/`09` contain AVI0301/ICAO-linked global comparisons, `12`/`13` contain operational values under the same restriction, and `14` has unresolved source lineage for populated ranking values. No Cognos package, query definitions, or runnable source data are part of this public repository. Exact filenames and local-only reasons are in [evidence/README.md](evidence/README.md). The [Cognos gallery notes](evidence/historical/cognos/technical-notes.md) provide the visible technical details and limitations for each capture.
+The complete set of eight original Cognos screenshots appears in the [Cognos technical gallery](evidence/historical/cognos/technical-notes.md). CAA source reference/no-resale conditions are retained on applicable UK pages; historical global/operational score lineage and the original Cognos queries, joins and refresh history are not fully reconstructable. Matching passenger totals do not validate other Cognos calculations. No Cognos package, query definitions or runnable source data are part of this repository. Image-level limitations and the owner's publication authorization are recorded in the [evidence index](evidence/README.md).
 
 ## 6. Historical Google Colab ETL
 
-The [historical engineering evidence gallery](evidence/historical/README.md) accounts for all seven originals; one authentic Colab derivative is published with its entire data-bearing upload-result block masked. The other six historical originals remain local under the per-image restrictions recorded there.
+The [historical engineering evidence gallery](evidence/historical/README.md) displays all seven exact original archive PNGs; one authentic Colab derivative is shown separately with its entire data-bearing upload-result block masked.
 
 ![Historical Colab notebook with upload outputs redacted](evidence/historical/colab/colab-etl-upload-redacted.png)
 
-The screenshot evidences a historical notebook-based CSV-to-Azure-SQL handoff. The visible code uses a SQLAlchemy/ODBC connection, reads CSVs from `out/golden` and calls `DataFrame.to_sql(..., if_exists='replace')`; a connection-success message is visible. The output rows were removed because the original displayed AVI0301/GT7 and mixed-source table counts. The screenshot does not show a data-quality gate, source-target reconciliation, transaction-safe swap, notebook artifact or business finding. `if_exists='replace'` also means a rerun replaces destination tables; this is historical evidence, not a recommended current loading pattern or a current scheduled pipeline. The V2 ingestion/cleaning links above are the current code path, not a reconstruction of the notebook.
+The original screenshot evidences a historical notebook-based CSV-to-Azure-SQL handoff. The visible code uses a SQLAlchemy/ODBC connection, reads CSVs from `out/golden` and calls `DataFrame.to_sql(..., if_exists='replace')`; a connection-success message is visible. The image displays its historic upload output; a separate redacted derivative masks that area. The screenshot does not show a data-quality gate, source-target reconciliation, transaction-safe swap, notebook artifact or business finding. `if_exists='replace'` also means a rerun replaces destination tables; this is historical evidence, not a recommended current loading pattern or a current scheduled pipeline. The V2 ingestion/cleaning links above are the current code path, not a reconstruction of the notebook.
 
 ## 7. Historical Azure SQL storage and validation
 
-The historical Azure screenshots show a resource/database view and a SQL validation result screen. They remain local: the original resource image exposes infrastructure identifiers, and the validation grid displays data-bearing recommendation/global results. The local redacted copies are not substituted for the originals in the public gallery.
+The historical Azure screenshots show a resource/database view and a SQL validation result screen. Both exact originals appear in the [historical gallery](evidence/historical/README.md) under the owner's explicit authorization. They are historical evidence only; the grid is not independent validation and no live Azure resource was accessed or changed.
 
 The current repository's Azure SQL layer is a deployable design, not an active service:
 
@@ -95,7 +95,7 @@ Those database scripts require credentials or can affect external resources; no 
 
 ## 8. Historical IBM watsonx / AutoAI
 
-The archive includes import/experiment screenshots (`05-watsonx-import.png`, `06-watsonx-autoai.png`, `10. Auto Ai experiment.png`). They remain local because the captures contain IBM UI and account/source context, and the AutoAI images include CAA-derived metrics. The repository contains no AutoAI model or experiment export to replay; the available evidence is screenshot-based, not an independently rerun experiment. See the [evidence index](evidence/README.md).
+The archive includes all three watsonx import/experiment screenshots (`05-watsonx-import.png`, `06-watsonx-autoai.png`, `10. Auto Ai experiment.png`); the exact originals appear in the [historical gallery](evidence/historical/README.md). The repository contains no AutoAI model or experiment export to replay; the available evidence is screenshot-based, not an independently rerun experiment. See the [evidence index](evidence/README.md).
 
 ## 9. Current Python/SQL V2 pipeline
 
@@ -119,14 +119,14 @@ The report pages were personally authored by the project owner. Three original C
 - [UK_SITE sensitivity](evidence/power-bi-v2/powerbi-v2-05b-scenario-sensitivity-uk.png) — compares baseline, volume-heavy and connectivity-heavy policy scenarios.
 - [Heathrow candidate detail](evidence/power-bi-v2/powerbi-v2-07b-candidate-detail-heathrow.png) — shows the candidate measures behind further site diligence.
 
-The existing [semantic model](evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview.png) and [relationships](evidence/power-bi-v2/powerbi-v2-09-relationships-overview.png) screenshots document the model layer. All five published Power BI PNGs were compared with their named ZIP entries: three report captures match byte-for-byte and the two schema captures have identical decoded pixels (their PNG bytes differ). The owner authorizes inclusion of their work; this does not assert Microsoft permission or endorsement. CAA attribution/no-resale conditions are preserved. The six other report pages—executive summary, destination connectivity, global benchmark/scenario, governance and Dubai candidate detail—remain local for the blockers in the [26-image inventory](evidence/README.md). No `.pbix`, `.pbit`, PDF export, live service, or refresh source is present/claimed. The [Power BI gallery notes](evidence/power-bi-v2/technical-notes.md) explain each published page's visible measures, documented GT lineage, decision use, and validation/limitations boundary.
+The [Power BI technical gallery](evidence/power-bi-v2/technical-notes.md) contains all 11 exact original archive screenshots. SHA-256 verification confirms each included original matches its archive entry byte-for-byte. CAA attribution/no-resale conditions are preserved where relevant. No `.pbix`, `.pbit`, PDF export, live service, or refresh source is present/claimed. The gallery explains each page's visible measures, documented GT lineage, decision use, and validation/limitations boundary.
 
 ## 11. Business conclusion and limitations
 
-The locally validated UK_SITE baseline identifies Heathrow as the lead within the represented CAA population and remains stable across the three documented UK policy scenarios. This is a priority for further site diligence, not proof of retail footfall or profitability. The project omits commercial decision inputs such as rent, retail conversion, available premises, category competition and operating margin. GLOBAL_EXPANSION is implemented as a distinct scope but its names, ranks and scores are withheld while AVI0301/ICAO redistribution rights remain unresolved.
+The locally validated UK_SITE baseline identifies Heathrow as the lead within the represented CAA population and remains stable across the three documented UK policy scenarios. This is a priority for further site diligence, not proof of retail footfall or profitability. The project omits commercial decision inputs such as rent, retail conversion, available premises, category competition and operating margin. GLOBAL_EXPANSION is implemented as a distinct scope; historical global dashboard values appear in the owner-authorized original screenshots, but are not presented as current or independently revalidated findings.
 
 ## 12. Test and reproduction boundary
 
 The complete local suite contains 45 tests. CI runs 11 self-contained tests; 34 `requires_sources` tests are collected but not run publicly because they need four local CSV inputs, including AVI0301. The CI job compiles code and checks locked dependencies; it makes no Azure connection and produces no data artifacts. For exact commands and scope see the [README CI section](../README.md#continuous-integration).
 
-A clean clone cannot reproduce the source-backed full pipeline until lawful local input access and AVI0301 rights are resolved. The [evidence index](evidence/README.md) accounts for all 26 original PNGs: nine are in the local publication candidate (including two Power BI schema images) and 17 remain local with item-specific reasons. The separate redacted Colab derivative is not an original; the four SVG visuals are supplementary and are not counted as BI platform screenshots.
+A clean clone cannot reproduce the source-backed full pipeline without the four locally obtained CSV inputs. The [evidence index](evidence/README.md) accounts for all 26 exact original PNGs (11 Power BI, eight Cognos, seven historical engineering/process images), plus one separate redacted Colab derivative. The four SVG visuals are supplementary and are not counted as platform screenshots.

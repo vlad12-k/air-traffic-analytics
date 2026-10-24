@@ -1,8 +1,8 @@
-# Historical IBM Cognos — technical walkthrough of published original screenshots
+# Historical IBM Cognos — technical walkthrough of all eight original archive screenshots
 
-Three original PNGs are included in the release candidate. The owner states they authored the Cognos reports, semantic model and analysis and authorizes display of that work; IBM Cognos was the reporting platform. This is not a claim of IBM endorsement or a separate IBM permission letter. The CAA-based report pages retain CAA attribution and the no-sale/no-resale condition. The five remaining archive captures are documented individually but are not included because of their source-data, privacy, or vendor-interface boundaries.
+All eight original Cognos PNGs are included in the gallery. The owner states they authored the reports, semantic model and analysis and has expressly authorized publication without restrictions; this is not an IBM endorsement or a claim of IBM permission. CAA attribution/no-sale conditions are retained on UK demand pages. No current Cognos deployment or report refresh is claimed.
 
-The sequence follows the historical workflow: inspect the semantic model → review UK airport demand and recovery → use a UK airport selection to inspect the demand view.
+The sequence follows the historical workflow: inspect the semantic model → review UK airport demand and recovery → explore executive and operational pages → inspect risk-ranking evidence.
 
 ## 1. Semantic model — historical data module
 
@@ -44,42 +44,52 @@ The sequence follows the historical workflow: inspect the semantic model → rev
 
 **Decision, validation and limits.** The page supports further UK-site diligence by showing passenger-market scale and a period comparison. It does not measure retail footfall, forecast sales, or prove profitability. CAA attribution and no-sale/no-resale conditions apply; the underlying CSV remains local. The original screenshot is included at the project owner’s direction. IBM Cognos UI is visible; no IBM endorsement or separate permission letter is claimed.
 
-## Other five original Cognos archive pages — detailed evidence and publication boundary
+## Additional five original Cognos archive pages — complete gallery
 
-The remaining five original Cognos screenshots are individually documented below. They remain local; descriptions do not reproduce restricted source values or assert unrecorded query/model logic.
+The five additional originals are shown below with technical context. The owner authorizes publication; the descriptions avoid claiming that current Python/SQL code reproduces the historical Cognos query or scoring logic.
 
 ### 4. Executive summary — combined UK and global decision pack
 
+![Original IBM Cognos executive summary](historical-cognos-08-executive-summary-original.png)
+
 The page brings together a UK airport ranking/demand view, a global airport ranking/map, an SFO historical benchmark, and a COVID-recovery panel. It is designed as a leadership overview for comparing market scale and recovery signals before drilling into airport detail. The dashboard layout suggests coordinated filters, but a PNG cannot verify which visuals cross-filter or what query/model relationships drive them.
 
-The global airport ranking is based on AVI0301/ICAO-linked values, which remain uncleared for redistribution. The screenshot's UK, SFO and global panels are interleaved, so publishing a cropped subset would also conflict with the standard screenshot terms and obscure the exact visual context. The original remains local. Current V2 mappings for UK totals, CAA/route measures and SFO context are in [`golden.py`](../../../../src/airtraffic/golden.py) and the [GT contracts](../../../gt-contracts.md); these do not establish the historic Cognos source joins.
+The global airport ranking uses AVI0301/ICAO-linked values according to the project source inventory. The complete original is shown per the owner's direction; no cropped or reconstructed replacement is used. Current V2 mappings for UK totals, CAA/route measures and SFO context are in [`golden.py`](../../../../src/airtraffic/golden.py) and the [GT contracts](../../../gt-contracts.md); these do not establish the historic Cognos source joins or independently validate the displayed values.
 
 ### 5. Executive summary filter — selected-airport interaction
 
+![Original IBM Cognos executive-filter state](historical-cognos-09-executive-filter-original.png)
+
 This second executive page captures a selected-airport state within the global executive dashboard. The selector changes the highlighted airport and the selected-city passenger KPI while the map and top-airport comparisons remain on the page. It demonstrates the intended interaction state, not the Cognos filter expression, join path, or runtime filter propagation.
 
-The page contains AVI0301-linked global values and a global airport map, so the original is not included. No airport values or global rank are reproduced in these notes. The underlying model/data-module package and report specification are absent; the current V2 model is not offered as proof of the Cognos implementation.
+The page contains AVI0301-linked global values and a global airport map. The original is included at the owner's direction; no numeric values are repeated in this note. The underlying model/data-module package and report specification are absent; the current V2 model is not offered as proof of the Cognos implementation.
 
 ### 6. Operational monitoring — multi-airport dashboard
 
+![Original IBM Cognos operational-monitoring report](historical-cognos-12-operational-monitoring-original.png)
+
 This page combines an airport selector, KPI cards, a passenger-versus-recovery view, an operational-risk treemap, an airport comparison table, and a composite-score chart. Its intended operational question is which represented airport profiles warrant closer review across passenger scale, route breadth, recovery and a score field.
 
-The report is labelled UK/2022, but its local source map associates the displayed operational values with AVI0301-matching benchmark metrics; the archive has no source query/model export to resolve that lineage. The global source terms therefore remain a publication blocker. GT1, GT8, GT9 and GT10 in the current V2 contracts provide conceptual analogues for market, connectivity, quality and scoped candidate outputs only; they do not verify this historical screen's metrics or score formula.
+The report is labelled UK/2022, but the project source map associates the displayed operational values with AVI0301-matching benchmark metrics; the archive has no source query/model export to resolve that lineage. The original is included per the owner's explicit authorization. GT1, GT8, GT9 and GT10 in the current V2 contracts provide conceptual analogues for market, connectivity, quality and scoped candidate outputs only; they do not verify this historical screen's metrics or score formula.
 
 ### 7. Operational monitoring filter — selected airport
 
+![Original IBM Cognos selected-airport operational filter](historical-cognos-13-operational-filter-original.png)
+
 This image shows a selected-Heathrow state of the operational page. The selector narrows KPI cards, route/recovery visuals, treemap, comparison table and composite-score view to the selected airport while retaining the comparison context. This is filter-state evidence, not an exported Cognos filter definition or a test of relationship direction/cardinality.
 
-Source lineage remains unresolved in the project archive and the local map associates these displayed benchmark metrics with AVI0301-linked values. No table row or metric value is repeated here. The image stays local until both the precise source rights and an applicable IBM screenshot/mark basis are established.
+Source lineage remains unresolved in the project archive and the local map associates these displayed benchmark metrics with AVI0301-linked values. No table row or metric value is repeated in this note. The original image is included per the owner's explicit authorization; it is not presented as a currently validated metric table.
 
 ### 8. Risk ranking — populated airport table and model fields
 
+![Original IBM Cognos risk-ranking table](historical-cognos-14-risk-ranking-original.png)
+
 The table exposes airport name, total passenger measure, route count, recovery-versus-2019 field, and a displayed composite-score field. This is the most operationally actionable historical view: it makes the candidate attributes inspectable rather than showing only a single KPI. The screenshot does not disclose the composite-score weights, normalisation population, missing-value policy, scenario, version, or audit trail; these must not be inferred from the column label.
 
-The source archive does not establish the table's historical lineage. The local evidence map notes that the UK-labelled values match AVI0301-linked metrics, but without source-to-field mapping this remains unresolved rather than a definitive source attribution. The image is not included and its numeric rows are not reproduced. The current GT10 contract is candidate × decision scope × scenario × model version; it is not assumed to be the same as this historical Cognos score.
+The source archive does not establish the table's historical lineage. The local evidence map notes that the UK-labelled values match AVI0301-linked metrics, but without source-to-field mapping this remains unresolved rather than a definitive source attribution. The original is included at the owner's direction; its numeric rows are visible only in the screenshot, not repeated in prose. The current GT10 contract is candidate × decision scope × scenario × model version; it is not assumed to be the same as this historical Cognos score.
 
 ## Crosswalk to current code, SQL and validation
 
 The current analytical implementation is separately inspectable in [`golden.py`](../../../../src/airtraffic/golden.py), [`scoring.py`](../../../../src/airtraffic/scoring.py), [`quality.py`](../../../../src/airtraffic/quality.py), [`sql/schema.sql`](../../../../sql/schema.sql), [`sql/views.sql`](../../../../sql/views.sql), and [`sql/validation_queries.sql`](../../../../sql/validation_queries.sql). Current GT1–GT10 grains, source lineage and scenario semantics are defined in [GT contracts](../../../gt-contracts.md), [lineage](../../../lineage.md), and the [decision model](../../../decision-model.md). Tests of current behaviour are in [`test_golden_tables.py`](../../../../tests/test_golden_tables.py), [`test_scoring.py`](../../../../tests/test_scoring.py), [`test_quality.py`](../../../../tests/test_quality.py), and [`test_pipeline.py`](../../../../tests/test_pipeline.py).
 
-No original Cognos data module, package, SQL/query export, refresh log or report specification is included. Therefore the current code, SQL, 45-test local run and 11-test public CI subset are evidence for the V2 implementation only; they do not validate the historical Cognos screenshots. All five unpublished originals are preserved locally. The exact source ZIP and the [26-image inventory](../../README.md) are unchanged.
+No original Cognos data module, package, SQL/query export, refresh log or report specification is included. Therefore the current code, SQL, 45-test local run and 11-test public CI subset are evidence for the V2 implementation only; they do not validate the historical Cognos screenshots. All eight originals are included in the gallery at the owner's direction; source and calculation limitations remain explicit. The exact source ZIP and the [26-image inventory](../../README.md) are unchanged.

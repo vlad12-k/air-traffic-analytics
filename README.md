@@ -8,13 +8,19 @@
 
 The business problem was to replace an informal “which airport looks promising?” discussion with an auditable comparison of passenger scale, market position, destination connectivity and scenario assumptions. The model separates the initial **UK_SITE** decision from the later **GLOBAL_EXPANSION** screen because their candidate populations and source data differ. Per the project owner, the IBM Cognos and Power BI dashboard/report designs and analysis were personally created for the academic work; IBM and Microsoft supplied the tools, not the analytical authorship. The college supplied dataset links and learning resources, which document access but do not grant redistribution rights.
 
-The complete local project and canonical run remain preserved. This release candidate is rights-filtered: it excludes raw inputs, AVI0301/ICAO-derived global results and detailed QA outputs. It contains six original BI report captures, two Power BI schema originals, the owner-confirmed SIPOC original and one separately counted redacted Colab derivative; 17 of the 26 archive originals remain local-only under the specific boundaries in the evidence index.
+The complete local project and canonical run remain preserved. The evidence package contains all 26 exact original archive screenshots (11 Power BI, eight Cognos, seven historical engineering/process images), plus one clearly labeled redacted Colab derivative and four supplementary SVG figures. Raw source CSVs, credentials and live service access are not included. Screenshot content is historical evidence and is not presented as a new refresh or independently revalidated result.
 
-## Authentic BI platform screenshots
+## Featured original BI dashboards
 
-The project owner states they created the Power BI and Cognos reports and analysis. The original PNGs below come from the supplied archive; they are not reconstructed or redacted. The owner's authorization to show their authored report work does not assert vendor permission or endorsement.
+The project owner states they created the Power BI and Cognos reports and has expressly authorized publication of all 26 original screenshots without restriction. The images below are genuine archive captures, not reconstructed substitutes. Product interfaces remain visible; this portfolio does not claim vendor endorsement or deployment.
 
 ### Microsoft Power BI V2
+
+#### Executive decision summary
+
+![Original Power BI executive decision summary](docs/evidence/power-bi-v2/powerbi-v2-01-executive-decision-summary-original.png)
+
+*A two-scope overview links UK_SITE and GLOBAL_EXPANSION screening, scenario context and publication status. The global panel is historical AVI0301-associated evidence; no current global recommendation is claimed.*
 
 #### UK airport demand
 
@@ -40,9 +46,9 @@ The two previously published, unchanged schema screenshots show the author's mod
 
 | Semantic model | Relationships |
 |---|---|
-| ![Microsoft Power BI semantic model overview](docs/evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview.png) | ![Microsoft Power BI relationships overview](docs/evidence/power-bi-v2/powerbi-v2-09-relationships-overview.png) |
+| ![Original Power BI semantic model overview](docs/evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview-archive-original.png) | ![Original Power BI relationships overview](docs/evidence/power-bi-v2/powerbi-v2-09-relationships-overview-archive-original.png) |
 
-**Attribution on these two schema-only captures:** “Used with permission from Microsoft.” This is the standard published screenshot attribution for those data-free images; it is not an endorsement or a bespoke permission letter. The three CAA-based report pages above are included at the project owner's direction with the vendor-UI risk explicitly disclosed; the six remaining report pages are not included, as detailed in the [evidence index](docs/evidence/README.md).
+These are the exact semantic-model and relationship screenshots from the supplied archive. They show model-design context, not a machine-readable model, verified cardinality/filter behavior, or a live deployment. All 11 Power BI originals and their technical notes are in the [complete gallery](docs/evidence/power-bi-v2/technical-notes.md).
 
 ### IBM Cognos Analytics — historical work
 
@@ -64,9 +70,9 @@ The two previously published, unchanged schema screenshots show the author's mod
 
 *This authentic original shows a ten-airport UK comparison, period totals and recovery context. All ten displayed current/prior airport pairs match the preserved GT1 output derived from CAA Table 12.1, May 2022; the original Cognos query is not available. CAA attribution/no-resale conditions apply. No IBM endorsement is claimed.*
 
-The three Cognos screenshots above are included at the project owner's direction; they reproduce IBM Cognos UI and do not claim IBM permission or endorsement. Five other Cognos captures remain local. `14-cognos-risk-ranking.png` contains populated airport rows and passenger, route, recovery and composite-score fields; its source lineage and redistribution rights are unresolved. The executive/global and populated operational pages remain local under the documented AVI0301/ICAO restrictions. See the [evidence index](docs/evidence/README.md) for each file and blocker.
+The three Cognos screenshots above are selected highlights from the eight-image archive gallery. All eight exact originals and per-image technical notes are available in the [complete Cognos gallery](docs/evidence/historical/cognos/technical-notes.md). Some historic scores/source mappings cannot be reconstructed from the screenshots; descriptions therefore distinguish what is visible from what current V2 code validates.
 
-The historical Colab, Azure SQL, watsonx and SIPOC screenshots are individually accounted for in the [historical engineering evidence gallery](docs/evidence/historical/README.md); the page distinguishes what the captures show from what is not reproducible or cleared for publication.
+The historical Colab, Azure SQL, watsonx and SIPOC screenshots are individually displayed and described in the [historical engineering evidence gallery](docs/evidence/historical/README.md).
 
 ### Historical process design — SIPOC
 
@@ -99,14 +105,14 @@ AVI0105 adds country-level demand context: “Spain & Canary Islands” is the l
 
 *Original rendering of the canonical UK-only sensitivity result. It shows the leading candidate, not scenario scores; the analysis tests policy-weight sensitivity, not probability or profitability.*
 
-**Global expansion findings are not published.** AVI0301 is ICAO-sourced and its redistribution rights are unresolved; no global candidate names, scores, ranks or recommendations are reproduced here.
+Global screens are visible in the explicitly authorized original screenshots and remain historical evidence. No global candidate names, scores or ranks are transcribed into the prose as current/revalidated findings; underlying source CSVs are not included.
 
 ## Project evolution
 
-- **Historical IBM Cognos Analytics:** the project owner personally created the semantic model and reports. Original captures of the model and UK demand filter are included at the owner's direction with no IBM permission or endorsement claimed; the recovery page has unresolved global data lineage, and the executive/operational/risk captures remain local under existing data restrictions.
-- **Historical Colab / Python / Azure SQL:** the archive shows a notebook-based CSV-to-SQL upload and an Azure SQL result screen. One authentic Colab screenshot derivative is published with the entire upload-output block masked; the unredacted original and data-bearing Azure result remain local. Google Colab and Azure are historical tools, not claimed live services.
+- **Historical IBM Cognos Analytics:** the owner-authored semantic model and reports span eight original captures: UK demand, executive views, operational monitoring, filtering and risk ranking. Source/query/score lineage is discussed per image and is not retroactively validated by the current code.
+- **Historical Colab / Python / Azure SQL / watsonx:** the seven originals record SIPOC process design, CSV-to-SQL code, Azure resource/query screens and AutoAI experiments. The original Colab image and its separate redacted derivative are both shown; no source CSV or live service is included or claimed.
 - **Current Python/SQL V2 analytical model:** modular ingestion, cleaning, GT1–GT10 contracts, source reconciliation, quality gates, model versioning and run provenance.
-- **Power BI V2:** the owner's report pages cover executive decision, UK demand, connectivity, scenarios, candidate detail, governance and model relationships. Three original CAA-based report captures and the two previously published schema screenshots are shown; no Microsoft permission or endorsement is claimed for the three data-bearing captures. Remaining global and other report captures stay local.
+- **Power BI V2:** 11 exact archive screenshots cover executive decision, UK demand, connectivity, UK/global scenarios, candidate detail, governance and model structure. The technical gallery maps each image to the GT1–GT10 contracts, code and test boundaries where evidence supports that crosswalk.
 
 The project shows sequential implementations of a similar business workflow; it does not claim a direct technical migration from Cognos to Power BI. For the detailed timeline and methods, see the [business case study](docs/business-case-study.md).
 
@@ -174,4 +180,4 @@ Other limitations: sources are historical snapshots; CAA route data is one compa
 - [GT1–GT10 contracts](docs/gt-contracts.md)
 - [Decision model](docs/decision-model.md)
 - [Data sources and licensing](docs/data-sources-and-licensing.md)
-- [Evidence and local-only screenshot indexes](docs/evidence/)
+- [Complete 26-original screenshot evidence index](docs/evidence/)

@@ -2,7 +2,7 @@
 
 ## Inputs
 
-The pipeline expects four CSVs in `data/raw/`, with exact paths in `src/airtraffic/config.py`. None are bundled. AVI0301 is ICAO-sourced with redistribution rights unresolved; do not include it or derived data in the public package until those rights are cleared. A lawful local copy may be used for private validation. The CAA and DfT/DataSF sources have attribution/conditions documented in [`data-sources-and-licensing.md`](data-sources-and-licensing.md). The public `source_manifest.json` records only source-relative paths, byte sizes and SHA-256 digests; it contains no sample rows. `outputs/qa/source_schema.txt`, which includes sample rows, is local-only.
+The pipeline expects four CSVs in `data/raw/`, with exact paths in `src/airtraffic/config.py`. None are bundled. AVI0301 is ICAO-sourced; its raw CSV and canonical derived table outputs are not included. The owner explicitly authorizes publication of the original authored dashboard screenshots containing historical displays; those images are not current pipeline exports or independent validation. The CAA and DfT/DataSF source conditions are documented in [`data-sources-and-licensing.md`](data-sources-and-licensing.md). The public `source_manifest.json` records only source-relative paths, byte sizes and SHA-256 digests; it contains no sample rows. `outputs/qa/source_schema.txt`, which includes sample rows, is local-only.
 
 ## Environment and commands
 
@@ -39,11 +39,11 @@ Re-running the pipeline creates a new run ID and generated timestamp. The canoni
 
 `sql/schema.sql`, `sql/views.sql`, and `sql/validation_queries.sql` describe the SQL Server publication/validation contract. `scripts/validate_published_run.py` connects to a database and prompts for a password; `scripts/publish_validated_run.py` can modify a database. These commands were not run during this preparation because they require cloud access and may read/write external resources. Do not run the publisher without explicit operational approval.
 
-Only the SQL contracts and code are public-candidate files. Historical Azure validation logs contain data-bearing result rows, remain local-only, and were not rerun.
+Only the SQL contracts and code are published as executable artifacts. Historical Azure validation logs with data-bearing result rows remain local and were not rerun; the exact historic SQL screenshot is included separately in the authorized evidence gallery.
 
 ## Known limits
 
-- AVI0301/ICAO redistribution rights are unresolved; all affected outputs/screenshots remain local-only.
+- AVI0301 raw input and canonical row-level outputs are not bundled; original owner-authorized screenshots may contain historical displayed values, without asserting current validation.
 - The approved MIT `LICENSE` applies to original code only; third-party materials remain under their own terms.
 - Coverage is not configured; no coverage figure is claimed.
 - No Azure, Power BI, or Cognos live deployment was independently checked.

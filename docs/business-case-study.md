@@ -4,14 +4,14 @@
 
 ## 1. Executive summary
 
-AirTrafficAnalytics was developed as an academic analytics project for a boutique retail business considering airport-based expansion. The project owner states they personally designed and built the Power BI and IBM Cognos dashboards and performed the analysis; Microsoft and IBM were the software platforms, not the authors of the dashboard work. This establishes the claimed authorship of the report content, but not permission to reproduce vendor-owned interface elements or third-party data in screenshots.
+AirTrafficAnalytics was developed as an academic analytics project for a boutique retail business considering airport-based expansion. The project owner states they personally designed and built the Power BI and IBM Cognos dashboards and performed the analysis; Microsoft and IBM were the software platforms, not the authors of the dashboard work. The owner expressly authorizes publication of all 26 original archive screenshots; source attribution/conditions and historical validation limits remain documented separately.
 
 1. **UK_SITE:** Which UK airport market is the strongest candidate for the first boutique?
 2. **GLOBAL_EXPANSION:** Which non-UK airport markets should be considered for subsequent expansion?
 
 The system turns public aviation source extracts into governed GT1–GT10 tables, quality/reconciliation checks, a versioned and explainable candidate-scoring model, SQL publication structures and a later Power BI V2 report layer. Historical evidence documents earlier IBM Cognos and Colab/Azure SQL work. For the implementation-to-evidence sequence, see the [end-to-end project walkthrough](end-to-end-project-walkthrough.md).
 
-The public repository is a deliberately reduced evidence package. It includes the five owner-authorized original Power BI/Cognos captures (with vendor UI permission not claimed), the two previously published schema-only Power BI screenshots, source-safe outputs, metadata-only manifests, and supplemental CAA-based analytics visuals. Raw sources and AVI0301-dependent global results remain local because the underlying ICAO redistribution basis is unresolved.
+The repository includes all 26 exact original archive screenshots (11 Power BI, eight Cognos and seven historical engineering/process images), one separate redacted Colab derivative, source-safe outputs, metadata-only manifests and supplemental CAA-based analytics visuals. Raw CSV inputs are not bundled. Global values appearing within screenshots are historical report evidence, not current or independently reproduced conclusions.
 
 ## 2. Business concept and problem
 
@@ -53,7 +53,7 @@ Growth is contextual rather than a dominant baseline component because small or 
 
 The model design compares AVI0301/GT7 candidates on passenger scale, passenger growth, aircraft movement scale and passengers per movement. It excludes airports already represented in UK_SITE through a deterministic cross-source eligibility check, then normalizes within the global candidate population. Passenger-per-movement is an intensity measure, not a profitability proxy.
 
-The global scope has three separate weight policies. They are documented analytical policy choices, but no global result values are published while the source rights are unresolved.
+The global scope has three separate weight policies. They are documented analytical policy choices. The original screenshots may display historical global values under the owner's authorization; this report does not restate them as current results. Raw source files remain excluded.
 
 | GLOBAL_EXPANSION scenario | Passenger scale | Passenger growth | Movement scale | Traffic intensity |
 |---|---:|---:|---:|---:|
@@ -61,7 +61,7 @@ The global scope has three separate weight policies. They are documented analyti
 | SCALE_HEAVY | 0.65 | 0.10 | 0.15 | 0.10 |
 | GROWTH_HEAVY | 0.40 | 0.35 | 0.10 | 0.15 |
 
-The DfT notes identify ICAO as the underlying source for AVI0301, but the project does not contain verified redistribution permission for that exact extract or its derivatives. Accordingly, this case study gives no global airport names, rankings, benchmark values or recommendation. The method is described; the source-dependent outcomes remain local-only. See [`data-sources-and-licensing.md`](data-sources-and-licensing.md).
+The DfT notes identify ICAO as the underlying source for AVI0301. The owner has authorized publication of the original authored report screenshots, but the case study does not provide raw source files or represent screenshot values as current, independently verified outputs. AVI0301 provenance and source-specific terms remain documented in [`data-sources-and-licensing.md`](data-sources-and-licensing.md).
 
 ## 4. Data and provenance
 
@@ -157,7 +157,7 @@ For the first boutique, Heathrow is the strongest **evidence-based UK market to 
 
 A responsible next business step would combine these airport-market findings with evidence not present in this project: airport retail footfall, available premises, rents, lease terms, category competition, customer conversion, basket size, operating costs and the boutique’s own unit economics. Those inputs are necessary before making a commercial viability or investment decision.
 
-The second-stage global screen is part of the model design, but no public global candidate result is asserted while AVI0301 redistribution rights remain unresolved.
+The second-stage global screen is part of the model design. Historical global values appear in owner-authorized dashboard screenshots, but no current or independently reproduced global result is asserted in the narrative.
 
 ## 10. Project evolution
 
@@ -171,7 +171,7 @@ The diagram below is a supplemental summary of the documented sequence. It is no
 
 According to the project owner, they personally created the Cognos dashboards, semantic model and analysis as academic work; IBM Cognos was the reporting platform, not the dashboard author. The historical reports covered executive summary, demand/recovery, filtering, operations and risk-oriented views. They document an earlier implementation of the airport-retail decision problem, not a current Cognos deployment.
 
-The public Cognos gallery contains `07-cognos-semantic-model.png`, `11-cognos-demand-filter.png` and the exact original `10-cognos-demand-recovery-original.png`. The semantic-model capture shows model-object names and a relationship workspace; the two demand pages show selected-airport and ten-airport period comparisons. All ten current/prior passenger pairs in the demand views match the preserved GT1 output derived from CAA Table 12.1 (comparison period 202205), but that match does not recover the historical Cognos queries, joins, refresh path or other calculations. `14-cognos-risk-ranking.png` contains passenger, route, recovery and composite-score fields with unresolved lineage and remains local. The executive captures `08`/`09` and operational pages `12`/`13` remain local under AVI0301/ICAO restrictions. The public ZIP is unchanged; no Cognos package, query definitions or historical source data are available for independent replay. No IBM permission or endorsement is claimed for the published UI captures. See the [Cognos gallery notes](evidence/historical/cognos/technical-notes.md) and [historical engineering evidence index](evidence/historical/README.md) for the stage-by-stage evidence boundary.
+The public Cognos gallery contains all eight exact original archive images: the semantic model, UK demand filter/recovery, executive pages, operational monitoring/filtering and risk ranking. All ten current/prior passenger pairs in the two UK demand views match the preserved GT1 output derived from CAA Table 12.1 (comparison period 202205), but that match does not recover the historical Cognos queries, joins, refresh path or other calculations. The remaining scores and source lineage are discussed with explicit uncertainty in the [Cognos gallery notes](evidence/historical/cognos/technical-notes.md). No Cognos package, query definitions or historical source data are available for independent replay. The ZIP remains unchanged; the owner's authorization and per-image evidence are in the [historical index](evidence/historical/README.md).
 
 ![Original IBM Cognos semantic-model screenshot](evidence/historical/cognos/historical-cognos-07-semantic-model.png)
 
@@ -187,7 +187,7 @@ The public Cognos gallery contains `07-cognos-semantic-model.png`, `11-cognos-de
 
 ### Stage B — Colab, Python and Azure SQL (historical)
 
-The archive records a notebook-based ETL/upload workflow and SQL validation activity. These are historical stages, not live services. The public [Colab gallery](evidence/historical/colab/README.md) contains an authentic derivative that preserves the notebook's connection and CSV-to-SQL code while masking its full upload-output block; the untouched original remains local because it contains AVI0301/GT7-derived counts. The Azure result screen remains local because it exposes global recommendation values, account context and Microsoft UI. The current V2 code is separate and does not retroactively validate these historical screens.
+The archive records a notebook-based ETL/upload workflow and SQL validation activity. These are historical stages, not live services. The [historical gallery](evidence/historical/README.md) includes the exact original Colab and Azure SQL screenshots; the redacted Colab derivative is separately shown as an optional comparison, not a replacement. The current V2 code is separate and does not retroactively validate these historical screens.
 
 ### Stage C — Governed Python/SQL V2
 
@@ -195,9 +195,9 @@ The current analytical package introduced modular transformations, GT contracts,
 
 ### Stage D — Power BI V2
 
-According to the project owner, they authored the Power BI V2 report design and analysis; Microsoft Power BI was the platform, not the report author. The local report contains executive, UK demand, destination/connectivity, global benchmark, scenario, governance and candidate-detail pages, plus model/relationship views. The two unchanged schema-only screenshots are public; they document semantic-model structure, not dashboard outcomes. No direct technical migration from Cognos to Power BI is claimed.
+According to the project owner, they authored the Power BI V2 report design and analysis; Microsoft Power BI was the platform, not the report author. The 11 original archive screenshots cover executive, UK demand, destination/connectivity, global benchmark, scenario, governance, candidate-detail and model/relationship views. They document historical dashboard evidence, not a live deployment. No direct technical migration from Cognos to Power BI is claimed.
 
-The three original dashboard captures below are exact PNGs from the archive, not reconstructions. The project owner authorizes displaying their own report work; that authorization is not Microsoft permission or endorsement. All three contain CAA-derived measures, with source attribution and the CAA no-sale condition stated in the captions.
+The featured original dashboard captures below are exact PNGs from the archive, not reconstructions. The project owner authorizes displaying their report work. CAA source attribution and no-sale conditions are preserved where applicable; no vendor endorsement is claimed.
 
 #### UK market demand
 
@@ -217,19 +217,19 @@ The three original dashboard captures below are exact PNGs from the archive, not
 
 *Business question: which demand and connectivity evidence supports the Heathrow UK_SITE screen? The original authored report page displays CAA-derived measures. Source: UK CAA Table 12.1, May 2022; source reference and no-resale conditions apply. No Microsoft permission or endorsement is claimed.*
 
-The requested `03-destination-connectivity.png` is not included in this five-image draft because it was not in the authorized set. The executive/global captures remain local under the existing AVI0301/ICAO restriction. The project contains no `.pbix`, `.pbit` or PDF export from which a UI-free original report could be prepared.
+The complete [Power BI original-image gallery](evidence/power-bi-v2/technical-notes.md) includes destination connectivity, executive/global pages, governance and all remaining archive screenshots. The project contains no `.pbix`, `.pbit` or PDF export from which a UI-free report artifact could be prepared.
 
 The two public schema captures below show the V2 semantic structure without data rows. They document model design, not airport performance.
 
 | Semantic model | Relationships |
 |---|---|
-| ![Microsoft Power BI semantic model overview](evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview.png) | ![Microsoft Power BI relationships overview](evidence/power-bi-v2/powerbi-v2-09-relationships-overview.png) |
+| ![Original Power BI semantic model overview](evidence/power-bi-v2/powerbi-v2-08-semantic-model-overview-archive-original.png) | ![Original Power BI relationships overview](evidence/power-bi-v2/powerbi-v2-09-relationships-overview-archive-original.png) |
 
-**Attribution for the two existing schema-only captures:** “Used with permission from Microsoft,” as required by Microsoft's standard screenshot guidance for those data-free images; this is not an endorsement or a bespoke permission letter. The three original dashboard captures above are a separate uncommitted local draft and are not claimed to be covered by the schema-only screenshot conditions.
+The semantic-model and relationship images are the exact archive originals and are included in the same complete 11-image gallery. Their screenshots evidence model views only; they are not a machine-readable model or proof of deployed service behavior.
 
 ## 11. Validation, reproducibility and limitations
 
-- The canonical run is recorded as `VALIDATED_LOCAL`; the test suite passed 37 tests in the local environment with source inputs available. Coverage is not configured.
+- The canonical run is recorded as `VALIDATED_LOCAL`; the repository records a 45-test local suite, including source-dependent tests. Coverage is not configured.
 - A clean clone cannot run the full pipeline/tests without the four local source CSVs. They are intentionally not bundled; AVI0301 rights are unresolved.
 - CAA-derived data may be included only with source reference and subject to the CAA no-sale condition. DfT and DataSF sources retain their stated terms. None of these data terms are extended or replaced by the code MIT license.
 - The original academic report/business-requirements deck and formal stakeholder matrix were not found in this project folder. This case study uses the repository docs, code, manifests, canonical outputs and historical screenshots; unstated business requirements are not invented.
