@@ -8,7 +8,7 @@
 
 The business problem was to replace an informal “which airport looks promising?” discussion with an auditable comparison of passenger scale, market position, destination connectivity and scenario assumptions. The model separates the initial **UK_SITE** decision from the later **GLOBAL_EXPANSION** screen because their candidate populations and source data differ. Per the project owner, the IBM Cognos and Power BI dashboard/report designs and analysis were personally created for the academic work; IBM and Microsoft supplied the tools, not the analytical authorship. The college supplied dataset links and learning resources, which document access but do not grant redistribution rights.
 
-The complete local project and canonical run remain preserved. This public repository is a rights-filtered subset: it omits raw inputs, AVI0301/ICAO-derived global results and detailed QA outputs. It includes five original captures of the project owner's BI work plus the two previously published Power BI schema screenshots; captions preserve CAA conditions and distinguish owner-created work from vendor endorsement. Other uncleared screenshots remain local.
+The complete local project and canonical run remain preserved. This release candidate is rights-filtered: it excludes raw inputs, AVI0301/ICAO-derived global results and detailed QA outputs. It contains six original BI report captures, two Power BI schema originals, the owner-confirmed SIPOC original and one separately counted redacted Colab derivative; 17 of the 26 archive originals remain local-only under the specific boundaries in the evidence index.
 
 ## Authentic BI platform screenshots
 
@@ -58,9 +58,21 @@ The two previously published, unchanged schema screenshots show the author's mod
 
 *The owner-created report uses a UK airport filter to examine passenger demand. Source: UK CAA Table 12.1, May 2022; CAA attribution/no-resale conditions apply. IBM Cognos UI is visible; no IBM permission or endorsement is claimed.*
 
-The two Cognos screenshots above are included at the project owner's direction; they reproduce IBM Cognos UI and do not claim IBM permission or endorsement. Six other Cognos captures remain local. `10-cognos-demand-recovery.png` shows UK airports across 2020 and 2022, but the archive does not identify the historical source lineage. `14-cognos-risk-ranking.png` contains populated airport rows and passenger, route, recovery and composite-score fields; its source lineage and redistribution rights are unresolved. The executive/global and populated operational pages remain local under the documented AVI0301/ICAO restrictions. See the [evidence index](docs/evidence/README.md) for each file and blocker.
+#### UK demand recovery
+
+![Original IBM Cognos UK airport demand-recovery report](docs/evidence/historical/cognos/historical-cognos-10-demand-recovery-original.png)
+
+*This authentic original shows a ten-airport UK comparison, period totals and recovery context. All ten displayed current/prior airport pairs match the preserved GT1 output derived from CAA Table 12.1, May 2022; the original Cognos query is not available. CAA attribution/no-resale conditions apply. No IBM endorsement is claimed.*
+
+The three Cognos screenshots above are included at the project owner's direction; they reproduce IBM Cognos UI and do not claim IBM permission or endorsement. Five other Cognos captures remain local. `14-cognos-risk-ranking.png` contains populated airport rows and passenger, route, recovery and composite-score fields; its source lineage and redistribution rights are unresolved. The executive/global and populated operational pages remain local under the documented AVI0301/ICAO restrictions. See the [evidence index](docs/evidence/README.md) for each file and blocker.
 
 The historical Colab, Azure SQL, watsonx and SIPOC screenshots are individually accounted for in the [historical engineering evidence gallery](docs/evidence/historical/README.md); the page distinguishes what the captures show from what is not reproducible or cleared for publication.
+
+### Historical process design — SIPOC
+
+![Original owner-authored SIPOC for airport site selection](docs/evidence/historical/process/01-business-process-sipoc.png)
+
+*This original diagram records the intended input-to-decision workflow and GT1–GT10 outputs; it is process-design evidence, not proof every depicted step ran. See the [full historical technical notes](docs/evidence/historical/technical-notes.md).*
 
 ## Business questions
 
@@ -155,7 +167,8 @@ Other limitations: sources are historical snapshots; CAA route data is one compa
 - [Business case study](docs/business-case-study.md)
 - [End-to-end project walkthrough](docs/end-to-end-project-walkthrough.md)
 - [Power BI V2 original screenshot gallery and technical notes](docs/evidence/power-bi-v2/technical-notes.md)
-- [Historical IBM Cognos original screenshot gallery and technical notes](docs/evidence/historical/cognos/technical-notes.md)
+- [Historical engineering evidence gallery](docs/evidence/historical/README.md)
+- [Historical screenshot technical notes](docs/evidence/historical/technical-notes.md)
 - [Architecture](docs/architecture.md)
 - [Analytical lineage](docs/lineage.md)
 - [GT1–GT10 contracts](docs/gt-contracts.md)

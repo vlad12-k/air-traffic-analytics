@@ -64,11 +64,13 @@ Validation and reconciliation occur before local export. [`pipeline.py`](../src/
 
 ## 5. Historical IBM Cognos Analytics
 
-The project owner states that they created the Cognos reports and semantic model. Two authentic screenshots are included at the owner's direction:
+The project owner states that they created the Cognos reports and semantic model. Three authentic screenshots are included at the owner's direction:
 
 - [Semantic model](evidence/historical/cognos/historical-cognos-07-semantic-model.png) — schema/model metadata, not result rows.
 - [UK demand filter](evidence/historical/cognos/historical-cognos-11-demand-filter.png) — a filtered UK airport demand report using CAA-derived measures.
-The captures show IBM Cognos UI; no IBM permission or endorsement is claimed. CAA source reference and no-resale conditions apply to the demand page. Six other Cognos images remain local: `10-cognos-demand-recovery.png` is a UK airport 2020-vs-2022 comparison with unidentified historical source lineage; `14-cognos-risk-ranking.png` contains populated airport rows and passenger, route, recovery and composite-score fields with unresolved source rights; executive/global and operational pages retain the AVI0301/ICAO restriction. No Cognos package, query definitions, or runnable source data are part of this public repository. Exact filenames and local-only reasons are in [evidence/README.md](evidence/README.md). The [Cognos gallery notes](evidence/historical/cognos/technical-notes.md) provide the visible technical details and limitations for the published captures.
+- [UK demand recovery](evidence/historical/cognos/historical-cognos-10-demand-recovery-original.png) — original two-period UK airport comparison; all ten displayed passenger pairs match the preserved GT1 output derived from CAA Table 12.1 (period 202205).
+
+The captures show IBM Cognos UI; no IBM permission or endorsement is claimed. CAA source reference and no-resale conditions apply to the two demand pages. The original Cognos queries, joins and refresh history are not available; matching passenger totals do not validate other Cognos calculations. Five other Cognos images remain local: `08`/`09` contain AVI0301/ICAO-linked global comparisons, `12`/`13` contain operational values under the same restriction, and `14` has unresolved source lineage for populated ranking values. No Cognos package, query definitions, or runnable source data are part of this public repository. Exact filenames and local-only reasons are in [evidence/README.md](evidence/README.md). The [Cognos gallery notes](evidence/historical/cognos/technical-notes.md) provide the visible technical details and limitations for each capture.
 
 ## 6. Historical Google Colab ETL
 
@@ -127,4 +129,4 @@ The locally validated UK_SITE baseline identifies Heathrow as the lead within th
 
 The complete local suite contains 45 tests. CI runs 11 self-contained tests; 34 `requires_sources` tests are collected but not run publicly because they need four local CSV inputs, including AVI0301. The CI job compiles code and checks locked dependencies; it makes no Azure connection and produces no data artifacts. For exact commands and scope see the [README CI section](../README.md#continuous-integration).
 
-A clean clone cannot reproduce the source-backed full pipeline until lawful local input access and AVI0301 rights are resolved. The [evidence index](evidence/README.md) accounts for all 26 original PNGs: seven are public (including two previously published schema images) and 19 remain local with item-specific reasons. The four SVG visuals are supplementary and are not counted as BI platform screenshots.
+A clean clone cannot reproduce the source-backed full pipeline until lawful local input access and AVI0301 rights are resolved. The [evidence index](evidence/README.md) accounts for all 26 original PNGs: nine are in the local publication candidate (including two Power BI schema images) and 17 remain local with item-specific reasons. The separate redacted Colab derivative is not an original; the four SVG visuals are supplementary and are not counted as BI platform screenshots.

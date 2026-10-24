@@ -171,7 +171,7 @@ The diagram below is a supplemental summary of the documented sequence. It is no
 
 According to the project owner, they personally created the Cognos dashboards, semantic model and analysis as academic work; IBM Cognos was the reporting platform, not the dashboard author. The historical reports covered executive summary, demand/recovery, filtering, operations and risk-oriented views. They document an earlier implementation of the airport-retail decision problem, not a current Cognos deployment.
 
-The public Cognos gallery contains `07-cognos-semantic-model.png` and `11-cognos-demand-filter.png`: the first shows model-object names and a relationship workspace, and the second presents a filtered UK demand/recovery page using CAA-derived measures. The archive also contains `10-cognos-demand-recovery.png`, a UK-airport 2020-vs-2022 view with unidentified source lineage, and `14-cognos-risk-ranking.png`, a populated table with passenger, route, recovery and composite-score fields whose historical source is not established. Neither is published. The executive captures `08`/`09` and operational pages `12`/`13` remain local under AVI0301/ICAO restrictions. The public ZIP is unchanged; no Cognos package, query definitions or historical source data are available for independent replay. No IBM permission or endorsement is claimed for the published UI captures. See the [Cognos gallery notes](evidence/historical/cognos/technical-notes.md) and [historical engineering evidence index](evidence/historical/README.md) for the stage-by-stage evidence boundary.
+The public Cognos gallery contains `07-cognos-semantic-model.png`, `11-cognos-demand-filter.png` and the exact original `10-cognos-demand-recovery-original.png`. The semantic-model capture shows model-object names and a relationship workspace; the two demand pages show selected-airport and ten-airport period comparisons. All ten current/prior passenger pairs in the demand views match the preserved GT1 output derived from CAA Table 12.1 (comparison period 202205), but that match does not recover the historical Cognos queries, joins, refresh path or other calculations. `14-cognos-risk-ranking.png` contains passenger, route, recovery and composite-score fields with unresolved lineage and remains local. The executive captures `08`/`09` and operational pages `12`/`13` remain local under AVI0301/ICAO restrictions. The public ZIP is unchanged; no Cognos package, query definitions or historical source data are available for independent replay. No IBM permission or endorsement is claimed for the published UI captures. See the [Cognos gallery notes](evidence/historical/cognos/technical-notes.md) and [historical engineering evidence index](evidence/historical/README.md) for the stage-by-stage evidence boundary.
 
 ![Original IBM Cognos semantic-model screenshot](evidence/historical/cognos/historical-cognos-07-semantic-model.png)
 
@@ -180,6 +180,10 @@ The public Cognos gallery contains `07-cognos-semantic-model.png` and `11-cognos
 ![Original IBM Cognos UK demand-filter screenshot](evidence/historical/cognos/historical-cognos-11-demand-filter.png)
 
 *Authentic archive capture of the project owner's UK demand filter. Source: UK CAA Table 12.1, May 2022; attribution and no-resale conditions apply. IBM Cognos UI is visible; no IBM permission or endorsement is claimed.*
+
+![Original IBM Cognos UK airport demand-recovery screenshot](evidence/historical/cognos/historical-cognos-10-demand-recovery-original.png)
+
+*Authentic original of the historical two-period UK demand comparison. Its ten current/prior airport passenger pairs match the preserved GT1 CAA-derived output; the original Cognos query and non-passenger calculations are not available. CAA attribution/no-resale conditions apply. No IBM endorsement is claimed.*
 
 ### Stage B — Colab, Python and Azure SQL (historical)
 

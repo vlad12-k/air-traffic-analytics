@@ -1,12 +1,13 @@
 # Public evidence gallery and local-only screenshot boundary
 
-This index distinguishes owner-authorized report captures from third-party product-interface terms and data-source conditions. Five original owner-created BI captures are included, along with two Power BI schema-only originals and one redacted historical Colab derivative. The four SVGs are separate data/chronology graphics and do not count as platform screenshots or proof of hands-on vendor use.
+This index distinguishes owner-authorized report captures from third-party product-interface terms and data-source conditions. Six owner-authorized BI report captures are included, together with two Power BI schema originals, one owner-authored SIPOC original, and one redacted historical Colab derivative. The four SVGs are separate data/chronology graphics and do not count as platform screenshots or proof of hands-on vendor use.
 
 ## Public visual evidence
 
 - [Power BI V2 original-image gallery and technical walkthrough](power-bi-v2/technical-notes.md)
 - [Historical Cognos original-image gallery and technical walkthrough](historical/cognos/technical-notes.md)
-- [Historical engineering evidence gallery — all seven Colab, Azure SQL, watsonx and SIPOC images](historical/README.md)
+- [Historical engineering evidence gallery — all seven archive positions and the included SIPOC original](historical/README.md)
+- [Historical technical notes — SIPOC, Azure SQL, Colab, watsonx and AutoAI](historical/technical-notes.md)
 
 
 | File | Stage / question | What it demonstrates | Provenance / limit |
@@ -20,7 +21,9 @@ This index distinguishes owner-authorized report captures from third-party produ
 | [Power BI Heathrow candidate detail](power-bi-v2/powerbi-v2-07b-candidate-detail-heathrow.png) | UK_SITE: explain the Heathrow candidate screen | Original owner-created candidate-detail page | User-authorized original; CAA attribution/no-resale applies. No Microsoft permission or endorsement is claimed. |
 | [IBM Cognos semantic model](historical/cognos/historical-cognos-07-semantic-model.png) | Historical model design | Original schema/semantic-model screenshot; no source rows displayed | User-authorized original; IBM interface is visible; no IBM permission or endorsement is claimed. |
 | [IBM Cognos UK demand filter](historical/cognos/historical-cognos-11-demand-filter.png) | Historical UK demand and filtering | Original owner-created filtered report page | User-authorized original; CAA attribution/no-resale applies. IBM interface is visible; no IBM permission or endorsement is claimed. |
-| [Historical Colab ETL handoff — redacted authentic derivative](historical/colab/colab-etl-upload-redacted.png) | Historical CSV-to-Azure-SQL stage | Notebook title, connection pattern, CSV loop, `read_csv` and `to_sql` code, and successful connection; the output block is fully masked | Original output contains AVI0301/mixed-source counts and remains local. The derivative preserves the rest of the original pixels and is labeled; Google brand guidance for school projects is cited, with no endorsement or data-rights claim. |
+| [IBM Cognos demand recovery](historical/cognos/historical-cognos-10-demand-recovery-original.png) | Historical two-period UK demand comparison | Original page with ten-airport ranking, selected-airport filter, passenger-period comparison, recovery and monthly context | All ten current/prior airport pairs match the preserved GT1 CAA-derived output; CAA attribution/no-resale applies. Owner-authorized original; IBM UI/endorsement boundary disclosed. |
+| [Original SIPOC process diagram](historical/process/01-business-process-sipoc.png) | Business problem and intended project stages | Owner-authored process design connecting source intake, harmonisation, features, GT1–GT10, dashboards/AutoAI and decision review | Original PNG, byte-identical to the archive, included with the owner's explicit authorship/publication confirmation; process design is not proof of execution. |
+| [Historical Colab ETL handoff — redacted authentic derivative](historical/colab/colab-etl-upload-redacted.png) | Historical CSV-to-Azure-SQL stage | Notebook title, connection pattern, CSV loop, `read_csv` and `to_sql` code, and successful connection; the output block is fully masked | Included in the local release candidate, not yet GitHub-published. Original output contains AVI0301/mixed-source counts and remains local. The derivative preserves all pixels outside the labeled mask and makes no data-rights or Google-endorsement claim. |
 
 | [Power BI semantic model screenshot](power-bi-v2/powerbi-v2-08-semantic-model-overview.png) | Current Power BI V2 | Report model structure | Schema-only vendor screenshot, included under the documented Microsoft screenshot conditions and attribution. |
 | [Power BI relationships screenshot](power-bi-v2/powerbi-v2-09-relationships-overview.png) | Current Power BI V2 | Model relationship structure | Schema-only vendor screenshot, included under the documented Microsoft screenshot conditions and attribution. |
@@ -29,7 +32,7 @@ The data-bearing CAA visualizations are free-to-view portfolio documentation; CA
 
 ## Original archive accounting (26 PNGs)
 
-The source ZIP is preserved unchanged. Five user-authorized PNGs are included above; two Power BI schema/model captures were already public. The other 19 archive images remain local-only:
+The source ZIP is preserved unchanged. Six owner-authorized BI report captures, two Power BI schema-only originals, and the owner-confirmed SIPOC PNG are included. **Nine of the 26 original PNGs are available in the local publication branch; 17 originals remain local-only.** The Colab derivative is counted separately and is not an original archive image.
 
 | Original archive entry | Status and specific remaining issue |
 |---|---|
@@ -41,11 +44,11 @@ The source ZIP is preserved unchanged. Five user-authorized PNGs are included ab
 | `Power BI, Semantik Models/07a-candidate-detail-dubai.png` | Local only: global candidate analysis under the AVI0301/ICAO restriction. |
 | `Cognos, Colab, Azure/08-cognos-executive-summary.png` | Local only: global airport comparisons under the AVI0301/ICAO restriction; IBM UI also remains uncleared. |
 | `Cognos, Colab, Azure/09-cognos-executive-filter.png` | Local only: filtered global comparisons under the AVI0301/ICAO restriction; IBM UI also remains uncleared. |
-| `Cognos, Colab, Azure/10-cognos-demand-recovery.png` | Local only: the visible dashboard is a UK-airport 2020-vs-2022 recovery view, not the global comparison previously assumed. The archive does not identify the source lineage for this multi-year series; the public CAA ROUTES input is a single comparison snapshot and cannot validate it. Do not publish the values until the historical source and rights are mapped. |
+| `Cognos, Colab, Azure/10-cognos-demand-recovery.png` | Published as `historical/cognos/historical-cognos-10-demand-recovery-original.png`, byte-identical to this archive entry. All ten displayed current/prior airport passenger pairs match the preserved GT1 output derived from CAA Table 12.1; the original Cognos query/refresh path remains unavailable. CAA attribution/no-resale conditions apply; IBM UI/endorsement boundary is disclosed. |
 | `Cognos, Colab, Azure/12-cognos-operational-monitoring.png` | Local only: operational/global benchmark values remain under the existing AVI0301/ICAO restriction; IBM UI is separate. |
 | `Cognos, Colab, Azure/13-cognos-operational-filter.png` | Local only: filtered operational/global values remain under the existing AVI0301/ICAO restriction; IBM UI is separate. |
 | `Cognos, Colab, Azure/14-cognos-risk-ranking.png` | Local only: the screenshot contains populated UK airport rows and passenger, route-count, recovery and composite-score fields. The original archive does not identify the source lineage; the existing local evidence map associates the UK-labelled results with AVI0301-matching benchmark values. Keep the original unchanged and do not publish these rows/scores until source and redistribution rights are established. |
-| `Cognos, Colab, Azure/01-business-process-sipoc.png` | Local only: process diagram has no visible authorship/copyright attribution; owner confirmation or a license for this exact diagram is needed. It is not a dashboard screenshot. |
+| `Cognos, Colab, Azure/01-business-process-sipoc.png` | Owner-confirmed authored process diagram; original included as `historical/process/01-business-process-sipoc.png`. The diagram does not prove execution. |
 | `Cognos, Colab, Azure/02-azure-sql-database.png` | Local only: original exposes Azure resource/account identifiers and Microsoft UI. Redacted copy is not the original; no altered screenshot is published. |
 | `Cognos, Colab, Azure/03-colab-azure-etl.png` | Original remains local: its upload-result block contains AVI0301/GT7-derived counts with unresolved redistribution rights. The public `colab-etl-upload-redacted.png` derivative masks the entire result block; it does not replace the preserved original or imply rights to the data. |
 | `Cognos, Colab, Azure/04-azure-sql-validation.png` | Local only: SQL grid includes data-bearing global/recommendation results and Azure UI. |
@@ -53,4 +56,4 @@ The source ZIP is preserved unchanged. Five user-authorized PNGs are included ab
 | `Cognos, Colab, Azure/06-watsonx-autoai.png` | Local only: IBM UI and CAA-derived AutoAI metrics; no IBM screenshot basis is documented. |
 | `Cognos, Colab, Azure/10. Auto Ai experiment.png` | Local only: IBM UI and CAA-derived model metrics; no IBM screenshot basis is documented. |
 
-Counts: Power BI **11 originals / 5 original PNGs published / 6 originals local**; IBM Cognos **8 / 2 / 6**; historical support **7 originals local / 1 redacted derivative published / 0 original PNGs published**. **Across the 26 originals: 7 original PNGs are published and 19 remain local; the one additional derivative brings the public gallery to 8 image assets.** The four SVG visualizations are supplementary graphics and are not included in the original-screenshot counts. Owner authorization for the five authored BI captures and the cited school-project basis for the Colab derivative do not imply Microsoft or IBM permission, endorsement, or rights in third-party data.
+Release-candidate counts (actual GitHub publication is verified separately): Power BI **5/11 original PNGs in this candidate / 6 original files local-only**; IBM Cognos **3/8 / 5**; historical evidence **1/7 original PNGs in this candidate / 6 originals local-only**, plus **one redacted Colab derivative**. Across the 26 originals, **9 are included in the candidate and 17 remain local**; the derivative is a separate tenth image asset and does not replace its original. The four SVG visualizations are supplementary and excluded from these counts. Owner authorization for original work does not grant rights to vendor UI or embedded third-party data.

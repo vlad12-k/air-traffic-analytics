@@ -1,8 +1,8 @@
 # Historical IBM Cognos — technical walkthrough of published original screenshots
 
-These two original PNGs are the currently published Cognos captures. The project owner states they authored the report and model; IBM Cognos was the reporting platform. No IBM permission, endorsement, current deployment, refresh, or export package is claimed. The UK demand filter contains CAA-derived data and retains the attribution/no-resale conditions stated in the project source record.
+Three original PNGs are included in the release candidate. The owner states they authored the Cognos reports, semantic model and analysis and authorizes display of that work; IBM Cognos was the reporting platform. This is not a claim of IBM endorsement or a separate IBM permission letter. The CAA-based report pages retain CAA attribution and the no-sale/no-resale condition. The five remaining archive captures are documented individually but are not included because of their source-data, privacy, or vendor-interface boundaries.
 
-The sequence follows the historical workflow: inspect the semantic model → use a UK airport selection to review reported demand.
+The sequence follows the historical workflow: inspect the semantic model → review UK airport demand and recovery → use a UK airport selection to inspect the demand view.
 
 ## 1. Semantic model — historical data module
 
@@ -26,19 +26,60 @@ The sequence follows the historical workflow: inspect the semantic model → use
 
 **What the screenshot evidences.** The visible report is titled “UK decision pack (Top 10 UK airports, 2022)” and shows an airport list/filter with Heathrow selected. It includes total passengers, average monthly passengers, a top-airport ranking, and period-comparison/growth views. The capture visibly reports 4,993,568 for Heathrow in 2022, 567,162 in 2020, and a recovery multiple of 7.8; several other values/labels are small or OCR-ambiguous and are intentionally not transcribed here.
 
-**Model and filters.** The report is an interactive Cognos page with a UK airport selection and a top-10 presentation. The project source inventory associates this historical UK view with CAA-derived route measures, but the screenshot itself labels a 2020-versus-2022 comparison. The present V2 CAA ROUTES contract is a comparison snapshot (period 202205), not a multi-year UK airport series. The exact historical field-to-source mapping and transformation behind the 2020/2022 values are therefore not reproducible from the public project files; do not equate the capture's period comparison with GT2 without that lineage.
+**Model and filters.** The report is an interactive Cognos page with a UK airport selection and top-10 presentation. The source inventory and local reconciliation associate its current/prior airport passenger pairs with UK CAA Table 12.1, comparison period 202205 and its supplied prior period (the screenshot labels 2022 versus 2020). The preserved GT1 output provides the same two-period airport comparison. This is a period comparison, not a continuous annual time series. The original Cognos query, field mapping, joins and refresh remain unavailable; other page calculations should not be inferred from the GT1 match.
 
 **Interpretation and decision.** The page communicates Heathrow's leading displayed 2022 passenger total and a substantial historical recovery multiple, supporting further investigation of Heathrow in the historical decision pack. Recovery in airport passenger totals is not retail footfall, and the ratio is not a sales forecast.
 
-**Validation and limitations.** No historical Cognos query, source-row extract, or independent recalculation is included, so displayed values are screenshot evidence rather than a revalidated result. The current V2 pipeline's recorded quality run does not validate this historical report. CAA Table 12.1, May 2022, attribution/no-resale conditions are retained per the project source record, but the screenshot's 2020/2022 lineage discrepancy remains explicit. IBM UI is visible; no IBM permission or endorsement is claimed.
+**Validation and limitations.** No historical Cognos query, source-row extract, or independent Cognos recalculation is included. A separate local cross-check compared the ten displayed airport current/prior totals with the preserved GT1 output derived from CAA Table 12.1; all ten airport rows matched. This corroborates the source association but does not recover the original Cognos query or prove the report’s refresh path. The current V2 pipeline's recorded quality run does not validate this historical report. CAA attribution/no-resale conditions apply. IBM UI is visible; no IBM endorsement or separate permission letter is claimed.
 
-## Other original Cognos archive pages not published
+## 3. UK demand recovery — historical two-period comparison
 
-Six other Cognos PNGs remain local for the specific reasons recorded in the [complete evidence inventory](../../README.md):
+![Original IBM Cognos UK airport demand-recovery report](historical-cognos-10-demand-recovery-original.png)
 
-- `08-cognos-executive-summary.png` and `09-cognos-executive-filter.png` — global comparisons use AVI0301/ICAO values with unresolved redistribution rights.
-- `10-cognos-demand-recovery.png` — the screenshot is a UK airport 2020-vs-2022 recovery view, but its underlying source lineage is not identified; the public CAA ROUTES contract is a comparison snapshot and does not substantiate this historical series.
-- `12-cognos-operational-monitoring.png` and `13-cognos-operational-filter.png` — populated operational views include airport metrics associated in the local evidence map with AVI0301-matching benchmark values; data rights remain unresolved.
-- `14-cognos-risk-ranking.png` — the original contains populated UK airport rows and passenger, route, recovery, and composite-score fields. Its historical source lineage is not established in the archive; do not publish those values until the source and redistribution rights are mapped.
+**Business question.** How do the ten represented UK airports compare on current and prior passenger totals, and how does the selected airport’s recovery ratio compare with its market position?
 
-No report was recreated or redacted. The owner's authorship authorization does not clear third-party data rights. The preserved original `14-cognos-risk-ranking.png` remains local and is not included in the public gallery.
+**What the screenshot shows.** The original report contains a UK airport selector and top-airport list, current/prior period passenger totals, average-monthly context, a recovery multiple, and monthly share views. It presents Heathrow selected and period context for 2020 and 2022. These are historical report values, not a forecast or retail-sales measure.
+
+**Source and model cross-check.** A local comparison checked the ten displayed airport labels and all ten current/prior passenger pairs against `outputs/golden/GT1_UK_Airport_Period_Totals.csv`; all ten rows matched. That canonical GT1 output is derived from UK CAA Table 12.1, May 2022. This is strong source corroboration for the displayed table but not proof of the original Cognos query, ETL, relationship path, refresh or calculation implementation. Current V2 counterparts are [`golden.py`](../../../../src/airtraffic/golden.py), [GT1–GT2 contracts](../../../gt-contracts.md), and `sql/validation_queries.sql`; they are explanatory reference, not a retroactive Cognos test.
+
+**Decision, validation and limits.** The page supports further UK-site diligence by showing passenger-market scale and a period comparison. It does not measure retail footfall, forecast sales, or prove profitability. CAA attribution and no-sale/no-resale conditions apply; the underlying CSV remains local. The original screenshot is included at the project owner’s direction. IBM Cognos UI is visible; no IBM endorsement or separate permission letter is claimed.
+
+## Other five original Cognos archive pages — detailed evidence and publication boundary
+
+The remaining five original Cognos screenshots are individually documented below. They remain local; descriptions do not reproduce restricted source values or assert unrecorded query/model logic.
+
+### 4. Executive summary — combined UK and global decision pack
+
+The page brings together a UK airport ranking/demand view, a global airport ranking/map, an SFO historical benchmark, and a COVID-recovery panel. It is designed as a leadership overview for comparing market scale and recovery signals before drilling into airport detail. The dashboard layout suggests coordinated filters, but a PNG cannot verify which visuals cross-filter or what query/model relationships drive them.
+
+The global airport ranking is based on AVI0301/ICAO-linked values, which remain uncleared for redistribution. The screenshot's UK, SFO and global panels are interleaved, so publishing a cropped subset would also conflict with the standard screenshot terms and obscure the exact visual context. The original remains local. Current V2 mappings for UK totals, CAA/route measures and SFO context are in [`golden.py`](../../../../src/airtraffic/golden.py) and the [GT contracts](../../../gt-contracts.md); these do not establish the historic Cognos source joins.
+
+### 5. Executive summary filter — selected-airport interaction
+
+This second executive page captures a selected-airport state within the global executive dashboard. The selector changes the highlighted airport and the selected-city passenger KPI while the map and top-airport comparisons remain on the page. It demonstrates the intended interaction state, not the Cognos filter expression, join path, or runtime filter propagation.
+
+The page contains AVI0301-linked global values and a global airport map, so the original is not included. No airport values or global rank are reproduced in these notes. The underlying model/data-module package and report specification are absent; the current V2 model is not offered as proof of the Cognos implementation.
+
+### 6. Operational monitoring — multi-airport dashboard
+
+This page combines an airport selector, KPI cards, a passenger-versus-recovery view, an operational-risk treemap, an airport comparison table, and a composite-score chart. Its intended operational question is which represented airport profiles warrant closer review across passenger scale, route breadth, recovery and a score field.
+
+The report is labelled UK/2022, but its local source map associates the displayed operational values with AVI0301-matching benchmark metrics; the archive has no source query/model export to resolve that lineage. The global source terms therefore remain a publication blocker. GT1, GT8, GT9 and GT10 in the current V2 contracts provide conceptual analogues for market, connectivity, quality and scoped candidate outputs only; they do not verify this historical screen's metrics or score formula.
+
+### 7. Operational monitoring filter — selected airport
+
+This image shows a selected-Heathrow state of the operational page. The selector narrows KPI cards, route/recovery visuals, treemap, comparison table and composite-score view to the selected airport while retaining the comparison context. This is filter-state evidence, not an exported Cognos filter definition or a test of relationship direction/cardinality.
+
+Source lineage remains unresolved in the project archive and the local map associates these displayed benchmark metrics with AVI0301-linked values. No table row or metric value is repeated here. The image stays local until both the precise source rights and an applicable IBM screenshot/mark basis are established.
+
+### 8. Risk ranking — populated airport table and model fields
+
+The table exposes airport name, total passenger measure, route count, recovery-versus-2019 field, and a displayed composite-score field. This is the most operationally actionable historical view: it makes the candidate attributes inspectable rather than showing only a single KPI. The screenshot does not disclose the composite-score weights, normalisation population, missing-value policy, scenario, version, or audit trail; these must not be inferred from the column label.
+
+The source archive does not establish the table's historical lineage. The local evidence map notes that the UK-labelled values match AVI0301-linked metrics, but without source-to-field mapping this remains unresolved rather than a definitive source attribution. The image is not included and its numeric rows are not reproduced. The current GT10 contract is candidate × decision scope × scenario × model version; it is not assumed to be the same as this historical Cognos score.
+
+## Crosswalk to current code, SQL and validation
+
+The current analytical implementation is separately inspectable in [`golden.py`](../../../../src/airtraffic/golden.py), [`scoring.py`](../../../../src/airtraffic/scoring.py), [`quality.py`](../../../../src/airtraffic/quality.py), [`sql/schema.sql`](../../../../sql/schema.sql), [`sql/views.sql`](../../../../sql/views.sql), and [`sql/validation_queries.sql`](../../../../sql/validation_queries.sql). Current GT1–GT10 grains, source lineage and scenario semantics are defined in [GT contracts](../../../gt-contracts.md), [lineage](../../../lineage.md), and the [decision model](../../../decision-model.md). Tests of current behaviour are in [`test_golden_tables.py`](../../../../tests/test_golden_tables.py), [`test_scoring.py`](../../../../tests/test_scoring.py), [`test_quality.py`](../../../../tests/test_quality.py), and [`test_pipeline.py`](../../../../tests/test_pipeline.py).
+
+No original Cognos data module, package, SQL/query export, refresh log or report specification is included. Therefore the current code, SQL, 45-test local run and 11-test public CI subset are evidence for the V2 implementation only; they do not validate the historical Cognos screenshots. All five unpublished originals are preserved locally. The exact source ZIP and the [26-image inventory](../../README.md) are unchanged.
