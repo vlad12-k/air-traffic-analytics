@@ -1,6 +1,6 @@
 # AirTrafficAnalytics — Airport Expansion Decision Intelligence
 
-[![Python CI — docs/final-bi-case-study](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml/badge.svg?branch=docs%2Ffinal-bi-case-study)](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml?query=branch%3Adocs%2Ffinal-bi-case-study)
+[![Python CI — main](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vlad12-k/air-traffic-analytics/actions/workflows/ci.yml?query=branch%3Amain)
 
 **An evidence-led data and BI case study for screening airport markets for a boutique retailer.** I designed a Python/SQL analytical workflow and decision model, then presented the work through Power BI. Earlier Cognos, Colab, Azure SQL and watsonx/AutoAI work is documented as historical project evidence—not as a live commercial service or invented employment experience.
 
