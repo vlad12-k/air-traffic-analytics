@@ -1,5 +1,7 @@
 # Power BI V2 evidence
 
+For the inline gallery and screenshot-grounded technical walkthrough, see [published original screenshots and technical notes](technical-notes.md).
+
 Per the project owner, the report/dashboard design and analysis are their academic work; Microsoft Power BI was the platform, not the report author. This evidence set includes three original owner-created dashboard captures (UK demand, UK_SITE sensitivity, Heathrow candidate detail) plus two previously published schema-only screenshots. The owner authorizes these original report captures for the portfolio; that is not Microsoft permission or endorsement.
 
 ## Original report captures

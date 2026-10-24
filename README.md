@@ -152,6 +152,8 @@ Other limitations: sources are historical snapshots; CAA route data is one compa
 
 - [Business case study](docs/business-case-study.md)
 - [End-to-end project walkthrough](docs/end-to-end-project-walkthrough.md)
+- [Power BI V2 original screenshot gallery and technical notes](docs/evidence/power-bi-v2/technical-notes.md)
+- [Historical IBM Cognos original screenshot gallery and technical notes](docs/evidence/historical/cognos/technical-notes.md)
 - [Architecture](docs/architecture.md)
 - [Analytical lineage](docs/lineage.md)
 - [GT1–GT10 contracts](docs/gt-contracts.md)

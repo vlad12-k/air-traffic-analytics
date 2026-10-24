@@ -1,5 +1,7 @@
 # Historical IBM Cognos evidence
 
+For the inline gallery and screenshot-grounded technical walkthrough, see [published original screenshots and technical notes](technical-notes.md).
+
 Per the project owner, they personally created the Cognos reports, semantic model and analysis; IBM Cognos was the reporting platform, not the report author. This folder now contains two authentic original captures, included at the owner's direction:
 
 - [Semantic model](historical-cognos-07-semantic-model.png) — schema/model metadata, no data rows observed.

@@ -4,6 +4,10 @@ This index distinguishes original owner-authorized report captures from third-pa
 
 ## Public visual evidence
 
+- [Power BI V2 original-image gallery and technical walkthrough](power-bi-v2/technical-notes.md)
+- [Historical Cognos original-image gallery and technical walkthrough](historical/cognos/technical-notes.md)
+
+
 | File | Stage / question | What it demonstrates | Provenance / limit |
 |---|---|---|---|
 | [Project evolution timeline](visualizations/project-evolution-timeline.svg) | Cognos → Colab → Azure SQL → Python/SQL V2 → Power BI V2 | Historical sequence and distinction between earlier tools and the current governed model/report layer | Original project summary diagram based on repository documentation and local evidence; not a technical migration claim or screenshot. |
