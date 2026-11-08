@@ -1,6 +1,6 @@
 # Power BI V2 evidence
 
-The supplied archive contains 11 original Power BI screenshots. The public gallery includes **10 of 11**. The project owner confirms authorship and authorises publication of their report work; that does not independently clear third-party source-data or platform screenshot conditions. The Dubai 07a image remains local-only because it displays AVI0301/ICAO-associated candidate metrics and its source-rights and screenshot conditions are unresolved. No Microsoft endorsement or live deployment is claimed.
+The supplied archive contains 11 original Power BI screenshots. The current working-tree gallery links **10 of 11**; this is not a safe-release allowlist. The owner confirms authorship and authorises publication of their report work, but that does not clear third-party source data, map content or account context. See the [per-image release inventory](../screenshot-release-inventory.md): global values are held, CAA/map pages are conditional, and model-only pages are candidates.[2][3][4] The Dubai 07a original remains local/untracked. No Microsoft endorsement or live deployment is claimed.
 
 ## Published archive originals (10)
 
@@ -19,4 +19,10 @@ The supplied archive contains 11 original Power BI screenshots. The public galle
 
 `07a-candidate-detail-dubai.png` is retained in the local source ZIP. It shows a historical global-candidate screen with AVI0301/ICAO-associated measures. The source-rights and Power BI screenshot conditions are unresolved, so this archive original is not linked as a public image. The owner’s screenshot authorship/publication authorisation does not replace those third-party clearances. No synthetic substitute is provided.
 
-The [technical walkthrough](technical-notes.md) embeds the 10 published originals and explains the archive-only exception, visible report purpose, supported code/contract links and validation limits. CAA attribution and no-resale conditions are retained where relevant. No raw CSVs, credentials or refresh artifacts are published.
+The [technical walkthrough](technical-notes.md) embeds the 10 published originals and explains the archive-only exception, visible report purpose, supported code/contract links and validation limits. CAA attribution and no-resale conditions are retained where relevant.[4] No raw CSVs, credentials or refresh artifacts are published.
+
+## Sources
+
+[2] https://www.gov.uk/government/publications/aviation-statistics-notes-and-definitions/aviation-statistics-notes-and-definitions — DfT Aviation statistics: notes and definitions
+[3] https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3 — Open Government Licence v3.0
+[4] https://www.caa.co.uk/data-and-analysis/uk-aviation-market/airports/uk-airport-data/uk-airport-data-2022/may-2022 — CAA UK airport data May 2022

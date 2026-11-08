@@ -21,12 +21,16 @@ table contract explicitly requires it.
 |---|---|---|---|
 | AVI0105 | UK international passenger movements by country | 2013–2023 | Long-term country demand context |
 | AVI0301 | International airport benchmark | 2021–2022 | Global airport comparison |
-| SFO | San Francisco passenger statistics | 2005–2020 | External historical benchmark |
+| SFO | San Francisco passenger statistics | 2005–2025 (local activity-period coverage through 2025-07) | External historical benchmark; source filename is stale |
 | ROUTES | CAA international route analysis | Current comparison snapshot, including period 202205 | UK airport international network analysis |
 
 The V2 implementation uses the actual supplied files as the source of truth.
 Historical assignment descriptions are retained as provenance but do not
-override observed source schemas.
+override observed source schemas. The detailed version reconciliation, source
+links and reuse conditions are in
+[`data-sources-and-licensing.md`](data-sources-and-licensing.md); tracked CSV
+coverage and licensing are mapped in
+[`outputs/golden/README.md`](../outputs/golden/README.md).
 
 ---
 

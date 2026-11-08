@@ -2,6 +2,8 @@
 
 > **Decision-support case study:** an individual academic and portfolio project, not a commercial deployment, retail forecast or investment recommendation. The archived canonical local run is `20261005T163644Z_33f9f4ffa323` (`VALIDATED_LOCAL`); it was not regenerated for this write-up.
 
+This project began as a **Unit 19 Business Intelligence academic assessment**. The assignment framed the decision as a fictional scenario involving RCO Data Services Ltd (RDS) and Luxury Watch Company (LWC); neither is an actual employer, customer, or commercial client. See [academic provenance](academic-provenance.md) for the distinction between the assignment periods, later V2 snapshots, and third-party reuse rights. The full assignment brief is not reproduced here.
+
 ## 1. Business challenge
 
 A boutique retailer considering airport-based expansion needs to decide which markets deserve scarce site-research effort. Passenger totals are a useful starting point, but do not measure the people who pass a particular retail unit, the availability or cost of premises, the store's conversion rate, or whether the unit economics work. A large airport can therefore be a strong market to investigate without being a viable store location.
@@ -25,10 +27,10 @@ The project owner reports that the college provided source links and learning re
 
 | Source | Role in the analysis | Period and boundary |
 |---|---|---|
-| UK CAA Table 12.1 (`ROUTES`) | UK airport passenger comparisons, airport-to-country flows and connectivity | May 2022 route-analysis extract; source period `202205` and supplied comparison fields. CAA attribution is required and resale is prohibited. |
+| UK CAA Table 12.1 (`ROUTES`) | UK airport passenger comparisons, airport-to-country flows and connectivity | May 2022 route-analysis extract, source period `202205`, compared with May 2021. CAA requires attribution/reference and says the statistics may not be sold on to a third party.[4][12] |
 | DfT AVI0105 | Country-level UK international passenger context | 2013–2023; national/country series, not airport-level recovery. DfT source/table conditions apply. |
-| DfT AVI0301 (ICAO-sourced) | Global airport benchmark for the model design | 2021–2022. Exact ICAO-originating edition/terms are not recorded; raw rows and global output tables remain excluded. |
-| SFO Air Traffic Passenger Statistics (DataSF) | Separate historical disruption context | 2005–2020; geographically distinct and not a direct UK-airport proxy. |
+| DfT AVI0301 (ICAO-sourced) | Global airport benchmark for the model design | 2021–2022 local snapshot. Exact ICAO-originating edition/terms are not recorded; raw rows and GT7/GT9/GT10 CSVs are not tracked in the golden outputs. Some existing public screenshots display AVI0301-associated values; the screenshot inventory records the unresolved boundary. |
+| SFO Air Traffic Passenger Statistics (DataSF) | Separate historical disruption context | Local source snapshot covers activity periods 2005-01 through 2025-07; the filename ends in 2005-2020. This is geographically distinct and not a direct UK-airport proxy.[5][14] |
 
 The metadata manifests record input paths, sizes and hashes only. No raw source CSV or row-level canonical run output is included. See the [source and licensing inventory](data-sources-and-licensing.md) for source-specific attribution and reuse boundaries.
 
@@ -69,21 +71,21 @@ Growth remains context rather than a dominant UK scoring component because a zer
 | SCALE_HEAVY | 0.65 | 0.10 | 0.15 | 0.10 |
 | GROWTH_HEAVY | 0.40 | 0.35 | 0.10 | 0.15 |
 
-The global weights document the model design. Because AVI0301’s exact third-party provenance/terms are unresolved, this case study does **not** publish global candidate names, current ranks or scores as validated analytical findings. Historical values that remain visible inside owner-authorised screenshots are archival display evidence, not a current result or source-rights determination.
+The global weights document the model design. Because AVI0301’s exact third-party provenance/terms are unresolved, this case study does **not** publish global candidate names, current ranks or scores as validated analytical findings. Historical values remain visible in some existing public screenshots; those captures are archival display evidence, not current results or a source-rights determination. Their presence does not clear additional redistribution.
 
 Scenario sensitivity asks whether the leading candidate changes under these explicit policies. It tests robustness to selected assumptions; it is not statistical confidence, causal evidence or forecasting accuracy.
 
 ## 6. Evidence-backed findings
 
-The UK analysis represents **36 airports** in the CAA extract. In this source snapshot, the represented current-period total is **17,984,754 passengers**, compared with **1,178,740** in the extract’s supplied prior-period field. The report presents the comparison as **2022 versus 2020**; the May 2022 publication/source-period code `202205` is not a continuous annual airport time series.
+The UK analysis represents **36 airports** in the CAA extract. In this source snapshot, the represented current-period total is **17,984,754 passengers**, compared with **1,178,740** in the extract’s supplied prior-period field. CAA Table 12.1 compares **May 2022 with May 2021**; the source-period code `202205` is not a continuous annual airport time series.[12]
 
 Heathrow records **4,993,568 current-period passengers**. Its **27.77%** market share is calculated against the represented current-period denominator of **17,984,754**—not all UK aviation, all airport footfall or retail spending. GT8 records 90 destination countries and 207 destination airports for Heathrow in this CAA snapshot. The leading UK candidate remains the same across BASELINE, VOLUME_HEAVY and CONNECTIVITY_HEAVY scenarios.
 
 ![UK airport market snapshot from CAA GT3 output](evidence/visualizations/uk-airport-market-snapshot.svg)
 
-*Portfolio-authored visual from the permitted CAA-derived GT3 output; source attribution and the no-resale condition are included in the figure.*
+*Owner-authored visual derived from CAA-based GT3 output. The figure gives CAA attribution and states the published no-sale condition; its presence is not a separate rights clearance for broader redistribution.*
 
-A separate DfT AVI0105 view supplies country-level trend context; it must not be read as airport-level recovery. The SFO series ends in 2020 and provides historical disruption context only. Zero and small prior-period baselines can also make percentage changes unstable, so the model retains those measures as context rather than allowing them to dominate the UK_SITE baseline.
+A separate DfT AVI0105 view supplies country-level trend context; it must not be read as airport-level recovery. The local SFO snapshot runs through activity period 2025-07 despite a stale `2005-2020` filename and provides geographically separate historical context only.[5][14] Zero and small prior-period baselines can also make percentage changes unstable, so the model retains those measures as context rather than allowing them to dominate the UK_SITE baseline.
 
 ## 7. Business recommendation
 
@@ -95,7 +97,7 @@ The second-stage international scope is a separate model capability. Historical 
 
 ## 8. Project evolution and personal contribution
 
-This is substantial individual academic and portfolio engineering work. The project owner reports personally designing the Cognos and Power BI reports and performing the analysis. The repository preserves a documented sequence of approaches:
+This is substantial individual academic and portfolio engineering work. The project owner reports personally performing the analysis and designing the Cognos and Power BI reports. The repository preserves a documented sequence of approaches:
 
 1. SIPOC process design and source profiling.
 2. Historical Python/Colab ETL and Azure SQL upload/validation screens.
@@ -111,4 +113,11 @@ The archived canonical local run is recorded as `VALIDATED_LOCAL`, with **30 rec
 
 A clean clone cannot reproduce the full source-backed pipeline without the four locally obtained CSVs. The GitHub Actions workflow does not contact Azure or produce a refreshed dataset. The repository does not claim a live Azure, Cognos, watsonx or Power BI service, scheduled refresh, current global ranking, commercial adoption, retail revenue, causal result or forecast accuracy. Test coverage is not configured.
 
-Additional limitations include historical source snapshots, the CAA comparison’s supplied periods, country-level rather than airport-level AVI0105 context, the SFO series ending in 2020, and unresolved AVI0301/ICAO source terms. The code’s MIT licence covers original code only; it does not replace source-data terms or clear third-party material displayed in screenshots. See [reproducibility](reproducibility.md), [data sources and licensing](data-sources-and-licensing.md), and the [release validation summary](evidence/validation/release-validation-summary.md).
+Additional limitations include historical source snapshots, the CAA May 2022 versus May 2021 comparison, country-level rather than airport-level AVI0105 context, the local SFO snapshot ending in July 2025, and unresolved AVI0301/ICAO source terms.[5][12] The code’s MIT licence covers original owner-authored software only; it does not replace source-data terms or clear third-party material displayed in screenshots. See [reproducibility](reproducibility.md), [data sources and licensing](data-sources-and-licensing.md), [third-party notices](../THIRD_PARTY_NOTICES.md), and the [release validation summary](evidence/validation/release-validation-summary.md).
+
+## Sources
+
+[4] https://www.caa.co.uk/data-and-analysis/uk-aviation-market/airports/uk-airport-data/uk-airport-data-2022/may-2022 — CAA UK airport data May 2022
+[5] https://data.sfgov.org/Transportation/Air-Traffic-Passenger-Statistics/rkru-6vcg/about_data — DataSF Air Traffic Passenger Statistics
+[12] https://www.caa.co.uk/Documents/Download/9070/47d4f858-9581-43d1-9ee5-9aebfaf3c83e/5062 — CAA Table 12.1 May 2022 PDF, Comparison with May 2021
+[14] https://data.sfgov.org/Transportation/Air-Traffic-Passenger-Statistics/rkru-6vcg — DataSF Air Traffic Passenger Statistics dataset

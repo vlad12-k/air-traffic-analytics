@@ -2,7 +2,7 @@
 
 - [Source-free archived-run summary](release-validation-summary.md)
 - [Source manifest](source_manifest.json) — relative paths, byte sizes and SHA-256 hashes only.
-- [Artifact manifest](artifact_manifest.json) — paths, byte sizes and SHA-256 hashes only; some referenced outputs are intentionally absent from the public candidate.
+- [Artifact manifest](artifact_manifest.json) — paths, byte sizes and SHA-256 hashes only; some referenced outputs are intentionally absent from the existing public repository.
 
 The manifests contain no source rows, candidate names or traffic metrics. Their hashes do not grant redistribution permission for the referenced data.
 
