@@ -2,7 +2,7 @@
 
 ## Inputs
 
-The pipeline expects four CSVs in `data/raw/`, with exact paths in `src/airtraffic/config.py`. None are bundled. AVI0301 is ICAO-sourced; its raw CSV and canonical derived table outputs are not included. The owner explicitly authorizes publication of the original authored dashboard screenshots containing historical displays; those images are not current pipeline exports or independent validation. The CAA and DfT/DataSF source conditions are documented in [`data-sources-and-licensing.md`](data-sources-and-licensing.md). The public `source_manifest.json` records only source-relative paths, byte sizes and SHA-256 digests; it contains no sample rows. `outputs/qa/source_schema.txt`, which includes sample rows, is local-only.
+The pipeline expects four CSVs in `data/raw/`, with exact paths in `src/airtraffic/config.py`; none are bundled or tracked. AVI0301 is ICAO-sourced, and its raw CSV and canonical derived tables are not tracked. Owner screenshot authorship does not establish rights to third-party data, maps, platform content, or visible account identifiers. The proposed item-by-item status is in the [screenshot release inventory](evidence/screenshot-release-inventory.md); its review is OCR-level and requires full visual review before any release. Gallery presence is not clearance. CAA, DfT/OGL, DataSF/PDDL and AVI0301/ICAO conditions are in [`data-sources-and-licensing.md`](data-sources-and-licensing.md) and [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md). The public `source_manifest.json` records only source-relative paths, byte sizes and SHA-256 digests; it contains no sample rows. `outputs/qa/source_schema.txt`, which includes sample rows, is local-only.
 
 ## Environment and commands
 
@@ -19,7 +19,7 @@ uv run --locked python -m compileall -q src scripts tests
 uv run --locked pytest -q -m "not requires_sources"
 ```
 
-The complete local suite is `uv run --locked pytest -q` and requires all four locally obtained source CSVs under `data/raw/`. Public CI collects the suite but executes only the self-contained tests; source-dependent tests are reported as not run rather than passed or silently skipped. The CI policy and counts are documented in the [README](../README.md#continuous-integration).
+The complete local suite is `uv run --locked pytest -q` and requires all four locally obtained source CSVs under `data/raw/`. Public CI collects the suite but executes only the self-contained tests; source-dependent tests are reported as not run rather than passed or silently skipped. The CI policy and counts are documented in the [README](../README.md#data-quality-reconciliation-and-tests).
 
 With the locked package installed and all four lawful local inputs available, run a new local pipeline build with:
 
@@ -39,11 +39,11 @@ Re-running the pipeline creates a new run ID and generated timestamp. The canoni
 
 `sql/schema.sql`, `sql/views.sql`, and `sql/validation_queries.sql` describe the SQL Server publication/validation contract. `scripts/validate_published_run.py` connects to a database and prompts for a password; `scripts/publish_validated_run.py` can modify a database. These commands were not run during this preparation because they require cloud access and may read/write external resources. Do not run the publisher without explicit operational approval.
 
-Only the SQL contracts and code are published as executable artifacts. Historical Azure validation logs with data-bearing result rows remain local and were not rerun; the exact historic SQL screenshot is included separately in the authorized evidence gallery.
+Only the SQL contracts and code are published as executable artifacts. Historical Azure validation logs with data-bearing result rows remain local and were not rerun. The original Azure SQL screenshot is preserved unchanged, but its account context and result data make it local-only under the per-image inventory.
 
 ## Known limits
 
-- AVI0301 raw input and canonical row-level outputs are not bundled; original owner-authorized screenshots may contain historical displayed values, without asserting current validation.
+- AVI0301 raw input and canonical row-level outputs are not bundled; the per-image inventory holds data-bearing global screenshots pending rights confirmation and marks non-data/model screens separately.
 - The approved MIT `LICENSE` applies to original code only; third-party materials remain under their own terms.
 - Coverage is not configured; no coverage figure is claimed.
 - No Azure, Power BI, or Cognos live deployment was independently checked.

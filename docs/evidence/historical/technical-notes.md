@@ -86,9 +86,9 @@ This document covers all seven historical originals in archive order. All seven 
 
 ## Cross-project evidence boundaries
 
-- **Source rights:** the owner explicitly represents that the screenshot publication is cleared. DfT notes identify AVI0301 as ICAO-supplied; CAA Table 12.1 attribution and no-sale/no-resale conditions remain documented. Raw CSVs and canonical source outputs are not included. See [data-source terms](../../data-sources-and-licensing.md).
+- **Source rights:** owner authorization covers authorship of the screenshot design/work only; it does not clear third-party data embedded in the current public archive or vendor-interface rights. DfT identifies AVI0301 as ICAO-supplied, but the originating ICAO edition and redistribution license are not documented. The existing public gallery still contains some AVI0301-derived global screenshots; the per-image inventory marks their source edition and redistribution rights unresolved. Those flags preserve the record and do not instruct hiding or removing the existing evidence. Do not treat attribution alone as permission. CAA Table 12.1 items require attribution and remain subject to the published no-sale condition. See [data-source terms](../../data-sources-and-licensing.md).
 - **Current code/SQL:** the code links above are real current project files, not reconstructed historical files. Run-aware SQL tables, views and validation queries do not prove the historic Azure resource or Colab load used them.
-- **Tests:** the project records 45 local tests; 34 require local source data, while the public-safe 11-test subset runs in CI. No historical screenshot is validated by those test counts.
+- **Tests:** the project records 45 local tests; 34 require local source data, while the source-independent 11-test subset runs in CI. No historical screenshot is validated by those test counts.
 - **Claims:** these images document stages and screens, not a current Azure service, scheduled pipeline, deployed Cognos report, deployed AutoAI model, live Power BI service, forecast quality or commercial result.
 
 The [historical gallery](README.md), [Power BI technical notes](../power-bi-v2/technical-notes.md), [Cognos technical notes](cognos/technical-notes.md), and [full archive inventory](../README.md) keep each image linked to its project stage and publication boundary.

@@ -1,6 +1,6 @@
 # Historical engineering evidence — seven original screenshots
 
-These seven screenshots are shown in the archive’s project sequence. The owner states they created the screenshots and authorizes their publication. This is evidence of historical work, not proof of a current service, a reproducible run, vendor endorsement or independent validation. Visible product interfaces and any source-data conditions remain separate from the owner’s authorship statement.
+These seven screenshots are preserved as historical project evidence. The owner states they created the screenshots and authorizes publication of their authored work; that does not clear third-party values or visible account/resource identifiers. The current working-tree gallery is not a release recommendation: the [per-image inventory](../screenshot-release-inventory.md) marks the SIPOC as a candidate, Colab as conditional, and Azure/watsonx originals as local-only due to visible account/infrastructure context. This is evidence of historical work, not proof of a current service, reproducible run, vendor endorsement or independent validation.
 
 The gallery contains **seven originals**: one SIPOC, two Azure SQL, one Colab and three watsonx/AutoAI images. The redacted Colab derivative below is a separate eighth asset; it does not replace or count as an original. Exact archive-byte verification is recorded in the evidence inventory.
 

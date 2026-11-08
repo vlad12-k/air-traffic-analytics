@@ -1,0 +1,60 @@
+# Third-party notices and data reuse boundaries
+
+## Scope of the repository licence
+
+The root [`LICENSE`](LICENSE) is retained as MIT for original owner-authored software. It does not license third-party datasets, statistics, tables, map layers, software interfaces, screenshots, or data-bearing dashboard content. A derived table remains subject to the rights and conditions applicable to its source; aggregation or transformation does not itself grant redistribution rights.
+
+The owner identifies the analytical and report work as their own and directs that the existing screenshots be preserved. That establishes the owner's contribution and preservation instruction—not permission over embedded third-party material, maps, vendor UI, account metadata, or source databases. A screenshot is not excluded merely because it shows a vendor interface; assess its actual data, rights, attribution, accuracy and privacy context individually.
+
+**Current-state note:** the existing public GitHub `main` already contains the screenshot galleries, including Azure account/resource context and images displaying AVI0301/ICAO-associated global values. This documentation-only work does not remove, change or newly publish those files. Their existing presence is not a rights or privacy clearance. Item-specific concerns are described in the [per-image inventory](docs/evidence/screenshot-release-inventory.md); a disclaimer alone cannot resolve an actual exposure or rights issue.
+
+## Source and licensing matrix
+
+| Source / local input | Official publisher and source | Rights evidence and scope | Project treatment / remaining questions |
+|---|---|---|---|
+| **UK CAA Table 12.1, May 2022** (`ROUTES`) | UK Civil Aviation Authority: [May 2022 UK airport data](https://www.caa.co.uk/data-and-analysis/uk-aviation-market/airports/uk-airport-data/uk-airport-data-2022/may-2022/) and [Table 12.1 PDF](https://www.caa.co.uk/Documents/Download/9070/47d4f858-9581-43d1-9ee5-9aebfaf3c83e/5062) | CAA says its statistics must be referenced and may not be sold on to a third party. The publication does not describe the data as OGL or provide evidence of an unrestricted open-data grant.[4][12] The table compares May 2022 with May 2021.[12] | GT1–GT4 and GT8 derive from this source. GT4 contains all 666 airport × destination-country pairs in the local snapshot, a substantial derived reproduction. Keep CAA attribution and published no-sale condition. Whether the full GT4 output and specific screenshot displays fit the intended public portfolio use is not independently confirmed; do not claim broader permission or MIT coverage. |
+| **DfT AVI0105** (`AVI0105.csv`) | Department for Transport: [AVI tables landing page](https://www.gov.uk/government/statistical-data-sets/aviation-statistics-data-tables-avi), [AVI0105 ODS](https://assets.publishing.service.gov.uk/media/6936e31a92da4705a575d42b/avi0105.ods), and [aviation notes](https://www.gov.uk/government/publications/aviation-statistics-notes-and-definitions/aviation-statistics-notes-and-definitions) | DfT identifies CAA data lineage. The local snapshot is 2013–2023; the owner-provided assignment brief states 2011–2021. OGL v3.0 applies to information made available under it only to the extent the provider has authority; its third-party-rights exception remains relevant.[2][3][9] The local manifest does not record a historical download URL/date or a table-specific permission statement. | GT5 reproduces all 77 × 11 = 847 local category/year passenger cells after scaling the source's thousands to passenger counts. Retain DfT/CAA attribution and OGL link; do not treat the full transformed table as MIT data. Permission to redistribute this historical full-table output beyond the terms actually evidenced remains to be confirmed. |
+| **San Francisco / DataSF Air Traffic Passenger Statistics** (`rkru-6vcg`) | San Francisco International Airport / DataSF: [dataset `rkru-6vcg`](https://data.sfgov.org/Transportation/Air-Traffic-Passenger-Statistics/rkru-6vcg) and [dataset details](https://data.sfgov.org/Transportation/Air-Traffic-Passenger-Statistics/rkru-6vcg/about_data) | DataSF metadata identifies Open Data Commons PDDL 1.0 for this dataset; the PDDL instrument says that it places no restrictions or requirements on recipients under that instrument.[5][6][14] This scope does not license other datasets, maps, images, or vendor assets. | GT6 aggregates all 31,339 rows in the local snapshot to 21 annual rows (2005–2025; observed source activity through 2025-07). The local filename says 2005–2020 and is stale; it remains unchanged. Keep dataset provenance as good practice. No claim is made that the current online table is byte-identical to the historical local input. |
+| **DfT AVI0301 / ICAO** (`AVI0301.csv`) | DfT: [AVI tables landing page](https://www.gov.uk/government/statistical-data-sets/aviation-statistics-data-tables-avi), [AVI0301 ODS](https://assets.publishing.service.gov.uk/media/6936e3a76a167b6884b73640/avi0301.ods), and [aviation notes](https://www.gov.uk/government/publications/aviation-statistics-notes-and-definitions/aviation-statistics-notes-and-definitions). DfT identifies ICAO as the underlying data source.[2][10] | Assignment period stated in the brief: 2019–2020. The local snapshot contains 2021–2022 values. The exact originating ICAO edition, access product, acquisition date and redistribution permission are not recorded. OGL does not cover third-party rights DfT is not authorised to license.[3] ICAO DATA+ terms are a rights lead only; no evidence ties the local file to that exact product/edition.[7][8] | **Rights unresolved.** GT7 uses AVI0301/ICAO-derived global airport data; GT9/GT10 can mix in AVI0301-dependent quality and decision outputs. Those CSV outputs are not in `outputs/golden/`, but some already-public screenshots display global names, values, ranks or scores. Do not claim a DfT/ICAO attribution alone permits redistribution. No authoritative permission for the local snapshot or those embedded results is recorded. |
+| **Software vendors / screenshot interfaces** | Microsoft: [copyright and screenshot permissions](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions).[15] IBM: [copyright and trademark](https://www.ibm.com/legal/copyright-trademark).[16] Google: [brand guidance](https://about.google/brand-resource-center/guidance/).[17] | These sources provide general copyright, screenshot, trademark or brand guidance; they are not evidence of project-specific permission for these exact Power BI, Azure, Cognos, watsonx or Colab captures. Microsoft guidance notes that it cannot grant permission for third-party-owned content and addresses restrictions for website screenshot use.[15] Brand and product names remain third-party marks. | No bespoke vendor permission, screenshot grant, endorsement or sponsorship is claimed. The project may identify tools factually by name. Vendor UI alone is not a reason to prohibit an image; each screenshot has separate content/privacy/source questions. No project-specific vendor permission is documented; this is **not** a finding that all vendor-interface screenshots are prohibited. |
+| **Map layers shown in screenshots** | Visible credits in the Power BI destination map name OpenStreetMap, Microsoft and Esri. | The exact provider/layer/product and applicable terms were not established from the current project files. | Preserve visible credits in the original. No map-provider reuse permission is asserted; identify the exact layer before making an image-specific clearance claim. |
+
+## Required source credits
+
+Use the following source descriptions when a data-bearing table or figure is presented, subject to the unresolved scope notes above:
+
+- **CAA:** `Source: UK Civil Aviation Authority (CAA), Table 12.1, International Air Passenger Traffic, May 2022; comparison with May 2021. CAA attribution and published no-sale conditions apply.`[4][12]
+- **DfT AVI0105:** `Source: Department for Transport (DfT), AVI0105 (TSGB0205), International passenger movements at UK airports by last or next country travelled to; underlying data source identified by DfT as CAA.`[2][9]
+- **SFO/DataSF:** `Source: San Francisco International Airport / DataSF, Air Traffic Passenger Statistics (dataset rkru-6vcg; PDDL v1.0 identified by DataSF metadata).`[5][6][14]
+- **AVI0301/ICAO:** Do not add a credit as if it grants redistribution permission. The exact local source edition and applicable permission must first be established; use any rights-holder-specified attribution if later confirmed.[2][3]
+
+## Reuse, evidence and status rules
+
+1. Do not apply the root MIT licence to third-party source data, data-derived values, screenshots, maps, or vendor marks.
+2. “Derived”, “aggregated”, “owner-authored” and “visually reviewed” describe authorship or evidence; none alone grants rights in embedded material.
+3. The CAA attribution and no-sale condition are stated separately from OGL. Do not label CAA material as unrestricted OGL.[3][4]
+4. Apply OGL v3.0 to DfT information only where it is actually offered under OGL and the publisher is entitled to license the relevant rights; preserve third-party exceptions.[2][3]
+5. The DataSF PDDL entry applies to dataset `rkru-6vcg` as identified by DataSF metadata. It does not clear mixed content in another image.[5][6][14]
+6. The current public DfT links are mutable and are not proof that the downloaded online file is the historical local source. Preserve local hashes and state periods without inventing acquisition dates.[1][9][10]
+7. No visual assessment, owner instruction to preserve, or project-authored dashboard composition is described as “legal clearance.” No vendor endorsement is implied.
+8. Existing image files and links are preserved in this local documentation work. The status labels in the [image inventory](docs/evidence/screenshot-release-inventory.md) describe individual evidence/rights/privacy questions; they are not instructions to delete, crop, redact, relocate, or rewrite repository history.
+
+The licensing discussion is an evidence-based project record, not a legal opinion. Questions about rights for specific published tables or screenshots remain open where identified above.
+
+## Sources
+
+[1] https://www.gov.uk/government/statistical-data-sets/aviation-statistics-data-tables-avi — DfT Aviation statistics: data tables (AVI)
+[2] https://www.gov.uk/government/publications/aviation-statistics-notes-and-definitions/aviation-statistics-notes-and-definitions — DfT Aviation statistics: notes and definitions
+[3] https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3 — Open Government Licence v3.0
+[4] https://www.caa.co.uk/data-and-analysis/uk-aviation-market/airports/uk-airport-data/uk-airport-data-2022/may-2022 — CAA UK airport data May 2022
+[5] https://data.sfgov.org/Transportation/Air-Traffic-Passenger-Statistics/rkru-6vcg/about_data — DataSF Air Traffic Passenger Statistics
+[6] https://opendatacommons.org/licenses/pddl/1-0 — Open Data Commons PDDL v1.0
+[7] https://dataplus.icao.int/Content/docs/terms_and_conditions.pdf — ICAO DATA+ Terms and Conditions
+[8] https://dataplus.icao.int/Home/FAQ — ICAO DATA+ FAQ
+[9] https://assets.publishing.service.gov.uk/media/6936e31a92da4705a575d42b/avi0105.ods — DfT AVI0105 ODS, updated 17 December 2025
+[10] https://assets.publishing.service.gov.uk/media/6936e3a76a167b6884b73640/avi0301.ods — DfT AVI0301 ODS, updated 17 December 2025
+[12] https://www.caa.co.uk/Documents/Download/9070/47d4f858-9581-43d1-9ee5-9aebfaf3c83e/5062 — CAA Table 12.1 May 2022 PDF, Comparison with May 2021
+[14] https://data.sfgov.org/Transportation/Air-Traffic-Passenger-Statistics/rkru-6vcg — DataSF Air Traffic Passenger Statistics dataset
+[15] https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions — Use of Microsoft Copyrighted Content
+[16] https://www.ibm.com/legal/copyright-trademark — IBM Copyright and Trademark Information
+[17] https://about.google/brand-resource-center/guidance — Google Brand Resource Center Guidance
